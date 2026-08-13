@@ -13,7 +13,7 @@ namespace My_farmacy_.ClasesSQL
         NpgsqlConnection cnx = new NpgsqlConnection();
 
         static string server = "localhost";
-        static string bd = "MyFarmacy";
+        static string bd = "White-Room";
         static string usuario = "postgres";
         static string pasworld = "DIOS TE AMA2.0";
         static string puerto = "5432";

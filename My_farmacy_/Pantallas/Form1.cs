@@ -89,7 +89,11 @@ namespace My_farmacy_
 
         private void btnexit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult r = MessageBox.Show("¿Desea salir de la aplicación?", "AVISO DE CIERRE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void login()
@@ -99,10 +103,10 @@ namespace My_farmacy_
             NpgsqlConnection cnx = kk.conexion();
             //Lo que hace esto es juntar y comparar el id rol y con la misma tabla para asi poder extraer el nombre del rol
             NpgsqlCommand cm = new NpgsqlCommand(
-             "SELECT u.username, u.passwords, u.estado, r.nombre AS rol " +
-             "FROM users u " +
+             "SELECT u.usuario, u.passwords, u.estado, r.nombre AS rol " +
+             "FROM usuario u " +
              "JOIN rol r ON u.idrol = r.idrol " +
-             "WHERE u.username= '" + txtusuario.Text + "' AND u.passwords= '" + txtcontrasena.Text + "'", cnx);
+             "WHERE u.usuario= '" + txtusuario.Text + "' AND u.passwords= '" + txtcontrasena.Text + "'", cnx);
             NpgsqlDataReader dr = cm.ExecuteReader();
            
             if (dr.Read())
