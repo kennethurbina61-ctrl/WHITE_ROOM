@@ -110,6 +110,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasesSQL\Respaldo.cs" />
     <Compile Include="ClasesSQL\UsuarioC.cs" />
     <Compile Include="Pantallas\Categorias.cs">
       <SubType>Form</SubType>
@@ -120,11 +121,23 @@
     <Compile Include="ClasesSQL\Clasecategoria.cs" />
     <Compile Include="ClasesSQL\Conexion.cs" />
     <Compile Include="ClasesSQL\Obteersql.cs" />
+    <Compile Include="Pantallas\crearRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\crearRes.Designer.cs">
+      <DependentUpon>crearRes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Respaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Respaldo.Designer.cs">
+      <DependentUpon>Respaldo.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Ventas.cs">
       <SubType>Form</SubType>
@@ -221,6 +234,9 @@
     <EmbeddedResource Include="Pantallas\Compras.resx">
       <DependentUpon>Compras.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\crearRes.resx">
+      <DependentUpon>crearRes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Detallecompra.resx">
       <DependentUpon>Detallecompra.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Respaldo.resx">
+      <DependentUpon>Respaldo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Ventas.resx">
       <DependentUpon>Ventas.cs</DependentUpon>

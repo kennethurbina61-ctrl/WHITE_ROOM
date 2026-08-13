@@ -291,7 +291,7 @@
             this.btnagregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnagregar.ForeColor = System.Drawing.Color.White;
-            this.btnagregar.Location = new System.Drawing.Point(40, 234);
+            this.btnagregar.Location = new System.Drawing.Point(37, 216);
             this.btnagregar.Name = "btnagregar";
             this.btnagregar.Size = new System.Drawing.Size(135, 33);
             this.btnagregar.TabIndex = 22;
@@ -422,7 +422,7 @@
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.panel4.Location = new System.Drawing.Point(12, 225);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(547, 291);
+            this.panel4.Size = new System.Drawing.Size(547, 271);
             this.panel4.TabIndex = 6;
             // 
             // label6
@@ -488,7 +488,7 @@
             this.btneditarroles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btneditarroles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btneditarroles.ForeColor = System.Drawing.Color.White;
-            this.btneditarroles.Location = new System.Drawing.Point(392, 234);
+            this.btneditarroles.Location = new System.Drawing.Point(392, 216);
             this.btneditarroles.Name = "btneditarroles";
             this.btneditarroles.Size = new System.Drawing.Size(135, 33);
             this.btneditarroles.TabIndex = 23;

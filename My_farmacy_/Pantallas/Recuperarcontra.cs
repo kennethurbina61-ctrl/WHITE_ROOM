@@ -45,7 +45,7 @@ namespace My_farmacy_
             }
             else
             {
-                MessageBox.Show("Lo sentimos, no tiene cuenta con nosotros.");
+                MessageBox.Show("Lo sentimos, no tiene cuenta con nosotros.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             cc.Close();
@@ -61,7 +61,11 @@ namespace My_farmacy_
 
         private void btnexit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult r = MessageBox.Show("¿Desea salir de la aplicación?", "AVISO DE CIERRE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private bool verfifi()

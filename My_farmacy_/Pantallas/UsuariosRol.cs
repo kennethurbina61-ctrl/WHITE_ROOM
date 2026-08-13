@@ -17,11 +17,13 @@ namespace My_farmacy_
 {
     public partial class UsuariosRol : Form
     {
-        string conexx = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        ClasesSQL.LoginSQL ll = new ClasesSQL.LoginSQL();
+       // string conexx = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
         public UsuariosRol()
         {
             InitializeComponent();
         }
+        
 
         private void UsuariosRol_Load(object sender, EventArgs e)
         {
@@ -31,14 +33,13 @@ namespace My_farmacy_
         }
         private void llenarroles()
         {
-            NpgsqlConnection cn = new NpgsqlConnection(conexx);
-            cn.Open();
-            NpgsqlCommand cf = new NpgsqlCommand("select idrol, nombre, estado, descripcion from rol", cn);
+            NpgsqlConnection cn = ll.conexion();
+            NpgsqlCommand cf = new NpgsqlCommand("select idrol, nombre, descripcion, estado from rol", cn);
             NpgsqlDataReader rt = cf.ExecuteReader();
             dataroles.Rows.Clear();
             while (rt.Read())
             {
-                bool re = Convert.ToBoolean(rt[2]);
+                bool re = Convert.ToBoolean(rt[3]);
                 string rol = Convert.ToString(re);
                 if (re == true)
                 {
@@ -49,7 +50,7 @@ namespace My_farmacy_
                 {                    
                     rol = "Inactivo";
                 }
-                    dataroles.Rows.Add(rt[0], rt[1], rol, rt[3]);
+                    dataroles.Rows.Add(rt[0], rt[1], rol, rt[2]);
             }
             cn.Close();
             cn.Open();
@@ -66,17 +67,15 @@ namespace My_farmacy_
         private void llenar()
         {
             btnmodificar.Visible = false;
-            btncancelar.Visible = false;
-            NpgsqlConnection conn = new NpgsqlConnection(conexx);
-            conn.ConnectionString = conexx;
-            conn.Open();
-            NpgsqlCommand dtu = new NpgsqlCommand("Select u.userid, u.username, u.telefono, u.correo, u.cedula, u.estado, r.nombre as rol, nombree from users u join rol r on u.idrol = r.idrol", conn);
+            btncancelar.Visible = false;    
+            NpgsqlConnection conn = ll.conexion();
+            NpgsqlCommand dtu = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.usuario, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol", conn);
             NpgsqlDataReader dtru = dtu.ExecuteReader();
             dtusers.Rows.Clear();
             
             while (dtru.Read())
             {
-                bool sta = Convert.ToBoolean(dtru[5]);
+                bool sta = Convert.ToBoolean(dtru[7]);
                 string estadoU = Convert.ToString(sta);
                 if (sta == true)
                 {
@@ -86,9 +85,10 @@ namespace My_farmacy_
                 {
                     estadoU = "Inactivo";
                 }
-                    dtusers.Rows.Add(dtru[0], dtru[1], dtru[7], dtru[6], dtru[2], dtru[4], dtru[3], estadoU);
+                    dtusers.Rows.Add(dtru[0], dtru[2], dtru[3], dtru[2], dtru[4], dtru[6], dtru[5], estadoU);
             }
             dtru.Close();
+            conn.Close();
         }
 
         private void btnagregar_Click(object sender, EventArgs e)
@@ -107,10 +107,8 @@ namespace My_farmacy_
                 }
                 string descriocion = txtdescripcionrol.Text;
 
-
-                NpgsqlConnection cxn = new NpgsqlConnection(conexx);
-                cxn.Open();
-                NpgsqlCommand ins = new NpgsqlCommand("Insert into rol (nombre, estado, descripcion) values ('" + nombre + "' , '" + estado + "','" + descriocion + "' )", cxn);
+                NpgsqlConnection cxn = ll.conexion();
+                NpgsqlCommand ins = new NpgsqlCommand("Insert into rol (nombre, descripcion, estado) values ('" + nombre + "' ,'" + descriocion + "', '" + estado + "' )", cxn);
                 ins.ExecuteNonQuery();
                 MessageBox.Show("Se guardo correctamente.");
                 cxn.Close();
@@ -191,9 +189,8 @@ namespace My_farmacy_
                     }
                     string rol = cbrol.Text;
 
-                    string conexion = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
-                    NpgsqlConnection cn = new NpgsqlConnection(conexion);
-                    cn.Open();
+                  
+                    NpgsqlConnection cn = ll.conexion();
                     NpgsqlDataAdapter rls = new NpgsqlDataAdapter("select idrol from rol where nombre= '" + rol + "'", cn);
                     DataTable dt = new DataTable();
                     rls.Fill(dt);
@@ -203,7 +200,7 @@ namespace My_farmacy_
                         idrol = Convert.ToInt32(dt.Rows[0]["idrol"]);
                     }
                     
-                    NpgsqlCommand vd = new NpgsqlCommand("Insert into users (username, passwords, telefono, correo, cedula, estado, idrol, nombree) values ('" + usuario + "' , '" + password + "' , '" + telefono + "' , '" + correo + "' , '" + cedula + "' , '" + estado + "' , '" + idrol + "' , '" + nombrecompleto + "') ", cn);
+                    NpgsqlCommand vd = new NpgsqlCommand("Insert into usuario (idrol, usuario, nombrecompleto, telefeno, correo, passwords, cedula, estado) values ('" + idrol+ "' , '" + usuario + "' , '" + nombrecompleto+ "' , '" + telefono + "' , '" + correo + "' , '" + password + "' , '" + cedula + "' , '" + estado + "') ", cn);
                     vd.ExecuteNonQuery();
                     MessageBox.Show("Se guardo correctamente");
                     cn.Close();
@@ -249,8 +246,7 @@ namespace My_farmacy_
         private void cbrol_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool roli;
-            NpgsqlConnection cc = new NpgsqlConnection(conexx);
-            cc.Open();
+            NpgsqlConnection cc = ll.conexion();
             NpgsqlCommand actr = new NpgsqlCommand("select estado from rol where nombre = '" + cbrol.Text + "'", cc);
             NpgsqlDataReader tr = actr.ExecuteReader();  
         
@@ -304,15 +300,14 @@ namespace My_farmacy_
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            NpgsqlConnection cn = new NpgsqlConnection(conexx);
-            cn.Open();
-            NpgsqlCommand bs = new NpgsqlCommand("select u.username, u.telefono, u.correo, u.cedula, u.estado, r.nombre as rol, u.nombree from users u join rol r on u.idrol = r.idrol where u.username = '" + txtbuscar.Text + "' ",cn);
+            NpgsqlConnection cn = ll.conexion();
+            NpgsqlCommand bs = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.usuario, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol where u.usuario = '" + txtbuscar.Text + "' ",cn);
             NpgsqlDataReader nc = bs.ExecuteReader();
             dtusers.Rows.Clear();
             while (nc.Read())
             {
                 string estado;
-                bool es = Convert.ToBoolean(nc[4]);
+                bool es = Convert.ToBoolean(nc[6]);
                 if (es == true)
                 {
                     estado = "Activo";
@@ -321,7 +316,9 @@ namespace My_farmacy_
                 {
                     estado = "Inactivo";
                 }
-                    dtusers.Rows.Add(nc[0], nc[6], nc[5], nc[1], nc[3], nc[2], estado);
+
+               
+                    dtusers.Rows.Add(nc[0], nc[1], nc[2], nc[3], nc[7], nc[3], nc[5], estado);
             }
             nc.Close();
 
@@ -359,8 +356,7 @@ namespace My_farmacy_
         {
             if (camposvacios() && txtconfirmarcontra.Text == txtcontraseña.Text)
             {
-                NpgsqlConnection cn = new NpgsqlConnection(conexx);
-                cn.Open();
+                NpgsqlConnection cn = ll.conexion();    
                 string nombrecompleto = txtnombreU.Text;
                 string cedula = txtcedula.Text;
                 string usuario = txtusuarioagg.Text;
@@ -386,7 +382,7 @@ namespace My_farmacy_
                     idrol = Convert.ToInt32(dt.Rows[0]["idrol"]);
                 }
                 //, passwords, telefono, correo, cedula, estado, idrol, nombree
-                NpgsqlCommand cmd = new NpgsqlCommand("update users set username = '" + usuario + "' , passwords= '" + password + "' , telefono= '" + telefono + "' , correo= '" + correo + "' , cedula= '" + cedula + "' ,estado= '" + estado + "' ,idrol= '" + idrol + "' ,nombree= '" + nombrecompleto + "' where userid= '" + txtusersid.Text + "'", cn);
+                NpgsqlCommand cmd = new NpgsqlCommand("update usuario set idrol= '" + idrol + "', usuario = '" + usuario + "', nombrecompleto= '" + nombrecompleto + "', telefono= '" + telefono + "' , correo= '" + correo + "' , passwords= '" + password + "', cedula= '" + cedula + "' ,estado= '" + estado + "' where idusuario= '" + txtusersid.Text + "'", cn);
                 NpgsqlDataReader vb = cmd.ExecuteReader();
                 MessageBox.Show("Registro modificado.");
                 vb.Close();

@@ -25,7 +25,12 @@ namespace My_farmacy_
         
         private void btnexit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult r = MessageBox.Show("¿Desea salir de la aplicación?", "AVISO DE CIERRE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
         private void AbrirForm(object formHijo)
         {
@@ -239,6 +244,11 @@ namespace My_farmacy_
         private void btnventas_Click(object sender, EventArgs e)
         {
             AbrirForm(new Ventas());
+        }
+
+        private void btnrespaldo_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new Respaldo());
         }
     }
 }

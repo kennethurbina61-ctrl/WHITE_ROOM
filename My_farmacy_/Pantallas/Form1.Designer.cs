@@ -226,9 +226,9 @@
             this.logoimg.BackColor = System.Drawing.Color.Transparent;
             this.logoimg.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
             this.logoimg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logoimg.Location = new System.Drawing.Point(121, 29);
+            this.logoimg.Location = new System.Drawing.Point(121, 12);
             this.logoimg.Name = "logoimg";
-            this.logoimg.Size = new System.Drawing.Size(183, 91);
+            this.logoimg.Size = new System.Drawing.Size(183, 134);
             this.logoimg.TabIndex = 0;
             this.logoimg.TabStop = false;
             // 

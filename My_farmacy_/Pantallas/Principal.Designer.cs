@@ -525,6 +525,7 @@
             this.btnrespaldo.Size = new System.Drawing.Size(136, 28);
             this.btnrespaldo.TabIndex = 12;
             this.btnrespaldo.UseVisualStyleBackColor = true;
+            this.btnrespaldo.Click += new System.EventHandler(this.btnrespaldo_Click);
             // 
             // panellogo
             // 
