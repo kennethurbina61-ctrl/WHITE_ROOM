@@ -123,6 +123,26 @@ namespace My_farmacy_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnBD {
+            get {
+                object obj = ResourceManager.GetObject("btnBD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnBDArchivo {
+            get {
+                object obj = ResourceManager.GetObject("btnBDArchivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnbuscar {
             get {
                 object obj = ResourceManager.GetObject("btnbuscar", resourceCulture);
@@ -186,6 +206,16 @@ namespace My_farmacy_.Properties {
         internal static System.Drawing.Bitmap btnnivelacion {
             get {
                 object obj = ResourceManager.GetObject("btnnivelacion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnRestaurarBD {
+            get {
+                object obj = ResourceManager.GetObject("btnRestaurarBD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
