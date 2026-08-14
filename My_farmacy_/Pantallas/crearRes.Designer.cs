@@ -32,8 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabla = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtnombreresapaldo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtreceptor = new System.Windows.Forms.TextBox();
@@ -62,12 +60,9 @@
             this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tabla.ColumnHeadersHeight = 30;
             this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Column3});
             this.tabla.EnableHeadersVisualStyles = false;
             this.tabla.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            this.tabla.Location = new System.Drawing.Point(48, 283);
+            this.tabla.Location = new System.Drawing.Point(30, 304);
             this.tabla.Margin = new System.Windows.Forms.Padding(30);
             this.tabla.Name = "tabla";
             this.tabla.ReadOnly = true;
@@ -90,20 +85,6 @@
             this.tabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabla.Size = new System.Drawing.Size(724, 147);
             this.tabla.TabIndex = 47;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre del respaldo";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Ruta Completa";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // txtnombreresapaldo
             // 
@@ -144,7 +125,6 @@
             // btnrestaurar
             // 
             this.btnrestaurar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnrestaurar.BackgroundImage = global::My_farmacy_.Properties.Resources.confirmarbtn;
             this.btnrestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnrestaurar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
@@ -153,12 +133,12 @@
             this.btnrestaurar.Name = "btnrestaurar";
             this.btnrestaurar.Size = new System.Drawing.Size(128, 33);
             this.btnrestaurar.TabIndex = 52;
+            this.btnrestaurar.Text = "Restaurar";
             this.btnrestaurar.UseVisualStyleBackColor = false;
             // 
             // btncrear
             // 
             this.btncrear.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btncrear.BackgroundImage = global::My_farmacy_.Properties.Resources.confirmarbtn;
             this.btncrear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btncrear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btncrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
@@ -167,12 +147,13 @@
             this.btncrear.Name = "btncrear";
             this.btncrear.Size = new System.Drawing.Size(128, 33);
             this.btncrear.TabIndex = 53;
+            this.btncrear.Text = "Crear";
             this.btncrear.UseVisualStyleBackColor = false;
+            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
             // 
             // btnseleccionar
             // 
             this.btnseleccionar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnseleccionar.BackgroundImage = global::My_farmacy_.Properties.Resources.confirmarbtn;
             this.btnseleccionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnseleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnseleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
@@ -181,7 +162,9 @@
             this.btnseleccionar.Name = "btnseleccionar";
             this.btnseleccionar.Size = new System.Drawing.Size(128, 33);
             this.btnseleccionar.TabIndex = 54;
+            this.btnseleccionar.Text = "Seleccionar";
             this.btnseleccionar.UseVisualStyleBackColor = false;
+            this.btnseleccionar.Click += new System.EventHandler(this.btnseleccionar_Click);
             // 
             // crearRes
             // 
@@ -211,8 +194,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView tabla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TextBox txtnombreresapaldo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtreceptor;

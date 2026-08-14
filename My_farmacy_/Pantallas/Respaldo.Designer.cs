@@ -32,14 +32,14 @@
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.pcpantalla = new System.Windows.Forms.PictureBox();
             this.Crearrespaldo = new System.Windows.Forms.Panel();
-            this.pnlrestaurar = new System.Windows.Forms.Panel();
-            this.pnlrestauraarBD = new System.Windows.Forms.Panel();
-            this.btnselecionar = new System.Windows.Forms.Button();
-            this.btnver = new System.Windows.Forms.Button();
-            this.btncrear = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btncrear = new System.Windows.Forms.Button();
+            this.pnlrestaurar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnselecionar = new System.Windows.Forms.Button();
+            this.pnlrestauraarBD = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnver = new System.Windows.Forms.Button();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).BeginInit();
             this.Crearrespaldo.SuspendLayout();
@@ -88,53 +88,6 @@
             this.Crearrespaldo.Size = new System.Drawing.Size(255, 432);
             this.Crearrespaldo.TabIndex = 4;
             // 
-            // pnlrestaurar
-            // 
-            this.pnlrestaurar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlrestaurar.Controls.Add(this.label2);
-            this.pnlrestaurar.Controls.Add(this.btnselecionar);
-            this.pnlrestaurar.Location = new System.Drawing.Point(418, 106);
-            this.pnlrestaurar.Name = "pnlrestaurar";
-            this.pnlrestaurar.Size = new System.Drawing.Size(255, 432);
-            this.pnlrestaurar.TabIndex = 5;
-            // 
-            // pnlrestauraarBD
-            // 
-            this.pnlrestauraarBD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlrestauraarBD.Controls.Add(this.label3);
-            this.pnlrestauraarBD.Controls.Add(this.btnver);
-            this.pnlrestauraarBD.Location = new System.Drawing.Point(754, 106);
-            this.pnlrestauraarBD.Name = "pnlrestauraarBD";
-            this.pnlrestauraarBD.Size = new System.Drawing.Size(255, 432);
-            this.pnlrestauraarBD.TabIndex = 6;
-            // 
-            // btnselecionar
-            // 
-            this.btnselecionar.Location = new System.Drawing.Point(24, 353);
-            this.btnselecionar.Name = "btnselecionar";
-            this.btnselecionar.Size = new System.Drawing.Size(182, 41);
-            this.btnselecionar.TabIndex = 0;
-            this.btnselecionar.Text = "Seleccionar archivo";
-            this.btnselecionar.UseVisualStyleBackColor = true;
-            // 
-            // btnver
-            // 
-            this.btnver.Location = new System.Drawing.Point(24, 353);
-            this.btnver.Name = "btnver";
-            this.btnver.Size = new System.Drawing.Size(182, 41);
-            this.btnver.TabIndex = 1;
-            this.btnver.Text = "Ver respaldos";
-            this.btnver.UseVisualStyleBackColor = true;
-            // 
-            // btncrear
-            // 
-            this.btncrear.Location = new System.Drawing.Point(20, 353);
-            this.btncrear.Name = "btncrear";
-            this.btncrear.Size = new System.Drawing.Size(182, 41);
-            this.btncrear.TabIndex = 2;
-            this.btncrear.Text = "Crear Respaldo";
-            this.btncrear.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -144,6 +97,26 @@
             this.label1.Size = new System.Drawing.Size(231, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Generar una copia de seguridad\r\npara proteger su información.\r\n";
+            // 
+            // btncrear
+            // 
+            this.btncrear.Location = new System.Drawing.Point(20, 353);
+            this.btncrear.Name = "btncrear";
+            this.btncrear.Size = new System.Drawing.Size(182, 41);
+            this.btncrear.TabIndex = 2;
+            this.btncrear.Text = "Crear Respaldo";
+            this.btncrear.UseVisualStyleBackColor = true;
+            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
+            // 
+            // pnlrestaurar
+            // 
+            this.pnlrestaurar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlrestaurar.Controls.Add(this.label2);
+            this.pnlrestaurar.Controls.Add(this.btnselecionar);
+            this.pnlrestaurar.Location = new System.Drawing.Point(418, 106);
+            this.pnlrestaurar.Name = "pnlrestaurar";
+            this.pnlrestaurar.Size = new System.Drawing.Size(255, 432);
+            this.pnlrestaurar.TabIndex = 5;
             // 
             // label2
             // 
@@ -156,6 +129,25 @@
             this.label2.Text = "Restaurar la base de datos \r\nseleccionando un archivo de\r\n respaldo desde su equi" +
     "po.\r\n";
             // 
+            // btnselecionar
+            // 
+            this.btnselecionar.Location = new System.Drawing.Point(24, 353);
+            this.btnselecionar.Name = "btnselecionar";
+            this.btnselecionar.Size = new System.Drawing.Size(182, 41);
+            this.btnselecionar.TabIndex = 0;
+            this.btnselecionar.Text = "Seleccionar archivo";
+            this.btnselecionar.UseVisualStyleBackColor = true;
+            // 
+            // pnlrestauraarBD
+            // 
+            this.pnlrestauraarBD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlrestauraarBD.Controls.Add(this.label3);
+            this.pnlrestauraarBD.Controls.Add(this.btnver);
+            this.pnlrestauraarBD.Location = new System.Drawing.Point(754, 106);
+            this.pnlrestauraarBD.Name = "pnlrestauraarBD";
+            this.pnlrestauraarBD.Size = new System.Drawing.Size(255, 432);
+            this.pnlrestauraarBD.TabIndex = 6;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -166,6 +158,15 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Restaurar la base de datos\r\n utilizando uno de los respaldos\r\n existentes en el s" +
     "istema.";
+            // 
+            // btnver
+            // 
+            this.btnver.Location = new System.Drawing.Point(24, 353);
+            this.btnver.Name = "btnver";
+            this.btnver.Size = new System.Drawing.Size(182, 41);
+            this.btnver.TabIndex = 1;
+            this.btnver.Text = "Ver respaldos";
+            this.btnver.UseVisualStyleBackColor = true;
             // 
             // Respaldo
             // 

@@ -16,5 +16,12 @@ namespace My_farmacy_.Pantallas
         {
             InitializeComponent();
         }
+
+        private void btncrear_Click(object sender, EventArgs e)
+        {
+            string usuario = "Kenneth";
+            crearRes cc = new crearRes(usuario);
+            cc.Show();
+        }
     }
 }
