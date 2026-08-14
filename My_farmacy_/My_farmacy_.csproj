@@ -466,5 +466,14 @@
   <ItemGroup>
     <None Include="Resources\fondopng.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBDArchivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRestaurarBD.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

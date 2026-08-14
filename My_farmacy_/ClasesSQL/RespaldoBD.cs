@@ -52,7 +52,7 @@ namespace My_farmacy_.ClasesSQL
                 psi.EnvironmentVariables["PGPASSWORD"] = "DIOS TE AMA2.0";
                 var process = Process.Start(psi);
                 process.WaitForExit();
-                MessageBox.Show("Se realizo con exito");
+                MessageBox.Show("Se realizo con exito.", "RESPALDO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return process.ExitCode == 0;
 
 
