@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using Npgsql;
+using System.Windows.Forms;
+
+namespace My_farmacy_.ClasesSQL
+{
+    public class RespaldoBD
+    {   
+       private LoginSQL conexionBD;
+        private string rutaCarpeta;
+
+        public RespaldoBD()
+        {
+            conexionBD = new LoginSQL();
+            //Carpeta 'respaldo' se crea automaticamente.
+            rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Respaldos");
+            
+            if (!Directory.Exists(rutaCarpeta))
+            {
+                Directory.CreateDirectory(rutaCarpeta);
+            }
+        }
+
+        //crear un respado completo de la base de datos
+         public bool CrearRespaldo(string nombre,string usuario, out string ruta)
+        {
+            string user = "postgres";
+            string nameBD = "White-Room";
+            ruta = string.Empty;
+            try
+            {
+               string nombreArchivo = $"{nombre}_{DateTime.Now:yyyy-MM-dd_hh-mm-ss}.sql";
+                ruta = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                //hacaer el pgabp
+
+                var psi = new ProcessStartInfo
+                { 
+                    FileName = $"C:\\Program Files\\PostgreSQL\\16\\bin\\pg_dump.exe",
+                    Arguments = $"-U {user} -F p -b -v -f \"{ruta}\" {nameBD}",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true
+                };
+                psi.EnvironmentVariables["PGPASSWORD"] = "DIOS TE AMA2.0";
+                var process = Process.Start(psi);
+                process.WaitForExit();
+                MessageBox.Show("Se realizo con exito");
+                return process.ExitCode == 0;
+
+
+              
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo hacer el respaldo.");
+                return false;
+            }
+
+        }
+
+        //restaura la base de datos desde  un archivo .sql  selecccionado
+        public bool restaurarRespaldo(string RutaOrigen)
+        {
+            try
+            {
+                using (NpgsqlConnection conn = conexionBD.conexion())
+                {
+                    conn.Open();
+                    string script = File.ReadAllText(RutaOrigen);
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(script, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                }
+                return true;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No se encontro nada");
+                return false;
+            }
+        }
+
+        public class ModeloRespaldo
+        {
+            public string NombreRespaldo { get; set; }
+            public string RutaCompleta { get; set; }    
+            public DateTime FechaCreacion { get; set; }
+
+        }
+
+
+        //Obtiene la lista de archivos ..sql almacenados en carpeta de respaldo
+
+        public List<ModeloRespaldo> ObtenerListaRespaldo()
+        {
+            var lista = new List<ModeloRespaldo>();
+            if (Directory.Exists(rutaCarpeta))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(rutaCarpeta);
+                FileInfo[] archivos = dirInfo.GetFiles("*.sql");
+
+                foreach(FileInfo archivo in archivos)
+                {
+                    lista.Add(new ModeloRespaldo
+                    {
+                        NombreRespaldo = archivo.Name,
+                        RutaCompleta = archivo.FullName,
+                        FechaCreacion = archivo.CreationTime
+                    });
+                }
+            }
+
+            return lista;
+        }
+
+
+
+    }
+}

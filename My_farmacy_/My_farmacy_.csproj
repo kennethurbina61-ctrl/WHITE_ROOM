@@ -110,7 +110,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClasesSQL\Respaldo.cs" />
+    <Compile Include="ClasesSQL\RespaldoBD.cs" />
     <Compile Include="ClasesSQL\UsuarioC.cs" />
     <Compile Include="Pantallas\Categorias.cs">
       <SubType>Form</SubType>
