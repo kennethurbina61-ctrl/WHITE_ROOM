@@ -44,12 +44,14 @@ namespace My_farmacy_
         }
         private void Llenar()
         {
+            dtcategorias.Rows.Clear();
             NpgsqlConnection cn = new NpgsqlConnection(coneccion);
             cn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select idcliente, cliente, correo, telefono, direccion, estado from clientes", cn);
             NpgsqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
+                
                 string estado;
                 bool es = Convert.ToBoolean(rd[5]);
                 if(es == true)

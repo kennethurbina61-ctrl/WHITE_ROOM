@@ -20,8 +20,8 @@ namespace My_farmacy_.ClasesSQL
         {
             conexionBD = new LoginSQL();
             //Carpeta 'respaldo' se crea automaticamente.
-            rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Respaldos");
-            
+           // rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Respaldos");
+            rutaCarpeta = @"C:\Users\HP 15-F0075TG\Desktop\University\Arco del IV semestre\Administracion de base de datos\Respaldos";
             if (!Directory.Exists(rutaCarpeta))
             {
                 Directory.CreateDirectory(rutaCarpeta);
@@ -72,16 +72,36 @@ namespace My_farmacy_.ClasesSQL
         {
             try
             {
-                using (NpgsqlConnection conn = conexionBD.conexion())
-                {
-                    conn.Open();
-                    string script = File.ReadAllText(RutaOrigen);
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(script, conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
+                //using (NpgsqlConnection conn = conexionBD.conexion())
+                //{
+                //    conn.Open();
+                //    string script = File.ReadAllText(RutaOrigen);
+                //    using (NpgsqlCommand cmd = new NpgsqlCommand(script, conn))
+                //    {
+                //       cmd.ExecuteNonQuery();
+                //    }
 
+                //}
+                //return true;
+                var psi = new ProcessStartInfo
+                {
+                    FileName = @"C:\Program Files\PostgreSQL\16\bin\psql.exe",
+                    Arguments = $"-U postgres -d White-Room -f \"{RutaOrigen}\"",
+                    UseShellExecute = false,
+                    RedirectStandardError = true
+                };
+                psi.EnvironmentVariables["PGPASSWORD"] = "DIOS TE AMA2.0";
+
+                var process = Process.Start(psi);
+                string error = process.StandardError.ReadToEnd();
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                {
+                    MessageBox.Show("Error al restaurar: " + error);
+                    return false;
                 }
+
                 return true;
 
             }

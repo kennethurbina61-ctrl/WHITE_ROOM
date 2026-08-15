@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +81,49 @@ namespace My_farmacy_.Pantallas
         private void Respaldo_Load(object sender, EventArgs e)
         {
             cargarR();
+        }
+
+        private void btnseleccionar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Archivos SQL|*.sql";
+            open.Title = "Selecciona el script SQL";
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                txtreceptor.Text = open.FileName;
+            }
+        }
+
+        private void btnrestaurar_Click(object sender, EventArgs e)
+        {
+            string rutaArchivo = txtreceptor.Text.Trim();
+            if (string.IsNullOrEmpty(rutaArchivo) || !File.Exists(rutaArchivo))
+            {
+                MessageBox.Show("Selecciona un archivo", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                DialogResult conf = MessageBox.Show("Estas seguro que quieres restaurar? NOTA: perdera todos los archivos actuales",
+                    "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (conf == DialogResult.Yes)
+                {
+                    bool exito = resp.restaurarRespaldo(rutaArchivo);
+                    if (exito)
+                    {
+                        MessageBox.Show("Base de datos restaurada, exito!", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtreceptor.Clear();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al intentar restaurar.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
         }
     }
 }
