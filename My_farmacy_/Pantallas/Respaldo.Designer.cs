@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelinformacion = new System.Windows.Forms.Panel();
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.pcpantalla = new System.Windows.Forms.PictureBox();
@@ -48,15 +48,15 @@
             this.btnrestaurar = new System.Windows.Forms.Button();
             this.PanelCrear = new System.Windows.Forms.Panel();
             this.btncrearpanel = new System.Windows.Forms.Button();
-            this.txtreceptor = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtnombreresapaldo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabla = new System.Windows.Forms.DataGridView();
             this.btnexit = new System.Windows.Forms.PictureBox();
+            this.txtreceptor = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.PanelArchivo = new System.Windows.Forms.Panel();
-            this.btnexitArchivo = new System.Windows.Forms.PictureBox();
             this.btnseleccionar = new System.Windows.Forms.Button();
+            this.btnexitArchivo = new System.Windows.Forms.PictureBox();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).BeginInit();
             this.Crearrespaldo.SuspendLayout();
@@ -229,6 +229,7 @@
             this.btnrestaurar.TabIndex = 1;
             this.btnrestaurar.Text = "Restaurar";
             this.btnrestaurar.UseVisualStyleBackColor = true;
+            this.btnrestaurar.Click += new System.EventHandler(this.btnrestaurar_Click);
             // 
             // PanelCrear
             // 
@@ -258,24 +259,6 @@
             this.btncrearpanel.UseVisualStyleBackColor = false;
             this.btncrearpanel.Click += new System.EventHandler(this.btncrearpanel_Click);
             // 
-            // txtreceptor
-            // 
-            this.txtreceptor.BackColor = System.Drawing.Color.Silver;
-            this.txtreceptor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtreceptor.Location = new System.Drawing.Point(29, 102);
-            this.txtreceptor.Name = "txtreceptor";
-            this.txtreceptor.Size = new System.Drawing.Size(214, 24);
-            this.txtreceptor.TabIndex = 61;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 18);
-            this.label4.TabIndex = 60;
-            this.label4.Text = "Receptor de Respaldo:";
-            // 
             // txtnombreresapaldo
             // 
             this.txtnombreresapaldo.BackColor = System.Drawing.Color.Silver;
@@ -302,14 +285,14 @@
             this.tabla.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tabla.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.tabla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(156)))), ((int)(((byte)(174)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(156)))), ((int)(((byte)(174)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.tabla.ColumnHeadersHeight = 30;
             this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tabla.EnableHeadersVisualStyles = false;
@@ -319,20 +302,20 @@
             this.tabla.Name = "tabla";
             this.tabla.ReadOnly = true;
             this.tabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.tabla.RowHeadersVisible = false;
             this.tabla.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.tabla.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.tabla.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.tabla.RowTemplate.Height = 24;
             this.tabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabla.Size = new System.Drawing.Size(206, 147);
@@ -350,6 +333,24 @@
             this.btnexit.TabStop = false;
             this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
             // 
+            // txtreceptor
+            // 
+            this.txtreceptor.BackColor = System.Drawing.Color.Silver;
+            this.txtreceptor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtreceptor.Location = new System.Drawing.Point(29, 102);
+            this.txtreceptor.Name = "txtreceptor";
+            this.txtreceptor.Size = new System.Drawing.Size(214, 24);
+            this.txtreceptor.TabIndex = 61;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(181, 18);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Receptor de Respaldo:";
+            // 
             // PanelArchivo
             // 
             this.PanelArchivo.BackColor = System.Drawing.SystemColors.Control;
@@ -361,18 +362,6 @@
             this.PanelArchivo.Name = "PanelArchivo";
             this.PanelArchivo.Size = new System.Drawing.Size(255, 432);
             this.PanelArchivo.TabIndex = 8;
-            // 
-            // btnexitArchivo
-            // 
-            this.btnexitArchivo.BackColor = System.Drawing.Color.Transparent;
-            this.btnexitArchivo.BackgroundImage = global::My_farmacy_.Properties.Resources.Exit;
-            this.btnexitArchivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnexitArchivo.Location = new System.Drawing.Point(194, 11);
-            this.btnexitArchivo.Name = "btnexitArchivo";
-            this.btnexitArchivo.Size = new System.Drawing.Size(49, 39);
-            this.btnexitArchivo.TabIndex = 62;
-            this.btnexitArchivo.TabStop = false;
-            this.btnexitArchivo.Click += new System.EventHandler(this.btnexitArchivo_Click);
             // 
             // btnseleccionar
             // 
@@ -387,6 +376,19 @@
             this.btnseleccionar.TabIndex = 63;
             this.btnseleccionar.Text = "Seleccionar Archivo";
             this.btnseleccionar.UseVisualStyleBackColor = false;
+            this.btnseleccionar.Click += new System.EventHandler(this.btnseleccionar_Click);
+            // 
+            // btnexitArchivo
+            // 
+            this.btnexitArchivo.BackColor = System.Drawing.Color.Transparent;
+            this.btnexitArchivo.BackgroundImage = global::My_farmacy_.Properties.Resources.Exit;
+            this.btnexitArchivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexitArchivo.Location = new System.Drawing.Point(194, 11);
+            this.btnexitArchivo.Name = "btnexitArchivo";
+            this.btnexitArchivo.Size = new System.Drawing.Size(49, 39);
+            this.btnexitArchivo.TabIndex = 62;
+            this.btnexitArchivo.TabStop = false;
+            this.btnexitArchivo.Click += new System.EventHandler(this.btnexitArchivo_Click);
             // 
             // Respaldo
             // 
@@ -396,10 +398,10 @@
             this.ClientSize = new System.Drawing.Size(1061, 634);
             this.Controls.Add(this.pnlrestauraarBD);
             this.Controls.Add(this.panelinformacion);
-            this.Controls.Add(this.pnlrestaurar);
-            this.Controls.Add(this.PanelArchivo);
             this.Controls.Add(this.Crearrespaldo);
             this.Controls.Add(this.PanelCrear);
+            this.Controls.Add(this.pnlrestaurar);
+            this.Controls.Add(this.PanelArchivo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
