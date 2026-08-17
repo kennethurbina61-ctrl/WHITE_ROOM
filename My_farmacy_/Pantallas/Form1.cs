@@ -99,7 +99,7 @@ namespace My_farmacy_
         private void login()
         {
             bool estado;
-            ClasesSQL.LoginSQL kk = new ClasesSQL.LoginSQL();
+            ClasesSQL.PgAdmin kk = new ClasesSQL.PgAdmin();
             NpgsqlConnection cnx = kk.conexion();
             //Lo que hace esto es juntar y comparar el id rol y con la misma tabla para asi poder extraer el nombre del rol
             NpgsqlCommand cm = new NpgsqlCommand(

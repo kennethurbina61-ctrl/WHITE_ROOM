@@ -31,58 +31,58 @@
             this.components = new System.ComponentModel.Container();
             this.panelbotones = new System.Windows.Forms.FlowLayoutPanel();
             this.panelactivar = new System.Windows.Forms.Panel();
-            this.activardash = new System.Windows.Forms.Button();
             this.pnlcaja = new System.Windows.Forms.Panel();
-            this.btnarqueocaja = new System.Windows.Forms.Button();
-            this.btncontrolcaja = new System.Windows.Forms.Button();
-            this.btnapertura = new System.Windows.Forms.Button();
-            this.btncaja = new System.Windows.Forms.Button();
             this.pnlusuarios = new System.Windows.Forms.Panel();
-            this.btnusuarios = new System.Windows.Forms.Button();
             this.pnlcliente = new System.Windows.Forms.Panel();
-            this.btncliente = new System.Windows.Forms.Button();
             this.pnlproveedores = new System.Windows.Forms.Panel();
-            this.btnproveedores = new System.Windows.Forms.Button();
             this.pnlinventario = new System.Windows.Forms.Panel();
-            this.btnotrassalidas = new System.Windows.Forms.Button();
-            this.btnconsulta = new System.Windows.Forms.Button();
-            this.btnnivelacion = new System.Windows.Forms.Button();
-            this.btninventario = new System.Windows.Forms.Button();
             this.pnlproductos = new System.Windows.Forms.Panel();
-            this.btnproductos = new System.Windows.Forms.Button();
             this.pnlcompras = new System.Windows.Forms.Panel();
-            this.btncompras = new System.Windows.Forms.Button();
             this.pnlventas = new System.Windows.Forms.Panel();
             this.btnventas = new System.Windows.Forms.Button();
             this.pnldevoluciones = new System.Windows.Forms.Panel();
-            this.btndevoluciones = new System.Windows.Forms.Button();
             this.pnlcredito = new System.Windows.Forms.Panel();
-            this.btncredito = new System.Windows.Forms.Button();
             this.pnlreportes = new System.Windows.Forms.Panel();
-            this.btnreportesve = new System.Windows.Forms.Button();
-            this.btnreportes = new System.Windows.Forms.Button();
-            this.btnreportesC = new System.Windows.Forms.Button();
-            this.btnreportesproductos = new System.Windows.Forms.Button();
             this.pnlcategorias = new System.Windows.Forms.Panel();
-            this.btncategorias = new System.Windows.Forms.Button();
             this.pnlrespaldo = new System.Windows.Forms.Panel();
-            this.btnrespaldo = new System.Windows.Forms.Button();
             this.panellogo = new System.Windows.Forms.Panel();
             this.linkcerrarsesion = new System.Windows.Forms.LinkLabel();
-            this.btnmaximizar = new System.Windows.Forms.PictureBox();
-            this.btnminimizar = new System.Windows.Forms.PictureBox();
-            this.btnexit = new System.Windows.Forms.PictureBox();
             this.lblfecha = new System.Windows.Forms.Label();
             this.lblB = new System.Windows.Forms.Label();
             this.lblrol = new System.Windows.Forms.Label();
             this.lblusuario = new System.Windows.Forms.Label();
             this.lblnombrecompania = new System.Windows.Forms.Label();
-            this.pclogo = new System.Windows.Forms.PictureBox();
             this.panelcontenedor = new System.Windows.Forms.Panel();
             this.timerdash = new System.Windows.Forms.Timer(this.components);
             this.tmcaja = new System.Windows.Forms.Timer(this.components);
             this.tminv = new System.Windows.Forms.Timer(this.components);
             this.tmreprtes = new System.Windows.Forms.Timer(this.components);
+            this.activardash = new System.Windows.Forms.Button();
+            this.btnarqueocaja = new System.Windows.Forms.Button();
+            this.btncontrolcaja = new System.Windows.Forms.Button();
+            this.btnapertura = new System.Windows.Forms.Button();
+            this.btncaja = new System.Windows.Forms.Button();
+            this.btnusuarios = new System.Windows.Forms.Button();
+            this.btncliente = new System.Windows.Forms.Button();
+            this.btnproveedores = new System.Windows.Forms.Button();
+            this.btnotrassalidas = new System.Windows.Forms.Button();
+            this.btnconsulta = new System.Windows.Forms.Button();
+            this.btnnivelacion = new System.Windows.Forms.Button();
+            this.btninventario = new System.Windows.Forms.Button();
+            this.btnproductos = new System.Windows.Forms.Button();
+            this.btncompras = new System.Windows.Forms.Button();
+            this.btndevoluciones = new System.Windows.Forms.Button();
+            this.btncredito = new System.Windows.Forms.Button();
+            this.btnreportesve = new System.Windows.Forms.Button();
+            this.btnreportes = new System.Windows.Forms.Button();
+            this.btnreportesC = new System.Windows.Forms.Button();
+            this.btnreportesproductos = new System.Windows.Forms.Button();
+            this.btncategorias = new System.Windows.Forms.Button();
+            this.btnrespaldo = new System.Windows.Forms.Button();
+            this.btnmaximizar = new System.Windows.Forms.PictureBox();
+            this.btnminimizar = new System.Windows.Forms.PictureBox();
+            this.btnexit = new System.Windows.Forms.PictureBox();
+            this.pclogo = new System.Windows.Forms.PictureBox();
             this.panelbotones.SuspendLayout();
             this.panelactivar.SuspendLayout();
             this.pnlcaja.SuspendLayout();
@@ -139,18 +139,6 @@
             this.panelactivar.Size = new System.Drawing.Size(159, 54);
             this.panelactivar.TabIndex = 0;
             // 
-            // activardash
-            // 
-            this.activardash.BackgroundImage = global::My_farmacy_.Properties.Resources.dashboard;
-            this.activardash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.activardash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.activardash.Location = new System.Drawing.Point(11, 10);
-            this.activardash.Name = "activardash";
-            this.activardash.Size = new System.Drawing.Size(136, 29);
-            this.activardash.TabIndex = 0;
-            this.activardash.UseVisualStyleBackColor = true;
-            this.activardash.Click += new System.EventHandler(this.activardash_Click);
-            // 
             // pnlcaja
             // 
             this.pnlcaja.Controls.Add(this.btnarqueocaja);
@@ -164,52 +152,6 @@
             this.pnlcaja.Size = new System.Drawing.Size(159, 52);
             this.pnlcaja.TabIndex = 1;
             // 
-            // btnarqueocaja
-            // 
-            this.btnarqueocaja.BackgroundImage = global::My_farmacy_.Properties.Resources.control;
-            this.btnarqueocaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnarqueocaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnarqueocaja.Location = new System.Drawing.Point(11, 139);
-            this.btnarqueocaja.Name = "btnarqueocaja";
-            this.btnarqueocaja.Size = new System.Drawing.Size(136, 28);
-            this.btnarqueocaja.TabIndex = 3;
-            this.btnarqueocaja.UseVisualStyleBackColor = true;
-            // 
-            // btncontrolcaja
-            // 
-            this.btncontrolcaja.BackgroundImage = global::My_farmacy_.Properties.Resources.egresoscontrol;
-            this.btncontrolcaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncontrolcaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncontrolcaja.Location = new System.Drawing.Point(11, 99);
-            this.btncontrolcaja.Name = "btncontrolcaja";
-            this.btncontrolcaja.Size = new System.Drawing.Size(136, 28);
-            this.btncontrolcaja.TabIndex = 2;
-            this.btncontrolcaja.UseVisualStyleBackColor = true;
-            this.btncontrolcaja.Click += new System.EventHandler(this.btncontrolcaja_Click);
-            // 
-            // btnapertura
-            // 
-            this.btnapertura.BackgroundImage = global::My_farmacy_.Properties.Resources.apertura;
-            this.btnapertura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnapertura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnapertura.Location = new System.Drawing.Point(11, 56);
-            this.btnapertura.Name = "btnapertura";
-            this.btnapertura.Size = new System.Drawing.Size(136, 28);
-            this.btnapertura.TabIndex = 1;
-            this.btnapertura.UseVisualStyleBackColor = true;
-            // 
-            // btncaja
-            // 
-            this.btncaja.BackgroundImage = global::My_farmacy_.Properties.Resources.caja;
-            this.btncaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncaja.Location = new System.Drawing.Point(11, 10);
-            this.btncaja.Name = "btncaja";
-            this.btncaja.Size = new System.Drawing.Size(136, 28);
-            this.btncaja.TabIndex = 0;
-            this.btncaja.UseVisualStyleBackColor = true;
-            this.btncaja.Click += new System.EventHandler(this.btncaja_Click);
-            // 
             // pnlusuarios
             // 
             this.pnlusuarios.Controls.Add(this.btnusuarios);
@@ -217,18 +159,6 @@
             this.pnlusuarios.Name = "pnlusuarios";
             this.pnlusuarios.Size = new System.Drawing.Size(159, 52);
             this.pnlusuarios.TabIndex = 2;
-            // 
-            // btnusuarios
-            // 
-            this.btnusuarios.BackgroundImage = global::My_farmacy_.Properties.Resources.usuarios;
-            this.btnusuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnusuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnusuarios.Location = new System.Drawing.Point(11, 10);
-            this.btnusuarios.Name = "btnusuarios";
-            this.btnusuarios.Size = new System.Drawing.Size(136, 28);
-            this.btnusuarios.TabIndex = 1;
-            this.btnusuarios.UseVisualStyleBackColor = true;
-            this.btnusuarios.Click += new System.EventHandler(this.btnusuarios_Click);
             // 
             // pnlcliente
             // 
@@ -238,18 +168,6 @@
             this.pnlcliente.Size = new System.Drawing.Size(159, 52);
             this.pnlcliente.TabIndex = 3;
             // 
-            // btncliente
-            // 
-            this.btncliente.BackgroundImage = global::My_farmacy_.Properties.Resources.Clientes;
-            this.btncliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncliente.Location = new System.Drawing.Point(11, 10);
-            this.btncliente.Name = "btncliente";
-            this.btncliente.Size = new System.Drawing.Size(136, 28);
-            this.btncliente.TabIndex = 2;
-            this.btncliente.UseVisualStyleBackColor = true;
-            this.btncliente.Click += new System.EventHandler(this.btncliente_Click);
-            // 
             // pnlproveedores
             // 
             this.pnlproveedores.Controls.Add(this.btnproveedores);
@@ -257,18 +175,6 @@
             this.pnlproveedores.Name = "pnlproveedores";
             this.pnlproveedores.Size = new System.Drawing.Size(159, 52);
             this.pnlproveedores.TabIndex = 4;
-            // 
-            // btnproveedores
-            // 
-            this.btnproveedores.BackgroundImage = global::My_farmacy_.Properties.Resources.proveedores;
-            this.btnproveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnproveedores.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnproveedores.Location = new System.Drawing.Point(11, 10);
-            this.btnproveedores.Name = "btnproveedores";
-            this.btnproveedores.Size = new System.Drawing.Size(136, 28);
-            this.btnproveedores.TabIndex = 3;
-            this.btnproveedores.UseVisualStyleBackColor = true;
-            this.btnproveedores.Click += new System.EventHandler(this.btnproveedores_Click);
             // 
             // pnlinventario
             // 
@@ -283,51 +189,6 @@
             this.pnlinventario.Size = new System.Drawing.Size(159, 52);
             this.pnlinventario.TabIndex = 5;
             // 
-            // btnotrassalidas
-            // 
-            this.btnotrassalidas.BackgroundImage = global::My_farmacy_.Properties.Resources.busqyueda;
-            this.btnotrassalidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnotrassalidas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnotrassalidas.Location = new System.Drawing.Point(11, 137);
-            this.btnotrassalidas.Name = "btnotrassalidas";
-            this.btnotrassalidas.Size = new System.Drawing.Size(136, 28);
-            this.btnotrassalidas.TabIndex = 3;
-            this.btnotrassalidas.UseVisualStyleBackColor = true;
-            // 
-            // btnconsulta
-            // 
-            this.btnconsulta.BackgroundImage = global::My_farmacy_.Properties.Resources.ConsultaInventario;
-            this.btnconsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnconsulta.Location = new System.Drawing.Point(11, 61);
-            this.btnconsulta.Name = "btnconsulta";
-            this.btnconsulta.Size = new System.Drawing.Size(136, 28);
-            this.btnconsulta.TabIndex = 2;
-            this.btnconsulta.UseVisualStyleBackColor = true;
-            // 
-            // btnnivelacion
-            // 
-            this.btnnivelacion.BackgroundImage = global::My_farmacy_.Properties.Resources.btnnivelacion;
-            this.btnnivelacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnnivelacion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnnivelacion.Location = new System.Drawing.Point(11, 99);
-            this.btnnivelacion.Name = "btnnivelacion";
-            this.btnnivelacion.Size = new System.Drawing.Size(136, 28);
-            this.btnnivelacion.TabIndex = 1;
-            this.btnnivelacion.UseVisualStyleBackColor = true;
-            // 
-            // btninventario
-            // 
-            this.btninventario.BackgroundImage = global::My_farmacy_.Properties.Resources.inventario2;
-            this.btninventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btninventario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btninventario.Location = new System.Drawing.Point(11, 10);
-            this.btninventario.Name = "btninventario";
-            this.btninventario.Size = new System.Drawing.Size(136, 28);
-            this.btninventario.TabIndex = 4;
-            this.btninventario.UseVisualStyleBackColor = true;
-            this.btninventario.Click += new System.EventHandler(this.btninventario_Click);
-            // 
             // pnlproductos
             // 
             this.pnlproductos.Controls.Add(this.btnproductos);
@@ -336,18 +197,6 @@
             this.pnlproductos.Size = new System.Drawing.Size(159, 52);
             this.pnlproductos.TabIndex = 6;
             // 
-            // btnproductos
-            // 
-            this.btnproductos.BackgroundImage = global::My_farmacy_.Properties.Resources.productos;
-            this.btnproductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnproductos.Location = new System.Drawing.Point(11, 10);
-            this.btnproductos.Name = "btnproductos";
-            this.btnproductos.Size = new System.Drawing.Size(136, 28);
-            this.btnproductos.TabIndex = 5;
-            this.btnproductos.UseVisualStyleBackColor = true;
-            this.btnproductos.Click += new System.EventHandler(this.btnproductos_Click);
-            // 
             // pnlcompras
             // 
             this.pnlcompras.Controls.Add(this.btncompras);
@@ -355,18 +204,6 @@
             this.pnlcompras.Name = "pnlcompras";
             this.pnlcompras.Size = new System.Drawing.Size(159, 52);
             this.pnlcompras.TabIndex = 7;
-            // 
-            // btncompras
-            // 
-            this.btncompras.BackgroundImage = global::My_farmacy_.Properties.Resources.Compras;
-            this.btncompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncompras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncompras.Location = new System.Drawing.Point(11, 10);
-            this.btncompras.Name = "btncompras";
-            this.btncompras.Size = new System.Drawing.Size(136, 28);
-            this.btncompras.TabIndex = 6;
-            this.btncompras.UseVisualStyleBackColor = true;
-            this.btncompras.Click += new System.EventHandler(this.btncompras_Click);
             // 
             // pnlventas
             // 
@@ -396,17 +233,6 @@
             this.pnldevoluciones.Size = new System.Drawing.Size(159, 52);
             this.pnldevoluciones.TabIndex = 9;
             // 
-            // btndevoluciones
-            // 
-            this.btndevoluciones.BackgroundImage = global::My_farmacy_.Properties.Resources.Devolucionaes;
-            this.btndevoluciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btndevoluciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btndevoluciones.Location = new System.Drawing.Point(11, 10);
-            this.btndevoluciones.Name = "btndevoluciones";
-            this.btndevoluciones.Size = new System.Drawing.Size(136, 28);
-            this.btndevoluciones.TabIndex = 8;
-            this.btndevoluciones.UseVisualStyleBackColor = true;
-            // 
             // pnlcredito
             // 
             this.pnlcredito.Controls.Add(this.btncredito);
@@ -414,17 +240,6 @@
             this.pnlcredito.Name = "pnlcredito";
             this.pnlcredito.Size = new System.Drawing.Size(159, 52);
             this.pnlcredito.TabIndex = 10;
-            // 
-            // btncredito
-            // 
-            this.btncredito.BackgroundImage = global::My_farmacy_.Properties.Resources.credot;
-            this.btncredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncredito.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncredito.Location = new System.Drawing.Point(11, 10);
-            this.btncredito.Name = "btncredito";
-            this.btncredito.Size = new System.Drawing.Size(136, 28);
-            this.btncredito.TabIndex = 9;
-            this.btncredito.UseVisualStyleBackColor = true;
             // 
             // pnlreportes
             // 
@@ -439,52 +254,6 @@
             this.pnlreportes.Size = new System.Drawing.Size(159, 50);
             this.pnlreportes.TabIndex = 11;
             // 
-            // btnreportesve
-            // 
-            this.btnreportesve.BackgroundImage = global::My_farmacy_.Properties.Resources.reportesventas;
-            this.btnreportesve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnreportesve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnreportesve.Location = new System.Drawing.Point(11, 139);
-            this.btnreportesve.Name = "btnreportesve";
-            this.btnreportesve.Size = new System.Drawing.Size(136, 28);
-            this.btnreportesve.TabIndex = 3;
-            this.btnreportesve.UseVisualStyleBackColor = true;
-            // 
-            // btnreportes
-            // 
-            this.btnreportes.BackgroundImage = global::My_farmacy_.Properties.Resources.reportes;
-            this.btnreportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnreportes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnreportes.Location = new System.Drawing.Point(11, 10);
-            this.btnreportes.Name = "btnreportes";
-            this.btnreportes.Size = new System.Drawing.Size(136, 28);
-            this.btnreportes.TabIndex = 10;
-            this.btnreportes.UseVisualStyleBackColor = true;
-            this.btnreportes.Click += new System.EventHandler(this.btnreportes_Click);
-            // 
-            // btnreportesC
-            // 
-            this.btnreportesC.BackgroundImage = global::My_farmacy_.Properties.Resources.reportescompras;
-            this.btnreportesC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnreportesC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnreportesC.Location = new System.Drawing.Point(11, 96);
-            this.btnreportesC.Name = "btnreportesC";
-            this.btnreportesC.Size = new System.Drawing.Size(136, 28);
-            this.btnreportesC.TabIndex = 2;
-            this.btnreportesC.UseVisualStyleBackColor = true;
-            this.btnreportesC.Click += new System.EventHandler(this.btnreportesC_Click);
-            // 
-            // btnreportesproductos
-            // 
-            this.btnreportesproductos.BackgroundImage = global::My_farmacy_.Properties.Resources.reportesproducto;
-            this.btnreportesproductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnreportesproductos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnreportesproductos.Location = new System.Drawing.Point(11, 54);
-            this.btnreportesproductos.Name = "btnreportesproductos";
-            this.btnreportesproductos.Size = new System.Drawing.Size(136, 28);
-            this.btnreportesproductos.TabIndex = 1;
-            this.btnreportesproductos.UseVisualStyleBackColor = true;
-            // 
             // pnlcategorias
             // 
             this.pnlcategorias.Controls.Add(this.btncategorias);
@@ -495,18 +264,6 @@
             this.pnlcategorias.Size = new System.Drawing.Size(159, 50);
             this.pnlcategorias.TabIndex = 12;
             // 
-            // btncategorias
-            // 
-            this.btncategorias.BackgroundImage = global::My_farmacy_.Properties.Resources.categoria;
-            this.btncategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncategorias.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncategorias.Location = new System.Drawing.Point(11, 10);
-            this.btncategorias.Name = "btncategorias";
-            this.btncategorias.Size = new System.Drawing.Size(136, 28);
-            this.btncategorias.TabIndex = 11;
-            this.btncategorias.UseVisualStyleBackColor = true;
-            this.btncategorias.Click += new System.EventHandler(this.btncategorias_Click);
-            // 
             // pnlrespaldo
             // 
             this.pnlrespaldo.Controls.Add(this.btnrespaldo);
@@ -514,18 +271,6 @@
             this.pnlrespaldo.Name = "pnlrespaldo";
             this.pnlrespaldo.Size = new System.Drawing.Size(159, 52);
             this.pnlrespaldo.TabIndex = 13;
-            // 
-            // btnrespaldo
-            // 
-            this.btnrespaldo.BackgroundImage = global::My_farmacy_.Properties.Resources.respaldo;
-            this.btnrespaldo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnrespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrespaldo.Location = new System.Drawing.Point(11, 10);
-            this.btnrespaldo.Name = "btnrespaldo";
-            this.btnrespaldo.Size = new System.Drawing.Size(136, 28);
-            this.btnrespaldo.TabIndex = 12;
-            this.btnrespaldo.UseVisualStyleBackColor = true;
-            this.btnrespaldo.Click += new System.EventHandler(this.btnrespaldo_Click);
             // 
             // panellogo
             // 
@@ -559,42 +304,6 @@
             this.linkcerrarsesion.Text = "Cerrar sesion";
             this.linkcerrarsesion.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.linkcerrarsesion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkcerrarsesion_LinkClicked);
-            // 
-            // btnmaximizar
-            // 
-            this.btnmaximizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnmaximizar.BackgroundImage = global::My_farmacy_.Properties.Resources._32763;
-            this.btnmaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmaximizar.Location = new System.Drawing.Point(1132, 12);
-            this.btnmaximizar.Name = "btnmaximizar";
-            this.btnmaximizar.Size = new System.Drawing.Size(49, 39);
-            this.btnmaximizar.TabIndex = 8;
-            this.btnmaximizar.TabStop = false;
-            this.btnmaximizar.Click += new System.EventHandler(this.btnmaximizar_Click);
-            // 
-            // btnminimizar
-            // 
-            this.btnminimizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnminimizar.BackgroundImage = global::My_farmacy_.Properties.Resources.Minimizar;
-            this.btnminimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnminimizar.Location = new System.Drawing.Point(1198, 12);
-            this.btnminimizar.Name = "btnminimizar";
-            this.btnminimizar.Size = new System.Drawing.Size(49, 39);
-            this.btnminimizar.TabIndex = 7;
-            this.btnminimizar.TabStop = false;
-            this.btnminimizar.Click += new System.EventHandler(this.btnminimizar_Click);
-            // 
-            // btnexit
-            // 
-            this.btnexit.BackColor = System.Drawing.Color.Transparent;
-            this.btnexit.BackgroundImage = global::My_farmacy_.Properties.Resources.Exit;
-            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnexit.Location = new System.Drawing.Point(1263, 12);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(49, 39);
-            this.btnexit.TabIndex = 6;
-            this.btnexit.TabStop = false;
-            this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
             // 
             // lblfecha
             // 
@@ -645,16 +354,6 @@
             this.lblnombrecompania.TabIndex = 1;
             this.lblnombrecompania.Text = "Farmacia Praga";
             // 
-            // pclogo
-            // 
-            this.pclogo.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
-            this.pclogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pclogo.Location = new System.Drawing.Point(21, 9);
-            this.pclogo.Name = "pclogo";
-            this.pclogo.Size = new System.Drawing.Size(100, 50);
-            this.pclogo.TabIndex = 0;
-            this.pclogo.TabStop = false;
-            // 
             // panelcontenedor
             // 
             this.panelcontenedor.AutoScroll = true;
@@ -684,6 +383,307 @@
             // 
             this.tmreprtes.Interval = 10;
             this.tmreprtes.Tick += new System.EventHandler(this.tmreprtes_Tick);
+            // 
+            // activardash
+            // 
+            this.activardash.BackgroundImage = global::My_farmacy_.Properties.Resources.dashboard;
+            this.activardash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.activardash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.activardash.Location = new System.Drawing.Point(11, 10);
+            this.activardash.Name = "activardash";
+            this.activardash.Size = new System.Drawing.Size(136, 29);
+            this.activardash.TabIndex = 0;
+            this.activardash.UseVisualStyleBackColor = true;
+            this.activardash.Click += new System.EventHandler(this.activardash_Click);
+            // 
+            // btnarqueocaja
+            // 
+            this.btnarqueocaja.BackgroundImage = global::My_farmacy_.Properties.Resources.control;
+            this.btnarqueocaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnarqueocaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnarqueocaja.Location = new System.Drawing.Point(11, 139);
+            this.btnarqueocaja.Name = "btnarqueocaja";
+            this.btnarqueocaja.Size = new System.Drawing.Size(136, 28);
+            this.btnarqueocaja.TabIndex = 3;
+            this.btnarqueocaja.UseVisualStyleBackColor = true;
+            // 
+            // btncontrolcaja
+            // 
+            this.btncontrolcaja.BackgroundImage = global::My_farmacy_.Properties.Resources.egresoscontrol;
+            this.btncontrolcaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncontrolcaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncontrolcaja.Location = new System.Drawing.Point(11, 99);
+            this.btncontrolcaja.Name = "btncontrolcaja";
+            this.btncontrolcaja.Size = new System.Drawing.Size(136, 28);
+            this.btncontrolcaja.TabIndex = 2;
+            this.btncontrolcaja.UseVisualStyleBackColor = true;
+            this.btncontrolcaja.Click += new System.EventHandler(this.btncontrolcaja_Click);
+            // 
+            // btnapertura
+            // 
+            this.btnapertura.BackgroundImage = global::My_farmacy_.Properties.Resources.apertura;
+            this.btnapertura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnapertura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnapertura.Location = new System.Drawing.Point(11, 56);
+            this.btnapertura.Name = "btnapertura";
+            this.btnapertura.Size = new System.Drawing.Size(136, 28);
+            this.btnapertura.TabIndex = 1;
+            this.btnapertura.UseVisualStyleBackColor = true;
+            // 
+            // btncaja
+            // 
+            this.btncaja.BackgroundImage = global::My_farmacy_.Properties.Resources.caja;
+            this.btncaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncaja.Location = new System.Drawing.Point(11, 10);
+            this.btncaja.Name = "btncaja";
+            this.btncaja.Size = new System.Drawing.Size(136, 28);
+            this.btncaja.TabIndex = 0;
+            this.btncaja.UseVisualStyleBackColor = true;
+            this.btncaja.Click += new System.EventHandler(this.btncaja_Click);
+            // 
+            // btnusuarios
+            // 
+            this.btnusuarios.BackgroundImage = global::My_farmacy_.Properties.Resources.usuarios;
+            this.btnusuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnusuarios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnusuarios.Location = new System.Drawing.Point(11, 10);
+            this.btnusuarios.Name = "btnusuarios";
+            this.btnusuarios.Size = new System.Drawing.Size(136, 28);
+            this.btnusuarios.TabIndex = 1;
+            this.btnusuarios.UseVisualStyleBackColor = true;
+            this.btnusuarios.Click += new System.EventHandler(this.btnusuarios_Click);
+            // 
+            // btncliente
+            // 
+            this.btncliente.BackgroundImage = global::My_farmacy_.Properties.Resources.Clientes;
+            this.btncliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncliente.Location = new System.Drawing.Point(11, 10);
+            this.btncliente.Name = "btncliente";
+            this.btncliente.Size = new System.Drawing.Size(136, 28);
+            this.btncliente.TabIndex = 2;
+            this.btncliente.UseVisualStyleBackColor = true;
+            this.btncliente.Click += new System.EventHandler(this.btncliente_Click);
+            // 
+            // btnproveedores
+            // 
+            this.btnproveedores.BackgroundImage = global::My_farmacy_.Properties.Resources.proveedores;
+            this.btnproveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnproveedores.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnproveedores.Location = new System.Drawing.Point(11, 10);
+            this.btnproveedores.Name = "btnproveedores";
+            this.btnproveedores.Size = new System.Drawing.Size(136, 28);
+            this.btnproveedores.TabIndex = 3;
+            this.btnproveedores.UseVisualStyleBackColor = true;
+            this.btnproveedores.Click += new System.EventHandler(this.btnproveedores_Click);
+            // 
+            // btnotrassalidas
+            // 
+            this.btnotrassalidas.BackgroundImage = global::My_farmacy_.Properties.Resources.busqyueda;
+            this.btnotrassalidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnotrassalidas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnotrassalidas.Location = new System.Drawing.Point(11, 137);
+            this.btnotrassalidas.Name = "btnotrassalidas";
+            this.btnotrassalidas.Size = new System.Drawing.Size(136, 28);
+            this.btnotrassalidas.TabIndex = 3;
+            this.btnotrassalidas.UseVisualStyleBackColor = true;
+            // 
+            // btnconsulta
+            // 
+            this.btnconsulta.BackgroundImage = global::My_farmacy_.Properties.Resources.ConsultaInventario;
+            this.btnconsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnconsulta.Location = new System.Drawing.Point(11, 61);
+            this.btnconsulta.Name = "btnconsulta";
+            this.btnconsulta.Size = new System.Drawing.Size(136, 28);
+            this.btnconsulta.TabIndex = 2;
+            this.btnconsulta.UseVisualStyleBackColor = true;
+            // 
+            // btnnivelacion
+            // 
+            this.btnnivelacion.BackgroundImage = global::My_farmacy_.Properties.Resources.btnnivelacion;
+            this.btnnivelacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnnivelacion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnnivelacion.Location = new System.Drawing.Point(11, 99);
+            this.btnnivelacion.Name = "btnnivelacion";
+            this.btnnivelacion.Size = new System.Drawing.Size(136, 28);
+            this.btnnivelacion.TabIndex = 1;
+            this.btnnivelacion.UseVisualStyleBackColor = true;
+            // 
+            // btninventario
+            // 
+            this.btninventario.BackgroundImage = global::My_farmacy_.Properties.Resources.inventario2;
+            this.btninventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btninventario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btninventario.Location = new System.Drawing.Point(11, 10);
+            this.btninventario.Name = "btninventario";
+            this.btninventario.Size = new System.Drawing.Size(136, 28);
+            this.btninventario.TabIndex = 4;
+            this.btninventario.UseVisualStyleBackColor = true;
+            this.btninventario.Click += new System.EventHandler(this.btninventario_Click);
+            // 
+            // btnproductos
+            // 
+            this.btnproductos.BackgroundImage = global::My_farmacy_.Properties.Resources.productos;
+            this.btnproductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnproductos.Location = new System.Drawing.Point(11, 10);
+            this.btnproductos.Name = "btnproductos";
+            this.btnproductos.Size = new System.Drawing.Size(136, 28);
+            this.btnproductos.TabIndex = 5;
+            this.btnproductos.UseVisualStyleBackColor = true;
+            this.btnproductos.Click += new System.EventHandler(this.btnproductos_Click);
+            // 
+            // btncompras
+            // 
+            this.btncompras.BackgroundImage = global::My_farmacy_.Properties.Resources.Compras;
+            this.btncompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncompras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncompras.Location = new System.Drawing.Point(11, 10);
+            this.btncompras.Name = "btncompras";
+            this.btncompras.Size = new System.Drawing.Size(136, 28);
+            this.btncompras.TabIndex = 6;
+            this.btncompras.UseVisualStyleBackColor = true;
+            this.btncompras.Click += new System.EventHandler(this.btncompras_Click);
+            // 
+            // btndevoluciones
+            // 
+            this.btndevoluciones.BackgroundImage = global::My_farmacy_.Properties.Resources.Devolucionaes;
+            this.btndevoluciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btndevoluciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btndevoluciones.Location = new System.Drawing.Point(11, 10);
+            this.btndevoluciones.Name = "btndevoluciones";
+            this.btndevoluciones.Size = new System.Drawing.Size(136, 28);
+            this.btndevoluciones.TabIndex = 8;
+            this.btndevoluciones.UseVisualStyleBackColor = true;
+            // 
+            // btncredito
+            // 
+            this.btncredito.BackgroundImage = global::My_farmacy_.Properties.Resources.credot;
+            this.btncredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncredito.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncredito.Location = new System.Drawing.Point(11, 10);
+            this.btncredito.Name = "btncredito";
+            this.btncredito.Size = new System.Drawing.Size(136, 28);
+            this.btncredito.TabIndex = 9;
+            this.btncredito.UseVisualStyleBackColor = true;
+            // 
+            // btnreportesve
+            // 
+            this.btnreportesve.BackgroundImage = global::My_farmacy_.Properties.Resources.reportesventas;
+            this.btnreportesve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnreportesve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnreportesve.Location = new System.Drawing.Point(11, 139);
+            this.btnreportesve.Name = "btnreportesve";
+            this.btnreportesve.Size = new System.Drawing.Size(136, 28);
+            this.btnreportesve.TabIndex = 3;
+            this.btnreportesve.UseVisualStyleBackColor = true;
+            // 
+            // btnreportes
+            // 
+            this.btnreportes.BackgroundImage = global::My_farmacy_.Properties.Resources.reportes;
+            this.btnreportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnreportes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnreportes.Location = new System.Drawing.Point(11, 10);
+            this.btnreportes.Name = "btnreportes";
+            this.btnreportes.Size = new System.Drawing.Size(136, 28);
+            this.btnreportes.TabIndex = 10;
+            this.btnreportes.UseVisualStyleBackColor = true;
+            this.btnreportes.Click += new System.EventHandler(this.btnreportes_Click);
+            // 
+            // btnreportesC
+            // 
+            this.btnreportesC.BackgroundImage = global::My_farmacy_.Properties.Resources.reportescompras;
+            this.btnreportesC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnreportesC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnreportesC.Location = new System.Drawing.Point(11, 96);
+            this.btnreportesC.Name = "btnreportesC";
+            this.btnreportesC.Size = new System.Drawing.Size(136, 28);
+            this.btnreportesC.TabIndex = 2;
+            this.btnreportesC.UseVisualStyleBackColor = true;
+            this.btnreportesC.Click += new System.EventHandler(this.btnreportesC_Click);
+            // 
+            // btnreportesproductos
+            // 
+            this.btnreportesproductos.BackgroundImage = global::My_farmacy_.Properties.Resources.reportesproducto;
+            this.btnreportesproductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnreportesproductos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnreportesproductos.Location = new System.Drawing.Point(11, 54);
+            this.btnreportesproductos.Name = "btnreportesproductos";
+            this.btnreportesproductos.Size = new System.Drawing.Size(136, 28);
+            this.btnreportesproductos.TabIndex = 1;
+            this.btnreportesproductos.UseVisualStyleBackColor = true;
+            // 
+            // btncategorias
+            // 
+            this.btncategorias.BackgroundImage = global::My_farmacy_.Properties.Resources.categoria;
+            this.btncategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncategorias.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncategorias.Location = new System.Drawing.Point(11, 10);
+            this.btncategorias.Name = "btncategorias";
+            this.btncategorias.Size = new System.Drawing.Size(136, 28);
+            this.btncategorias.TabIndex = 11;
+            this.btncategorias.UseVisualStyleBackColor = true;
+            this.btncategorias.Click += new System.EventHandler(this.btncategorias_Click);
+            // 
+            // btnrespaldo
+            // 
+            this.btnrespaldo.BackgroundImage = global::My_farmacy_.Properties.Resources.respaldo;
+            this.btnrespaldo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnrespaldo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnrespaldo.Location = new System.Drawing.Point(11, 10);
+            this.btnrespaldo.Name = "btnrespaldo";
+            this.btnrespaldo.Size = new System.Drawing.Size(136, 28);
+            this.btnrespaldo.TabIndex = 12;
+            this.btnrespaldo.UseVisualStyleBackColor = true;
+            this.btnrespaldo.Click += new System.EventHandler(this.btnrespaldo_Click);
+            // 
+            // btnmaximizar
+            // 
+            this.btnmaximizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnmaximizar.BackgroundImage = global::My_farmacy_.Properties.Resources._32763;
+            this.btnmaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmaximizar.Location = new System.Drawing.Point(1132, 12);
+            this.btnmaximizar.Name = "btnmaximizar";
+            this.btnmaximizar.Size = new System.Drawing.Size(49, 39);
+            this.btnmaximizar.TabIndex = 8;
+            this.btnmaximizar.TabStop = false;
+            this.btnmaximizar.Click += new System.EventHandler(this.btnmaximizar_Click);
+            // 
+            // btnminimizar
+            // 
+            this.btnminimizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnminimizar.BackgroundImage = global::My_farmacy_.Properties.Resources.Minimizar;
+            this.btnminimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnminimizar.Location = new System.Drawing.Point(1198, 12);
+            this.btnminimizar.Name = "btnminimizar";
+            this.btnminimizar.Size = new System.Drawing.Size(49, 39);
+            this.btnminimizar.TabIndex = 7;
+            this.btnminimizar.TabStop = false;
+            this.btnminimizar.Click += new System.EventHandler(this.btnminimizar_Click);
+            // 
+            // btnexit
+            // 
+            this.btnexit.BackColor = System.Drawing.Color.Transparent;
+            this.btnexit.BackgroundImage = global::My_farmacy_.Properties.Resources.Exit;
+            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexit.Location = new System.Drawing.Point(1263, 12);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(49, 39);
+            this.btnexit.TabIndex = 6;
+            this.btnexit.TabStop = false;
+            this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
+            // 
+            // pclogo
+            // 
+            this.pclogo.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
+            this.pclogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pclogo.Location = new System.Drawing.Point(21, 9);
+            this.pclogo.Name = "pclogo";
+            this.pclogo.Size = new System.Drawing.Size(100, 50);
+            this.pclogo.TabIndex = 0;
+            this.pclogo.TabStop = false;
             // 
             // Principal
             // 

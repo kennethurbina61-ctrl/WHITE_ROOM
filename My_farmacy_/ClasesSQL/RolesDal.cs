@@ -12,7 +12,7 @@ namespace My_farmacy_.ClasesSQL
         public static int agregar(RolesC prole)
         {
             int retorno = 0;
-            ClasesSQL.LoginSQL cc = new ClasesSQL.LoginSQL();
+            ClasesSQL.PgAdmin cc = new ClasesSQL.PgAdmin();
             using (NpgsqlConnection con = cc.conexion())
             {
                 NpgsqlCommand comando = new NpgsqlCommand(string.Format("Insert into rol (nombre, estado, descripcion) values ('{0}', '{1}', '{2}')",

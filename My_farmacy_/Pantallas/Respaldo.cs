@@ -86,7 +86,7 @@ namespace My_farmacy_.Pantallas
         private void btnseleccionar_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Archivos SQL|*.sql";
+            open.Filter = "Archivos SQL|*.backup";
             open.Title = "Selecciona el script SQL";
 
             if (open.ShowDialog() == DialogResult.OK)

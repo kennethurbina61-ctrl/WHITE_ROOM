@@ -152,6 +152,7 @@
             this.lkagregar.TabIndex = 28;
             this.lkagregar.TabStop = true;
             this.lkagregar.Text = "Agregar";
+            this.lkagregar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkagregar_LinkClicked);
             // 
             // btnbuscar
             // 

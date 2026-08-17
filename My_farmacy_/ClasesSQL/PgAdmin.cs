@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace My_farmacy_.ClasesSQL
 {
-    public class LoginSQL
+    public class PgAdmin
     {
         NpgsqlConnection cnx = new NpgsqlConnection();
 
