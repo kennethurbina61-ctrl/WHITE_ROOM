@@ -17,7 +17,7 @@ namespace My_farmacy_
 {
     public partial class UsuariosRol : Form
     {
-        ClasesSQL.LoginSQL ll = new ClasesSQL.LoginSQL();
+        ClasesSQL.PgAdmin ll = new ClasesSQL.PgAdmin();
        // string conexx = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
         public UsuariosRol()
         {

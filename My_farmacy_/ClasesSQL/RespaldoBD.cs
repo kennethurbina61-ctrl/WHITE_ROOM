@@ -13,12 +13,12 @@ namespace My_farmacy_.ClasesSQL
 {
     public class RespaldoBD
     {   
-       private LoginSQL conexionBD;
+       private PgAdmin conexionBD;
         private string rutaCarpeta;
 
         public RespaldoBD()
         {
-            conexionBD = new LoginSQL();
+            conexionBD = new PgAdmin();
             //Carpeta 'respaldo' se crea automaticamente.
            // rutaCarpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Respaldos");
             rutaCarpeta = @"C:\Users\HP 15-F0075TG\Desktop\University\Arco del IV semestre\Administracion de base de datos\Respaldos";
@@ -36,7 +36,7 @@ namespace My_farmacy_.ClasesSQL
             ruta = string.Empty;
             try
             {
-               string nombreArchivo = $"{nombre}_{DateTime.Now:yyyy-MM-dd_hh-mm-ss}.sql";
+               string nombreArchivo = $"{nombre}_{DateTime.Now:yyyy-MM-dd_hh-mm-ss}.backup";
                 ruta = Path.Combine(rutaCarpeta, nombreArchivo);
 
                 //hacaer el pgabp
@@ -72,21 +72,23 @@ namespace My_farmacy_.ClasesSQL
         {
             try
             {
-                //using (NpgsqlConnection conn = conexionBD.conexion())
-                //{
-                //    conn.Open();
-                //    string script = File.ReadAllText(RutaOrigen);
-                //    using (NpgsqlCommand cmd = new NpgsqlCommand(script, conn))
-                //    {
-                //       cmd.ExecuteNonQuery();
-                //    }
-
-                //}
-                //return true;
+            
+                OpenFileDialog open = new OpenFileDialog();
+                string user = "postgres";
+                string nameBD = "White-Room";
+                string port = "5432";
+                string host ="localhost";
                 var psi = new ProcessStartInfo
                 {
-                    FileName = @"C:\Program Files\PostgreSQL\16\bin\psql.exe",
-                    Arguments = $"-U postgres -d White-Room -f \"{RutaOrigen}\"",
+                    FileName = @"C:\Program Files\PostgreSQL\16\bin\pg_restore.exe",
+                    Arguments =
+                    $"-h \"{host}\" " +
+                    $"-p {port}" +
+                    $"-U \"{user}\" " +
+                    $"-d \"{nameBD}\" " +
+                    $"--clean " +
+                    $"--if-exists " +
+                    $"\"{open.FileName}\"",
                     UseShellExecute = false,
                     RedirectStandardError = true
                 };

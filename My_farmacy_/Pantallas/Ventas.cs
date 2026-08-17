@@ -22,5 +22,11 @@ namespace My_farmacy_.Pantallas
             Facturacion ff = new Facturacion();
             ff.Show();
         }
+
+        private void lkagregar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SubCliente ss = new SubCliente();
+            ss.Show();
+        }
     }
 }

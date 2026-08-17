@@ -19,7 +19,7 @@ namespace My_farmacy_
         string usuario;
         string codigor;
 
-        ClasesSQL.LoginSQL len = new ClasesSQL.LoginSQL();
+        ClasesSQL.PgAdmin len = new ClasesSQL.PgAdmin();
         
         public Recuperarcontra()
         {

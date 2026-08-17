@@ -169,6 +169,12 @@
     <Compile Include="Pantallas\Respaldo.Designer.cs">
       <DependentUpon>Respaldo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\SubCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\SubCliente.Designer.cs">
+      <DependentUpon>SubCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Ventas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,7 +189,7 @@
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
     <Compile Include="ClasesSQL\ClientesC.cs" />
-    <Compile Include="ClasesSQL\LoginSQL.cs" />
+    <Compile Include="ClasesSQL\PgAdmin.cs" />
     <Compile Include="ClasesSQL\RolesC.cs" />
     <Compile Include="ClasesSQL\RolesDal.cs" />
     <Compile Include="SentMail\EnviarGm.cs" />
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Respaldo.resx">
       <DependentUpon>Respaldo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\SubCliente.resx">
+      <DependentUpon>SubCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Ventas.resx">
       <DependentUpon>Ventas.cs</DependentUpon>
@@ -513,6 +522,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\carrito.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caja1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ventas1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
