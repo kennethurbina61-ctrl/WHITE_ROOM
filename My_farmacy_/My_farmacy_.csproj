@@ -112,6 +112,18 @@
   <ItemGroup>
     <Compile Include="ClasesSQL\RespaldoBD.cs" />
     <Compile Include="ClasesSQL\UsuarioC.cs" />
+    <Compile Include="Pantallas\AperturaC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\AperturaC.Designer.cs">
+      <DependentUpon>AperturaC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\ArqueoC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\ArqueoC.Designer.cs">
+      <DependentUpon>ArqueoC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,18 @@
     <Compile Include="ClasesSQL\Clasecategoria.cs" />
     <Compile Include="ClasesSQL\Conexion.cs" />
     <Compile Include="ClasesSQL\Obteersql.cs" />
+    <Compile Include="Pantallas\CierreC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\CierreC.Designer.cs">
+      <DependentUpon>CierreC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\ControlCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\ControlCaja.Designer.cs">
+      <DependentUpon>ControlCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\crearRes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +156,12 @@
     </Compile>
     <Compile Include="Pantallas\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\NuevoE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\NuevoE.Designer.cs">
+      <DependentUpon>NuevoE.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Respaldo.cs">
       <SubType>Form</SubType>
@@ -225,14 +255,26 @@
       <DependentUpon>UsuariosRol.cs</DependentUpon>
     </Compile>
     <Compile Include="ClasesSQL\Validaciones.cs" />
+    <EmbeddedResource Include="Pantallas\AperturaC.resx">
+      <DependentUpon>AperturaC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\ArqueoC.resx">
+      <DependentUpon>ArqueoC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\CierreC.resx">
+      <DependentUpon>CierreC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Compras.resx">
       <DependentUpon>Compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\ControlCaja.resx">
+      <DependentUpon>ControlCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\crearRes.resx">
       <DependentUpon>crearRes.cs</DependentUpon>
@@ -248,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Inventario.resx">
       <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\NuevoE.resx">
+      <DependentUpon>NuevoE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -467,13 +512,7 @@
     <None Include="Resources\fondopng.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnBD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btnBDArchivo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btnRestaurarBD.png" />
+    <None Include="Resources\carrito.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
