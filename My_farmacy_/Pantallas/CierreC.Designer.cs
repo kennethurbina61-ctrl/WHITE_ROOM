@@ -222,9 +222,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.ErrorImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox1.Location = new System.Drawing.Point(28, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 40);
@@ -243,9 +241,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.ErrorImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox3.Location = new System.Drawing.Point(331, 184);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(45, 40);
@@ -273,9 +269,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackgroundImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.ErrorImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox4.Location = new System.Drawing.Point(605, 52);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(45, 40);
@@ -313,9 +307,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.ErrorImage = global::My_farmacy_.Properties.Resources.carrito;
             this.pictureBox2.Location = new System.Drawing.Point(342, 53);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(45, 40);
