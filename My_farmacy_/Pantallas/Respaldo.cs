@@ -87,7 +87,7 @@ namespace My_farmacy_.Pantallas
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Archivos SQL|*.backup";
-            open.Title = "Selecciona el script SQL";
+            open.Title = "Selecciona el respaldo";
 
             if (open.ShowDialog() == DialogResult.OK)
             {

@@ -85,7 +85,7 @@ namespace My_farmacy_
                 {
                     estadoU = "Inactivo";
                 }
-                    dtusers.Rows.Add(dtru[0], dtru[2], dtru[3], dtru[2], dtru[4], dtru[6], dtru[5], estadoU);
+                    dtusers.Rows.Add(dtru[0], dtru[2], dtru[3], dtru[1], dtru[4], dtru[6], dtru[5], estadoU);
             }
             dtru.Close();
             conn.Close();
