@@ -44,7 +44,7 @@ namespace My_farmacy_.ClasesSQL
                 var psi = new ProcessStartInfo
                 { 
                     FileName = $"C:\\Program Files\\PostgreSQL\\16\\bin\\pg_dump.exe",
-                    Arguments = $"-U {user} -F p -b -v -f \"{ruta}\" {nameBD}",
+                    Arguments = $"-U {user} -F c -b -v -f \"{ruta}\" {nameBD}",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true
@@ -72,8 +72,7 @@ namespace My_farmacy_.ClasesSQL
         {
             try
             {
-            
-                OpenFileDialog open = new OpenFileDialog();
+
                 string user = "postgres";
                 string nameBD = "White-Room";
                 string port = "5432";
@@ -81,16 +80,10 @@ namespace My_farmacy_.ClasesSQL
                 var psi = new ProcessStartInfo
                 {
                     FileName = @"C:\Program Files\PostgreSQL\16\bin\pg_restore.exe",
-                    Arguments =
-                    $"-h \"{host}\" " +
-                    $"-p {port}" +
-                    $"-U \"{user}\" " +
-                    $"-d \"{nameBD}\" " +
-                    $"--clean " +
-                    $"--if-exists " +
-                    $"\"{open.FileName}\"",
+                    Arguments = $"-h {host} -p {port} -U {user} -d {nameBD} --clean --if-exists \"{RutaOrigen}\"",
                     UseShellExecute = false,
-                    RedirectStandardError = true
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true
                 };
                 psi.EnvironmentVariables["PGPASSWORD"] = "DIOS TE AMA2.0";
 
@@ -131,7 +124,7 @@ namespace My_farmacy_.ClasesSQL
             if (Directory.Exists(rutaCarpeta))
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(rutaCarpeta);
-                FileInfo[] archivos = dirInfo.GetFiles("*.sql");
+                FileInfo[] archivos = dirInfo.GetFiles("*.backup");
 
                 foreach(FileInfo archivo in archivos)
                 {
