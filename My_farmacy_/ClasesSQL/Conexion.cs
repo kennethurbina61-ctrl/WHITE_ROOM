@@ -31,7 +31,7 @@ namespace My_farmacy_.ClasesSQL
             using (var smptclient = new SmtpClient())
             {
                 smptclient.Connect("smtp.gmail.com", 465, true);
-                smptclient.Authenticate("suportmyfarmacy@gmail.com", "ixno lmyo dptp byeb");
+                smptclient.Authenticate("suportmyfarmacy@gmail.com", "olkq javf mbae faia");
                 smptclient.Send(mailmessege);
                 smptclient.Disconnect(true);
             }

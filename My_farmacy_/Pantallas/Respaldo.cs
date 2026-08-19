@@ -80,6 +80,7 @@ namespace My_farmacy_.Pantallas
 
         private void Respaldo_Load(object sender, EventArgs e)
         {
+            txtreceptor.Enabled = false;
             cargarR();
         }
 

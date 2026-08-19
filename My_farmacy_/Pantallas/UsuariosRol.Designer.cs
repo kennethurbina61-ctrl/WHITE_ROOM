@@ -37,12 +37,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelinformacion = new System.Windows.Forms.Panel();
             this.lblnombrepantalla = new System.Windows.Forms.Label();
+            this.pcpantalla = new System.Windows.Forms.PictureBox();
             this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
             this.tabusuariosroles = new System.Windows.Forms.TabControl();
             this.tbusuarios = new System.Windows.Forms.TabPage();
             this.tblcontenedor = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
             this.lblactivorol = new System.Windows.Forms.Label();
+            this.btnguardar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbestado = new System.Windows.Forms.ComboBox();
@@ -67,10 +71,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbgestionusuarios = new System.Windows.Forms.TabPage();
             this.dtusers = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btneditar = new System.Windows.Forms.Button();
+            this.btnbuscar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.tbroles = new System.Windows.Forms.TabPage();
+            this.btneditarroles = new System.Windows.Forms.Button();
+            this.btnagregar = new System.Windows.Forms.Button();
             this.pnldata = new System.Windows.Forms.Panel();
             this.dataroles = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,25 +115,9 @@
             this.lbestado = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tlusuario = new System.Windows.Forms.ToolTip(this.components);
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnguardar = new System.Windows.Forms.Button();
-            this.btneditar = new System.Windows.Forms.Button();
-            this.btnbuscar = new System.Windows.Forms.Button();
-            this.btneditarroles = new System.Windows.Forms.Button();
-            this.btnagregar = new System.Windows.Forms.Button();
-            this.pcpantalla = new System.Windows.Forms.PictureBox();
-            this.btnmodificar = new System.Windows.Forms.Button();
             this.txtusersid = new System.Windows.Forms.TextBox();
-            this.lblid = new System.Windows.Forms.Label();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelinformacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).BeginInit();
             this.tabusuariosroles.SuspendLayout();
             this.tbusuarios.SuspendLayout();
             this.tblcontenedor.SuspendLayout();
@@ -132,7 +132,6 @@
             this.pnldata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataroles)).BeginInit();
             this.pnlpermisos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).BeginInit();
             this.SuspendLayout();
             // 
             // panelinformacion
@@ -155,6 +154,16 @@
             this.lblnombrepantalla.Size = new System.Drawing.Size(134, 32);
             this.lblnombrepantalla.TabIndex = 1;
             this.lblnombrepantalla.Text = "Usuarios";
+            // 
+            // pcpantalla
+            // 
+            this.pcpantalla.BackgroundImage = global::My_farmacy_.Properties.Resources.ICONUSUARIO;
+            this.pcpantalla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcpantalla.Location = new System.Drawing.Point(12, 12);
+            this.pcpantalla.Name = "pcpantalla";
+            this.pcpantalla.Size = new System.Drawing.Size(66, 43);
+            this.pcpantalla.TabIndex = 0;
+            this.pcpantalla.TabStop = false;
             // 
             // npgsqlCommandBuilder1
             // 
@@ -220,6 +229,30 @@
             this.panel2.Size = new System.Drawing.Size(562, 249);
             this.panel2.TabIndex = 3;
             // 
+            // btnmodificar
+            // 
+            this.btnmodificar.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
+            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmodificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnmodificar.Location = new System.Drawing.Point(353, 154);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(177, 55);
+            this.btnmodificar.TabIndex = 12;
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.BackgroundImage = global::My_farmacy_.Properties.Resources.btncancelar;
+            this.btncancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btncancelar.Location = new System.Drawing.Point(31, 154);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(177, 55);
+            this.btncancelar.TabIndex = 11;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
             // lblactivorol
             // 
             this.lblactivorol.AutoSize = true;
@@ -229,6 +262,18 @@
             this.lblactivorol.Size = new System.Drawing.Size(66, 18);
             this.lblactivorol.TabIndex = 10;
             this.lblactivorol.Text = "Inactivo";
+            // 
+            // btnguardar
+            // 
+            this.btnguardar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnguardar;
+            this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnguardar.Location = new System.Drawing.Point(353, 154);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.Size = new System.Drawing.Size(177, 55);
+            this.btnguardar.TabIndex = 9;
+            this.btnguardar.UseVisualStyleBackColor = true;
+            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // label7
             // 
@@ -342,10 +387,9 @@
             // 
             // pnldatosgeneralae
             // 
-            this.pnldatosgeneralae.Controls.Add(this.txtusersid);
             this.pnldatosgeneralae.Controls.Add(this.lblnombreu);
-            this.pnldatosgeneralae.Controls.Add(this.lblid);
             this.pnldatosgeneralae.Controls.Add(this.txtnombreU);
+            this.pnldatosgeneralae.Controls.Add(this.txtusersid);
             this.pnldatosgeneralae.Controls.Add(this.txtcorreo);
             this.pnldatosgeneralae.Controls.Add(this.label3);
             this.pnldatosgeneralae.Controls.Add(this.lbldatos);
@@ -519,6 +563,62 @@
             this.dtusers.TabIndex = 5;
             this.dtusers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtusers_CellContentClick);
             // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "ID";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Usuario";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Nombre";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Rol";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Cedula";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Correo";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Estado";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
@@ -531,6 +631,29 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1136, 57);
             this.panel3.TabIndex = 6;
+            // 
+            // btneditar
+            // 
+            this.btneditar.BackgroundImage = global::My_farmacy_.Properties.Resources.editarbtn;
+            this.btneditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btneditar.Location = new System.Drawing.Point(972, 12);
+            this.btneditar.Name = "btneditar";
+            this.btneditar.Size = new System.Drawing.Size(148, 35);
+            this.btneditar.TabIndex = 16;
+            this.btneditar.UseVisualStyleBackColor = true;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackgroundImage = global::My_farmacy_.Properties.Resources.busqueda;
+            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnbuscar.Location = new System.Drawing.Point(410, 16);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(45, 26);
+            this.btnbuscar.TabIndex = 15;
+            this.btnbuscar.UseVisualStyleBackColor = true;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // label12
             // 
@@ -572,6 +695,35 @@
             this.tbroles.TabIndex = 2;
             this.tbroles.Text = "Roles";
             this.tbroles.UseVisualStyleBackColor = true;
+            // 
+            // btneditarroles
+            // 
+            this.btneditarroles.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btneditarroles.BackgroundImage = global::My_farmacy_.Properties.Resources.editarbtn;
+            this.btneditarroles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditarroles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btneditarroles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btneditarroles.ForeColor = System.Drawing.Color.White;
+            this.btneditarroles.Location = new System.Drawing.Point(931, 150);
+            this.btneditarroles.Name = "btneditarroles";
+            this.btneditarroles.Size = new System.Drawing.Size(205, 33);
+            this.btneditarroles.TabIndex = 21;
+            this.btneditarroles.UseVisualStyleBackColor = false;
+            // 
+            // btnagregar
+            // 
+            this.btnagregar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnagregar.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
+            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnagregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnagregar.ForeColor = System.Drawing.Color.White;
+            this.btnagregar.Location = new System.Drawing.Point(931, 105);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(205, 33);
+            this.btnagregar.TabIndex = 20;
+            this.btnagregar.UseVisualStyleBackColor = false;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // pnldata
             // 
@@ -899,178 +1051,15 @@
             // 
             this.tlusuario.ToolTipTitle = "Agregar Usuario.";
             // 
-            // btncancelar
-            // 
-            this.btncancelar.BackgroundImage = global::My_farmacy_.Properties.Resources.btncancelar;
-            this.btncancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btncancelar.Location = new System.Drawing.Point(31, 154);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(177, 55);
-            this.btncancelar.TabIndex = 11;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnguardar
-            // 
-            this.btnguardar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnguardar;
-            this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnguardar.Location = new System.Drawing.Point(353, 154);
-            this.btnguardar.Name = "btnguardar";
-            this.btnguardar.Size = new System.Drawing.Size(177, 55);
-            this.btnguardar.TabIndex = 9;
-            this.btnguardar.UseVisualStyleBackColor = true;
-            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
-            // 
-            // btneditar
-            // 
-            this.btneditar.BackgroundImage = global::My_farmacy_.Properties.Resources.editarbtn;
-            this.btneditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btneditar.Location = new System.Drawing.Point(972, 12);
-            this.btneditar.Name = "btneditar";
-            this.btneditar.Size = new System.Drawing.Size(148, 35);
-            this.btneditar.TabIndex = 16;
-            this.btneditar.UseVisualStyleBackColor = true;
-            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackgroundImage = global::My_farmacy_.Properties.Resources.busqueda;
-            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnbuscar.Location = new System.Drawing.Point(410, 16);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(45, 26);
-            this.btnbuscar.TabIndex = 15;
-            this.btnbuscar.UseVisualStyleBackColor = true;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
-            // 
-            // btneditarroles
-            // 
-            this.btneditarroles.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btneditarroles.BackgroundImage = global::My_farmacy_.Properties.Resources.editarbtn;
-            this.btneditarroles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btneditarroles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btneditarroles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btneditarroles.ForeColor = System.Drawing.Color.White;
-            this.btneditarroles.Location = new System.Drawing.Point(931, 150);
-            this.btneditarroles.Name = "btneditarroles";
-            this.btneditarroles.Size = new System.Drawing.Size(205, 33);
-            this.btneditarroles.TabIndex = 21;
-            this.btneditarroles.UseVisualStyleBackColor = false;
-            // 
-            // btnagregar
-            // 
-            this.btnagregar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnagregar.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
-            this.btnagregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnagregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btnagregar.ForeColor = System.Drawing.Color.White;
-            this.btnagregar.Location = new System.Drawing.Point(931, 105);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(205, 33);
-            this.btnagregar.TabIndex = 20;
-            this.btnagregar.UseVisualStyleBackColor = false;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
-            // 
-            // pcpantalla
-            // 
-            this.pcpantalla.BackgroundImage = global::My_farmacy_.Properties.Resources.ICONUSUARIO;
-            this.pcpantalla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcpantalla.Location = new System.Drawing.Point(12, 12);
-            this.pcpantalla.Name = "pcpantalla";
-            this.pcpantalla.Size = new System.Drawing.Size(66, 43);
-            this.pcpantalla.TabIndex = 0;
-            this.pcpantalla.TabStop = false;
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
-            this.btnmodificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmodificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnmodificar.Location = new System.Drawing.Point(353, 154);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(177, 55);
-            this.btnmodificar.TabIndex = 12;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
             // txtusersid
             // 
             this.txtusersid.BackColor = System.Drawing.Color.Silver;
             this.txtusersid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtusersid.Location = new System.Drawing.Point(386, 113);
+            this.txtusersid.Location = new System.Drawing.Point(245, 19);
             this.txtusersid.Name = "txtusersid";
             this.txtusersid.ReadOnly = true;
-            this.txtusersid.Size = new System.Drawing.Size(136, 24);
+            this.txtusersid.Size = new System.Drawing.Size(22, 24);
             this.txtusersid.TabIndex = 13;
-            // 
-            // lblid
-            // 
-            this.lblid.AutoSize = true;
-            this.lblid.Location = new System.Drawing.Point(383, 72);
-            this.lblid.Name = "lblid";
-            this.lblid.Size = new System.Drawing.Size(29, 18);
-            this.lblid.TabIndex = 14;
-            this.lblid.Text = "ID:";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "ID";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Usuario";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Nombre";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Rol";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Telefono";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Cedula";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Correo";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Estado";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // UsuariosRol
             // 
@@ -1086,6 +1075,7 @@
             this.Load += new System.EventHandler(this.UsuariosRol_Load);
             this.panelinformacion.ResumeLayout(false);
             this.panelinformacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).EndInit();
             this.tabusuariosroles.ResumeLayout(false);
             this.tbusuarios.ResumeLayout(false);
             this.tblcontenedor.ResumeLayout(false);
@@ -1107,7 +1097,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataroles)).EndInit();
             this.pnlpermisos.ResumeLayout(false);
             this.pnlpermisos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1186,8 +1175,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnmodificar;
-        private System.Windows.Forms.TextBox txtusersid;
-        private System.Windows.Forms.Label lblid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -1196,5 +1183,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.TextBox txtusersid;
     }
 }

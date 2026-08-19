@@ -85,6 +85,8 @@
             this.txtusuario = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtlote = new System.Windows.Forms.TextBox();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -409,6 +411,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.txtlote);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.btnagregar);
             this.panel4.Controls.Add(this.txtventa);
@@ -710,6 +714,24 @@
             this.label18.TabIndex = 10;
             this.label18.Text = "Información Adicional:";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(378, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 18);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Lote:";
+            // 
+            // txtlote
+            // 
+            this.txtlote.BackColor = System.Drawing.Color.Silver;
+            this.txtlote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtlote.Location = new System.Drawing.Point(446, 30);
+            this.txtlote.Name = "txtlote";
+            this.txtlote.Size = new System.Drawing.Size(81, 24);
+            this.txtlote.TabIndex = 32;
+            // 
             // Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -804,5 +826,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.MaskedTextBox txtfecha;
         private System.Windows.Forms.TextBox txtidcompra;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtlote;
     }
 }
