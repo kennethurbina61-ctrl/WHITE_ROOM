@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using My_farmacy_.ClasesSQL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace My_farmacy_
 {
     public partial class Categorias : Form
     {
-        string conex = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        PgAdmin pg = new PgAdmin();
         public Categorias()
         {
             InitializeComponent();
@@ -22,9 +23,8 @@ namespace My_farmacy_
         {
             string estado;
             bool eso;
-            NpgsqlConnection cn = new NpgsqlConnection(conex);
-            cn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("Select idcat, nombre, descripcion, estado from categorias", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlCommand cmd = new NpgsqlCommand("Select idcategoria, nombre, descripcion, estado from categorias", cn);
             NpgsqlDataReader nn = cmd.ExecuteReader();
             dtcategorias.Rows.Clear();
             while (nn.Read())
@@ -41,6 +41,7 @@ namespace My_farmacy_
                     dtcategorias.Rows.Add(nn[0], nn[1], nn[2], estado);
             }
             nn.Close();
+            cn.Close();
 
         }
         private void Categorias_Load(object sender, EventArgs e)
@@ -59,12 +60,16 @@ namespace My_farmacy_
             {
                 estado= false;
             }
-            NpgsqlConnection ag = new NpgsqlConnection(conex);
-            ag.Open();
+            NpgsqlConnection ag = pg.conexion();
             NpgsqlCommand cmd = new NpgsqlCommand("Insert into categorias (nombre, descripcion, estado) values ('" + txtnombre.Text + "', '" + txtdescripcion.Text + "', '" + estado + "')", ag);
             cmd.ExecuteNonQuery();
             ag.Close();
             llenar();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

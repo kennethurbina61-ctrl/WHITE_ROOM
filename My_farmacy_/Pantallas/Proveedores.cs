@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using My_farmacy_.ClasesSQL;
 using Npgsql;
 
 namespace My_farmacy_
@@ -17,7 +18,7 @@ namespace My_farmacy_
         {
             InitializeComponent();
         }
-        string coneccion = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        PgAdmin pg = new PgAdmin();
 
        private bool vacios()
         {
@@ -36,15 +37,14 @@ namespace My_farmacy_
         }
         private void llenar()
         {
-            NpgsqlConnection cx = new NpgsqlConnection(coneccion);
-            cx.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select idpro, nombre, telefono, email, fecha, direcion, descripcion , estado from proveedores", cx);
+            NpgsqlConnection cx = pg.conexion();
+            NpgsqlCommand cmd = new NpgsqlCommand("select idproveedores, nombre, telefono, correo, direccion, fecha_registro, estado, descripcion from proveedores", cx);
             NpgsqlDataReader rd = cmd.ExecuteReader();
             dtproveedores.Rows.Clear();
             while(rd.Read())
             {
                 string est;
-                bool estado = Convert.ToBoolean(rd[7]);
+                bool estado = Convert.ToBoolean(rd[6]);
                 if (estado == true)
                 {
                     est = "Activo";
@@ -53,9 +53,10 @@ namespace My_farmacy_
                 {
                     est = "Inactivo";
                 }
-                    dtproveedores.Rows.Add(rd[0], rd[1], rd[2], rd[3], rd[4], rd[5], rd[6], est);
+                    dtproveedores.Rows.Add(rd[0], rd[1], rd[2], rd[3], rd[4], rd[5], rd[7], est);
             }
             rd.Close();
+            cx.Close();
         }
         private void btnagregar_Click(object sender, EventArgs e)
         {
@@ -77,9 +78,8 @@ namespace My_farmacy_
                 {
                     estado = false;
                 }
-                NpgsqlConnection cn = new NpgsqlConnection(coneccion);
-                cn.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand("insert into proveedores (nombre, telefono, email, fecha, direcion, descripcion, estado) values ('" + nombre + "', '" + telefono + "', '" + email + "', '" + fecha + "', '" + direc + "', '" + descr + "', '" + estado + "')", cn);
+                NpgsqlConnection cn = pg.conexion();
+                NpgsqlCommand cmd = new NpgsqlCommand("insert into proveedores (nombre, telefono, correo, direccion, fecha_registro, estado, descripcion) values ('" + nombre + "', '" + telefono + "', '" + email + "', '" + direc + "',  '" + fecha + "', '" + estado + "', '" + descr + "')", cn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se guardo correctamente.");
                 cn.Close();

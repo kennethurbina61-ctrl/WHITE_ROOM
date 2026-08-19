@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using My_farmacy_.ClasesSQL;
 using Npgsql;
 
 namespace My_farmacy_
 {
     public partial class Productos : Form
     {
-        string conex = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        PgAdmin pg = new PgAdmin();
         public Productos()
         {
             InitializeComponent();
@@ -26,9 +27,8 @@ namespace My_farmacy_
 
         private void llenar()
         {
-            NpgsqlConnection cn = new NpgsqlConnection(conex);
-            cn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select p.idproductos, c.nombre as categorias, p.nombre, p.descripcion, p.estado from productos p join categorias c on p.idcat = c.idcat", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlCommand cmd = new NpgsqlCommand("select p.idproductos, c.nombre as categorias, p.nombre, p.descripcio, p.estado from productos p join categorias c on p.idcategoria = c.idcategoria", cn);
             NpgsqlDataReader rd = cmd.ExecuteReader();
             dtproductos.Rows.Clear();
             while (rd.Read())
@@ -47,9 +47,9 @@ namespace My_farmacy_
 
             }
             rd.Close();
+            cn.Close();
 
-            NpgsqlConnection np = new NpgsqlConnection(conex);
-            np.Open();
+            NpgsqlConnection np = pg.conexion();
             NpgsqlCommand chn = new NpgsqlCommand("select nombre from categorias", np);
             NpgsqlDataReader nn = chn.ExecuteReader();
             cbcategoria.Items.Clear();
@@ -58,6 +58,7 @@ namespace My_farmacy_
                 cbcategoria.Items.Add(nn[0]);
             }
             nn.Close();
+            np.Close();
 
         }
 
@@ -77,16 +78,16 @@ namespace My_farmacy_
             }
             string descripcion = txtdescripcion.Text;
 
-            NpgsqlConnection cn = new NpgsqlConnection (conex); cn.Open();
-            NpgsqlDataAdapter ct = new NpgsqlDataAdapter("select idcat from categorias where nombre = '" + categoria + "'", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlDataAdapter ct = new NpgsqlDataAdapter("select idcategoria from categorias where nombre = '" + categoria + "'", cn);
             DataTable dt = new DataTable();
             ct.Fill(dt);
             int idcat = 0;
             if(dt.Rows.Count > 0)
             {
-                idcat = Convert.ToInt32(dt.Rows[0]["idcat"]);
+                idcat = Convert.ToInt32(dt.Rows[0]["idcategoria"]);
             }
-            NpgsqlCommand cmd = new NpgsqlCommand("insert into productos(idcat, nombre, descripcion, estado)  values ('" + idcat + "', '" + nombre + "', '" + descripcion + "', '" + estado + "')", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("insert into productos(idcategoria, nombre, descripcio, estado)  values ('" + idcat + "', '" + nombre + "', '" + descripcion + "', '" + estado + "')", cn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Producto guardado correctamente.");
             cn.Close();

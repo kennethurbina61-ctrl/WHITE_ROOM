@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using My_farmacy_.ClasesSQL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace My_farmacy_
 {
     public partial class Reportescompras : Form
     {
-        string conexx = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        PgAdmin pg = new PgAdmin();
 
         public Reportescompras()
         {
@@ -29,9 +30,8 @@ namespace My_farmacy_
         string idcompra;
         private void llenar()
         {
-            NpgsqlConnection cn = new NpgsqlConnection(conexx);
-            cn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select c.idcompra, c.metodo, p.nombre as proveedores, c.n_factura, c.fecha_f, c.fecha_r, u.username as users, c.subtotal, c.iva, c.total from compras c join proveedores p on c.idpro = p.idpro join users u on c.userid = u.userid", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlCommand cmd = new NpgsqlCommand("select c.idcompra, p.nombre as proveedores, u.usuario as usuario, c.n_factura, c.fecha_co, c.fecha_re, c.metodo, c.subtotal, c.iva, c.total from compras c join proveedores p on c.idproveedores = p.idproveedores join usuario u on c.idusuario = u.idusuario", cn);
             NpgsqlDataReader r = cmd.ExecuteReader();
             dtcompras.Rows.Clear();
             while (r.Read())
@@ -43,6 +43,7 @@ namespace My_farmacy_
                 dtcompras.Rows.Add(r[0], r[3], r[2], r[6], fechaC, fechaF, r[7], r[8], r[9], r[1]);
             }
             r.Close();
+            cn.Close();
         }
 
         private void dtcompras_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -56,7 +57,7 @@ namespace My_farmacy_
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             //bton buscar, necesetito qque me salgan todos los registros de una sola fecha ya que solo me sale uno
-            NpgsqlConnection cn = new NpgsqlConnection(conexx); cn.Open();
+            NpgsqlConnection cn = pg.conexion();
             NpgsqlCommand cmd = new NpgsqlCommand("select c.idcompra, c.metodo, p.nombre as proveedores, c.n_factura, c.fecha_f, c.fecha_r, u.username as users, c.subtotal, c.iva, c.total from compras c join proveedores p on c.idpro = p.idpro join users u on c.userid = u.userid where c.fecha_r = '" + txtfecha.Text + "'", cn);
             NpgsqlDataReader r = cmd.ExecuteReader();
             dtcompras.Rows.Clear();
@@ -65,6 +66,7 @@ namespace My_farmacy_
                 dtcompras.Rows.Add(r[0], r[3], r[2], r[6], fechaC, fechaF, r[7], r[8], r[9], r[1]);
             }
             r.Close();
+            cn.Close();
             //Necesito buscar por proveedores y por usuarios con las mismas caracteristicas de buscar con fecha de registros
             //Necesito validar todas las pantallas.
         }

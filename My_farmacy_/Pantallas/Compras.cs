@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using My_farmacy_.ClasesSQL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,6 @@ namespace My_farmacy_
     public partial class Compras : Form
     {
         int subtotalP = 0, iva = 0, total = 0, subt = 0, idcompra = 0;
-        string coneccion = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
         int userid = 0;
         int proveid = 0;
         string numeroF;
@@ -36,11 +36,11 @@ namespace My_farmacy_
             panel4.Enabled = false;
             panel6.Enabled = false;
         }
+        PgAdmin pg = new PgAdmin();
 
         private void llenarcombo()
         {
-            NpgsqlConnection cn = new NpgsqlConnection(coneccion);
-            cn.Open();
+            NpgsqlConnection cn = pg.conexion();
             NpgsqlCommand cmd = new NpgsqlCommand("select nombre from productos", cn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -48,7 +48,6 @@ namespace My_farmacy_
                 CBproducto.Items.Add(dr[0]);
             }
             dr.Close();
-            //cn.Open();
             NpgsqlCommand pv = new NpgsqlCommand("select nombre from proveedores", cn);
             NpgsqlDataReader pr = pv.ExecuteReader();
             while (pr.Read())
@@ -56,6 +55,7 @@ namespace My_farmacy_
                 cbprov.Items.Add(pr[0]);
             }
             pr.Close();
+            cn.Close();
             
 
         }
@@ -72,30 +72,32 @@ namespace My_farmacy_
             fecha= txtfecha.Text;
             user = txtusuario.Text;
             fechaR = txtfecahregistro.Text;
-            NpgsqlConnection cn = new NpgsqlConnection(coneccion); cn.Open();
-            NpgsqlDataAdapter us = new NpgsqlDataAdapter("select userid from users where username= '" + user + "'", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlDataAdapter us = new NpgsqlDataAdapter("select idusuario from usuario where username= '" + user + "'", cn);
             DataTable dt = new DataTable();
             us.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                userid = Convert.ToInt32(dt.Rows[0]["userid"]);
+                userid = Convert.ToInt32(dt.Rows[0]["idusuario"]);
             }
-            NpgsqlDataAdapter pr = new NpgsqlDataAdapter("select idpro from proveedores where nombre= '" + pro + "'", cn);
+            NpgsqlDataAdapter pr = new NpgsqlDataAdapter("select idproveedores from proveedores where nombre= '" + pro + "'", cn);
             DataTable dp = new DataTable();
             pr.Fill(dp);
             if (dp.Rows.Count > 0)
             {
-                proveid = Convert.ToInt32(dp.Rows[0]["idpro"]);
+                proveid = Convert.ToInt32(dp.Rows[0]["idproveedores"]);
             }
-            NpgsqlCommand cmd = new NpgsqlCommand("insert into compras(metodo, idpro, n_factura, fecha_f, fecha_r, userid) values ('" + metodo + "', '" + proveid + "', '" + numeroF + "', '" + fecha + "', '" + fechaR + "', '" + userid + "') returning idcompra;", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("insert into compras(idproveedores, idusuario, nfactura, fecha_co, fecha_re, metodo) values ('" + proveid + "', '" + userid + "', '" + numeroF + "', '" + fecha + "', '" + fechaR + "', '" + metodo + "') returning idcompra;", cn);
             NpgsqlDataReader cd = cmd.ExecuteReader();
+            //da error
             if (cd.Read())
             {
                 idcompra = cd.GetInt32(0);
             }
-            MessageBox.Show("Rellene los datos para completar la compra.");
+            MessageBox.Show("Rellene los datos para completar la compra.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cd.Close();
             txtidcompra.Text = idcompra.ToString();
+            cn.Close();
         }
         
 
@@ -113,10 +115,10 @@ namespace My_farmacy_
             lbliva.Text = iva.ToString();
             lbltotal.Text = total.ToString();
             lblsubtotal.Text = subt.ToString();
+            int lote = Convert.ToInt32(txtlote.Text);
 
             //Agregar_detalle
-            NpgsqlConnection cn = new NpgsqlConnection(coneccion);
-            cn.Open();
+            NpgsqlConnection cn = pg.conexion();
             NpgsqlDataAdapter pr = new NpgsqlDataAdapter("select idproductos from productos where nombre = '" + CBproducto.Text + "'", cn);
             DataTable dt = new DataTable();
             pr.Fill(dt);
@@ -124,20 +126,22 @@ namespace My_farmacy_
             {
                 idproducto = Convert.ToInt32(dt.Rows[0]["idproductos"]);
             }
-            NpgsqlCommand cmd = new NpgsqlCommand("insert into detalle_compra (idcompra, idproductos, precio_c, precio_v, cantidad, subtotal) values ('" + idcompra + "', '" + idproducto + "', '" + precio_c + "', '" + precio_v + "', '" + cantidad + "', '" + subtotalP + "') ", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("insert into detalle_compra (idcompra, idproductos, idlote, cantidad, precio_c, precio_v, subtotal) values ('" + idcompra + "', '" + idproducto + "', '" + lote + "' , '" + cantidad + "','" + precio_c + "', '" + precio_v + "', '" + subtotalP + "') ", cn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             MessageBox.Show("Producto agregado");
             dr.Close();
+            cn.Close();
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            
-            NpgsqlConnection cn = new NpgsqlConnection(coneccion); cn.Open();
+
+            NpgsqlConnection cn = pg.conexion();
             NpgsqlCommand cmd = new NpgsqlCommand("update compras set subtotal = '" + subt + "', iva = '" + iva + "', total= '" + total + "' where idcompra = '" + idcompra + "'", cn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             MessageBox.Show("El registro se guardo correctamente.");
             dr.Close();
+            cn.Close();
         }
     }
 }

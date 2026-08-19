@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using My_farmacy_.ClasesSQL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace My_farmacy_
 {
     public partial class Clientes : Form
     {
-        string coneccion = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        PgAdmin pg = new PgAdmin();
+        
         
         public Clientes()
         {
@@ -45,9 +47,8 @@ namespace My_farmacy_
         private void Llenar()
         {
             dtcategorias.Rows.Clear();
-            NpgsqlConnection cn = new NpgsqlConnection(coneccion);
-            cn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select idcliente, cliente, correo, telefono, direccion, estado from clientes", cn);
+            NpgsqlConnection cn = pg.conexion();
+            NpgsqlCommand cmd = new NpgsqlCommand("select idcliente, nombre, direccion, telefono, correo, estado from clientes", cn);
             NpgsqlDataReader rd = cmd.ExecuteReader();
             while (rd.Read())
             {
@@ -66,14 +67,14 @@ namespace My_farmacy_
                 dtcategorias.Rows.Add(rd[0], rd[1], rd[2], rd[3], rd[4], estado);
             }
             rd.Close();
+            cn.Close();
         }
 
         private void btnagregar_Click(object sender, EventArgs e)
         {
             if (vacios())
             {
-                NpgsqlConnection bn = new NpgsqlConnection(coneccion);
-                bn.Open();
+                NpgsqlConnection cn = pg.conexion();            
                 bool estado;
                 if (cbestado.Text == "Activo")
                 {
@@ -83,9 +84,9 @@ namespace My_farmacy_
                 {
                     estado = false;
                 }
-                NpgsqlCommand cmd = new NpgsqlCommand("insert into clientes (cliente, correo, telefono, direccion, estado) values ('" + txtnombre.Text + "','" + txtcorreo.Text + "' ,'" + txttelefono.Text + "', '" + txtdireccion.Text + "', '" + estado + "')", bn);
+                NpgsqlCommand cmd = new NpgsqlCommand("insert into clientes (nombre, direccion, telefono, correo, estado) values ('" + txtnombre.Text + "','" + txtcorreo.Text + "' ,'" + txttelefono.Text + "', '" + txtdireccion.Text + "', '" + estado + "')", cn);
                 cmd.ExecuteNonQuery();
-                bn.Close();
+                cn.Close();
                 Llenar();
                 limpiar();
             }

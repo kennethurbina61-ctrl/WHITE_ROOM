@@ -33,7 +33,7 @@ namespace My_farmacy_
             correo = txtcorreo.Text;
             codigor =r.Next(100000,999999).ToString();
             NpgsqlConnection nn = len.conexion();
-            NpgsqlCommand ll = new NpgsqlCommand("select username from users where correo = '" + correo + "'", nn);
+            NpgsqlCommand ll = new NpgsqlCommand("select username from usuario where correo = '" + correo + "'", nn);
             NpgsqlDataReader cc = ll.ExecuteReader();
             if (cc.Read() == true)
             {
@@ -71,7 +71,7 @@ namespace My_farmacy_
         private bool verfifi()
         {
             TimeSpan diferencia = horaactual - DateTime.Now;
-            if (diferencia.TotalMinutes > 2)
+            if (diferencia.TotalMinutes <= 2)
             {
                 return true;
             }
@@ -110,7 +110,7 @@ namespace My_farmacy_
         private void btnactualizar_Click(object sender, EventArgs e)
         {
             NpgsqlConnection cn = len.conexion();
-            NpgsqlCommand cmd = new NpgsqlCommand("update users set passwords = '" + textBox2.Text + "' where correo = '" + correo + "'", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("update usuario set passwords = '" + textBox2.Text + "' where correo = '" + correo + "'", cn);
             NpgsqlDataReader reader = cmd.ExecuteReader(); 
             MessageBox.Show("La contreseña se guardo correctamente.");
             reader.Close();

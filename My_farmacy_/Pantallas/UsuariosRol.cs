@@ -18,7 +18,7 @@ namespace My_farmacy_
     public partial class UsuariosRol : Form
     {
         ClasesSQL.PgAdmin ll = new ClasesSQL.PgAdmin();
-       // string conexx = "Server=localhost;Port=5432;User Id=postgres;Password=DIOS TE AMA2.0;Database=MyFarmacy;";
+        int usario_id;
         public UsuariosRol()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace My_farmacy_
             tlusuario.SetToolTip(txtusuarioagg, "El usuario con el que el empleado entrara al sistema.");
             llenar();
             llenarroles();
+            txtusersid.Visible = false;
         }
         private void llenarroles()
         {
@@ -69,7 +70,7 @@ namespace My_farmacy_
             btnmodificar.Visible = false;
             btncancelar.Visible = false;    
             NpgsqlConnection conn = ll.conexion();
-            NpgsqlCommand dtu = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.usuario, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol", conn);
+            NpgsqlCommand dtu = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.username, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol", conn);
             NpgsqlDataReader dtru = dtu.ExecuteReader();
             dtusers.Rows.Clear();
             
@@ -200,7 +201,7 @@ namespace My_farmacy_
                         idrol = Convert.ToInt32(dt.Rows[0]["idrol"]);
                     }
                     
-                    NpgsqlCommand vd = new NpgsqlCommand("Insert into usuario (idrol, usuario, nombrecompleto, telefeno, correo, passwords, cedula, estado) values ('" + idrol+ "' , '" + usuario + "' , '" + nombrecompleto+ "' , '" + telefono + "' , '" + correo + "' , '" + password + "' , '" + cedula + "' , '" + estado + "') ", cn);
+                    NpgsqlCommand vd = new NpgsqlCommand("Insert into usuario (idrol, username, nombrecompleto, telefeno, correo, passwords, cedula, estado) values ('" + idrol+ "' , '" + usuario + "' , '" + nombrecompleto+ "' , '" + telefono + "' , '" + correo + "' , '" + password + "' , '" + cedula + "' , '" + estado + "') ", cn);
                     vd.ExecuteNonQuery();
                     MessageBox.Show("Se guardo correctamente");
                     cn.Close();
@@ -301,7 +302,7 @@ namespace My_farmacy_
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             NpgsqlConnection cn = ll.conexion();
-            NpgsqlCommand bs = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.usuario, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol where u.usuario = '" + txtbuscar.Text + "' ",cn);
+            NpgsqlCommand bs = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.username, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol where u.usuario = '" + txtbuscar.Text + "' ",cn);
             NpgsqlDataReader nc = bs.ExecuteReader();
             dtusers.Rows.Clear();
             while (nc.Read())
@@ -382,15 +383,17 @@ namespace My_farmacy_
                     idrol = Convert.ToInt32(dt.Rows[0]["idrol"]);
                 }
                 //, passwords, telefono, correo, cedula, estado, idrol, nombree
-                NpgsqlCommand cmd = new NpgsqlCommand("update usuario set idrol= '" + idrol + "', usuario = '" + usuario + "', nombrecompleto= '" + nombrecompleto + "', telefono= '" + telefono + "' , correo= '" + correo + "' , passwords= '" + password + "', cedula= '" + cedula + "' ,estado= '" + estado + "' where idusuario= '" + txtusersid.Text + "'", cn);
+                NpgsqlCommand cmd = new NpgsqlCommand("update usuario set idrol= '" + idrol + "', username = '" + usuario + "', nombrecompleto= '" + nombrecompleto + "', telefeno= '" + telefono + "' , correo= '" + correo + "' , passwords= '" + password + "', cedula= '" + cedula + "' ,estado= '" + estado + "' where idusuario= '" + txtusersid.Text + "'", cn);
                 NpgsqlDataReader vb = cmd.ExecuteReader();
                 MessageBox.Show("Registro modificado.");
+                cn.Close();
                 vb.Close();
                 llenar();
                 limpiar();
                 btnmodificar.Visible = false;
                 btncancelar.Visible = false;
                 btnguardar.Visible = true;
+               
 
             }
             else

@@ -103,10 +103,10 @@ namespace My_farmacy_
             NpgsqlConnection cnx = kk.conexion();
             //Lo que hace esto es juntar y comparar el id rol y con la misma tabla para asi poder extraer el nombre del rol
             NpgsqlCommand cm = new NpgsqlCommand(
-             "SELECT u.usuario, u.passwords, u.estado, r.nombre AS rol " +
+             "SELECT u.username, u.passwords, u.estado, r.nombre AS rol " +
              "FROM usuario u " +
              "JOIN rol r ON u.idrol = r.idrol " +
-             "WHERE u.usuario= '" + txtusuario.Text + "' AND u.passwords= '" + txtcontrasena.Text + "'", cnx);
+             "WHERE u.username= '" + txtusuario.Text + "' AND u.passwords= '" + txtcontrasena.Text + "'", cnx);
             NpgsqlDataReader dr = cm.ExecuteReader();
            
             if (dr.Read())
