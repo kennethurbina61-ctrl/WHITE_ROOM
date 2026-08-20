@@ -17,7 +17,7 @@ namespace My_farmacy_
         int subtotalP = 0, iva = 0, total = 0, subt = 0, idcompra = 0;
         int userid = 0;
         int proveid = 0;
-        string numeroF;
+        int numeroF;
         string pro;
         string metodo;
         string fecha;
@@ -62,11 +62,8 @@ namespace My_farmacy_
 
         private void btniniciar_Click(object sender, EventArgs e)
         {
-            panel4.Enabled = true; 
-            panel1.Enabled = false;
-            userid = 0;
-            proveid = 0;
-            numeroF = txtnumerofactura.Text;
+            panel4.Enabled = true; panel1.Enabled = false;
+            userid = 0; proveid = 0; numeroF = Convert.ToInt32(txtnumerofactura.Text);
             pro = cbprov.Text;
             metodo = CBmetodo.Text;
             fecha= txtfecha.Text;
@@ -87,9 +84,8 @@ namespace My_farmacy_
             {
                 proveid = Convert.ToInt32(dp.Rows[0]["idproveedores"]);
             }
-            NpgsqlCommand cmd = new NpgsqlCommand("insert into compras(idproveedores, idusuario, nfactura, fecha_co, fecha_re, metodo) values ('" + proveid + "', '" + userid + "', '" + numeroF + "', '" + fecha + "', '" + fechaR + "', '" + metodo + "') returning idcompra;", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("insert into compras (idproveedores, idusuario, nfactura, fecha_co, fecha_re, metodo) values ('" + proveid + "', '" + userid + "', '" + numeroF + "', '" + fecha + "', '" + fechaR + "', '" + metodo + "') returning idcompra;", cn);
             NpgsqlDataReader cd = cmd.ExecuteReader();
-            //da error
             if (cd.Read())
             {
                 idcompra = cd.GetInt32(0);
