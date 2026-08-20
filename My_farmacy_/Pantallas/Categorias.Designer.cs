@@ -35,8 +35,6 @@
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.pcpantalla = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbestadoR = new System.Windows.Forms.ComboBox();
-            this.lbestado = new System.Windows.Forms.Label();
             this.txtdescripcion = new System.Windows.Forms.TextBox();
             this.btnagregar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,14 +48,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtcategorias = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbltotalcategorias = new System.Windows.Forms.Label();
             this.btneditarroles = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcpantalla)).BeginInit();
             this.panel1.SuspendLayout();
@@ -101,8 +98,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.cbestadoR);
-            this.panel1.Controls.Add(this.lbestado);
             this.panel1.Controls.Add(this.txtdescripcion);
             this.panel1.Controls.Add(this.btnagregar);
             this.panel1.Controls.Add(this.label1);
@@ -116,35 +111,13 @@
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // cbestadoR
-            // 
-            this.cbestadoR.BackColor = System.Drawing.Color.Silver;
-            this.cbestadoR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbestadoR.FormattingEnabled = true;
-            this.cbestadoR.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbestadoR.Location = new System.Drawing.Point(342, 95);
-            this.cbestadoR.Name = "cbestadoR";
-            this.cbestadoR.Size = new System.Drawing.Size(112, 26);
-            this.cbestadoR.TabIndex = 24;
-            // 
-            // lbestado
-            // 
-            this.lbestado.AutoSize = true;
-            this.lbestado.Location = new System.Drawing.Point(339, 58);
-            this.lbestado.Name = "lbestado";
-            this.lbestado.Size = new System.Drawing.Size(66, 18);
-            this.lbestado.TabIndex = 23;
-            this.lbestado.Text = "Estado:";
-            // 
             // txtdescripcion
             // 
             this.txtdescripcion.BackColor = System.Drawing.Color.Silver;
             this.txtdescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdescripcion.Location = new System.Drawing.Point(32, 170);
+            this.txtdescripcion.Location = new System.Drawing.Point(320, 97);
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(164, 24);
+            this.txtdescripcion.Size = new System.Drawing.Size(237, 24);
             this.txtdescripcion.TabIndex = 11;
             // 
             // btnagregar
@@ -165,7 +138,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 140);
+            this.label1.Location = new System.Drawing.Point(317, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 18);
             this.label1.TabIndex = 12;
@@ -286,8 +259,7 @@
             this.dtcategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.dataGridViewTextBoxColumn1,
-            this.Column6,
-            this.Column5});
+            this.Column6});
             this.dtcategorias.EnableHeadersVisualStyles = false;
             this.dtcategorias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.dtcategorias.Location = new System.Drawing.Point(32, 16);
@@ -313,34 +285,6 @@
             this.dtcategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtcategorias.Size = new System.Drawing.Size(1079, 240);
             this.dtcategorias.TabIndex = 6;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Descripción";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Estado";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // panel4
             // 
@@ -389,6 +333,27 @@
             this.label3.Size = new System.Drawing.Size(179, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "Total Categorias:";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Descripción";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Categorias
             // 
@@ -443,11 +408,8 @@
         private System.Windows.Forms.Button btnagregar;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Button btneditarroles;
-        private System.Windows.Forms.ComboBox cbestadoR;
-        private System.Windows.Forms.Label lbestado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

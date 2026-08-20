@@ -35,9 +35,8 @@
             this.pcicon = new System.Windows.Forms.PictureBox();
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtidcompra = new System.Windows.Forms.TextBox();
+            this.dtpfechaR = new System.Windows.Forms.DateTimePicker();
             this.CBmetodo = new System.Windows.Forms.ComboBox();
-            this.txtfecha = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btniniciar = new System.Windows.Forms.Button();
             this.cbprov = new System.Windows.Forms.ComboBox();
@@ -57,7 +56,11 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtfechaVen = new System.Windows.Forms.MaskedTextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtventa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,9 +68,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.CBproducto = new System.Windows.Forms.ComboBox();
             this.btneditarroles = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.lbliva = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblote = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -85,8 +90,7 @@
             this.txtusuario = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtlote = new System.Windows.Forms.TextBox();
+            this.lblidcompra = new System.Windows.Forms.Label();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -134,9 +138,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.txtidcompra);
+            this.panel1.Controls.Add(this.lblidcompra);
+            this.panel1.Controls.Add(this.dtpfechaR);
             this.panel1.Controls.Add(this.CBmetodo);
-            this.panel1.Controls.Add(this.txtfecha);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btniniciar);
             this.panel1.Controls.Add(this.cbprov);
@@ -151,15 +155,12 @@
             this.panel1.Size = new System.Drawing.Size(1138, 87);
             this.panel1.TabIndex = 4;
             // 
-            // txtidcompra
+            // dtpfechaR
             // 
-            this.txtidcompra.BackColor = System.Drawing.Color.Silver;
-            this.txtidcompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtidcompra.Enabled = false;
-            this.txtidcompra.Location = new System.Drawing.Point(1033, 10);
-            this.txtidcompra.Name = "txtidcompra";
-            this.txtidcompra.Size = new System.Drawing.Size(81, 24);
-            this.txtidcompra.TabIndex = 34;
+            this.dtpfechaR.Location = new System.Drawing.Point(658, 13);
+            this.dtpfechaR.Name = "dtpfechaR";
+            this.dtpfechaR.Size = new System.Drawing.Size(287, 24);
+            this.dtpfechaR.TabIndex = 35;
             // 
             // CBmetodo
             // 
@@ -168,23 +169,12 @@
             this.CBmetodo.FormattingEnabled = true;
             this.CBmetodo.Items.AddRange(new object[] {
             "Eféctivo",
-            "Tarjeta",
-            "Crédito"});
+            "Tarjeta"});
             this.CBmetodo.Location = new System.Drawing.Point(740, 49);
             this.CBmetodo.Name = "CBmetodo";
             this.CBmetodo.Size = new System.Drawing.Size(109, 26);
             this.CBmetodo.TabIndex = 33;
-            this.CBmetodo.Text = "Efectivo";
-            // 
-            // txtfecha
-            // 
-            this.txtfecha.BackColor = System.Drawing.Color.Silver;
-            this.txtfecha.Location = new System.Drawing.Point(670, 10);
-            this.txtfecha.Mask = "00/00/0000";
-            this.txtfecha.Name = "txtfecha";
-            this.txtfecha.Size = new System.Drawing.Size(100, 24);
-            this.txtfecha.TabIndex = 26;
-            this.txtfecha.ValidatingType = typeof(System.DateTime);
+            this.CBmetodo.Text = "Eféctivo";
             // 
             // label7
             // 
@@ -333,7 +323,9 @@
             this.Column1,
             this.Column2,
             this.Column5,
-            this.Column4});
+            this.Column4,
+            this.Column6,
+            this.Column7});
             this.dtcategorias.EnableHeadersVisualStyles = false;
             this.dtcategorias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.dtcategorias.Location = new System.Drawing.Point(30, 13);
@@ -408,11 +400,27 @@
             this.Column4.ReadOnly = true;
             this.Column4.Width = 74;
             // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Vencimiento";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 127;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Lote";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 68;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.txtlote);
+            this.panel4.Controls.Add(this.txtfechaVen);
+            this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.btnagregar);
             this.panel4.Controls.Add(this.txtventa);
@@ -429,10 +437,29 @@
             this.panel4.Size = new System.Drawing.Size(547, 271);
             this.panel4.TabIndex = 6;
             // 
+            // txtfechaVen
+            // 
+            this.txtfechaVen.BackColor = System.Drawing.Color.Silver;
+            this.txtfechaVen.Location = new System.Drawing.Point(392, 121);
+            this.txtfechaVen.Mask = "00/00/0000";
+            this.txtfechaVen.Name = "txtfechaVen";
+            this.txtfechaVen.Size = new System.Drawing.Size(100, 24);
+            this.txtfechaVen.TabIndex = 36;
+            this.txtfechaVen.ValidatingType = typeof(System.DateTime);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(371, 83);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(156, 18);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "Fecha Vencimeinto:";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(341, 83);
+            this.label6.Location = new System.Drawing.Point(137, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 18);
             this.label6.TabIndex = 31;
@@ -442,15 +469,15 @@
             // 
             this.txtventa.BackColor = System.Drawing.Color.Silver;
             this.txtventa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtventa.Location = new System.Drawing.Point(357, 121);
+            this.txtventa.Location = new System.Drawing.Point(275, 132);
             this.txtventa.Name = "txtventa";
-            this.txtventa.Size = new System.Drawing.Size(81, 24);
+            this.txtventa.Size = new System.Drawing.Size(73, 24);
             this.txtventa.TabIndex = 30;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 83);
+            this.label5.Location = new System.Drawing.Point(137, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 18);
             this.label5.TabIndex = 29;
@@ -460,7 +487,7 @@
             // 
             this.txtcompra.BackColor = System.Drawing.Color.Silver;
             this.txtcompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtcompra.Location = new System.Drawing.Point(195, 121);
+            this.txtcompra.Location = new System.Drawing.Point(275, 83);
             this.txtcompra.Name = "txtcompra";
             this.txtcompra.Size = new System.Drawing.Size(73, 24);
             this.txtcompra.TabIndex = 28;
@@ -498,6 +525,15 @@
             this.btneditarroles.TabIndex = 23;
             this.btneditarroles.UseVisualStyleBackColor = false;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(424, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 18);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Lote:";
+            // 
             // lbliva
             // 
             this.lbliva.AutoSize = true;
@@ -523,11 +559,24 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Controls.Add(this.lblote);
             this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label17);
             this.panel2.Location = new System.Drawing.Point(12, 188);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(547, 36);
             this.panel2.TabIndex = 7;
+            // 
+            // lblote
+            // 
+            this.lblote.AutoSize = true;
+            this.lblote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblote.ForeColor = System.Drawing.Color.Blue;
+            this.lblote.Location = new System.Drawing.Point(494, 10);
+            this.lblote.Name = "lblote";
+            this.lblote.Size = new System.Drawing.Size(19, 20);
+            this.lblote.TabIndex = 35;
+            this.lblote.Text = "0";
             // 
             // panel5
             // 
@@ -714,23 +763,16 @@
             this.label18.TabIndex = 10;
             this.label18.Text = "Información Adicional:";
             // 
-            // label17
+            // lblidcompra
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(378, 32);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(46, 18);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Lote:";
-            // 
-            // txtlote
-            // 
-            this.txtlote.BackColor = System.Drawing.Color.Silver;
-            this.txtlote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtlote.Location = new System.Drawing.Point(446, 30);
-            this.txtlote.Name = "txtlote";
-            this.txtlote.Size = new System.Drawing.Size(81, 24);
-            this.txtlote.TabIndex = 32;
+            this.lblidcompra.AutoSize = true;
+            this.lblidcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidcompra.ForeColor = System.Drawing.Color.Blue;
+            this.lblidcompra.Location = new System.Drawing.Point(1080, 10);
+            this.lblidcompra.Name = "lblidcompra";
+            this.lblidcompra.Size = new System.Drawing.Size(19, 20);
+            this.lblidcompra.TabIndex = 36;
+            this.lblidcompra.Text = "0";
             // 
             // Compras
             // 
@@ -824,9 +866,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.MaskedTextBox txtfecha;
-        private System.Windows.Forms.TextBox txtidcompra;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtlote;
+        private System.Windows.Forms.MaskedTextBox txtfechaVen;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DateTimePicker dtpfechaR;
+        private System.Windows.Forms.Label lblidcompra;
     }
 }

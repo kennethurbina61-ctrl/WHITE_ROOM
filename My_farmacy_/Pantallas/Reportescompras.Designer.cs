@@ -61,6 +61,7 @@
             this.lblregistro = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnguardar = new System.Windows.Forms.Button();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel3.SuspendLayout();
@@ -139,7 +140,8 @@
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
+            this.Column9,
+            this.Column10});
             this.dtcompras.EnableHeadersVisualStyles = false;
             this.dtcompras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.dtcompras.Location = new System.Drawing.Point(16, 13);
@@ -425,6 +427,14 @@
             this.btnguardar.TabIndex = 23;
             this.btnguardar.UseVisualStyleBackColor = false;
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Lote";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 68;
+            // 
             // Reportescompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -486,5 +496,6 @@
         private System.Windows.Forms.ComboBox cbproveedores;
         private System.Windows.Forms.MaskedTextBox txtfecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }
