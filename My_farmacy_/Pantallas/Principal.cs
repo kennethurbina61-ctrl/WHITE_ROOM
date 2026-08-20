@@ -1,4 +1,6 @@
-﻿using My_farmacy_.Pantallas;
+﻿using My_farmacy_.ClasesSQL;
+using My_farmacy_.Pantallas;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,12 @@ namespace My_farmacy_
     public partial class Principal : Form
     {
         bool flowoanelex;
+        PgAdmin pg = new PgAdmin();
         public Principal(string rol, string usuario)
         {
             InitializeComponent();
             lblrol.Text = rol;
             lblusuario.Text = usuario;
-           
         }
         
         private void btnexit_Click(object sender, EventArgs e)
@@ -30,22 +32,57 @@ namespace My_farmacy_
             {
                 Application.Exit();
             }
-
         }
         private void AbrirForm(object formHijo)
         {
 
-            for (int i = panelcontenedor.Controls.Count; i > 0; i--)
+              
+            if (panelcontenedor.Controls.Count > 0)
             {
+                Form formActual = panelcontenedor.Controls[0] as Form;
+                if (formActual != null)
+                {
+                    if (formActual is Compras compras)
+                    {
+                        bool cerrar = compras.cerrar;
+                        if (cerrar == true)
+                        {
+                            NpgsqlConnection cn = pg.conexion();
+                            string codigo = compras.codigoCompra;
+                            DialogResult resultado = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados.",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM compras WHERE idcompra = '" + codigo + "'", cn);
+                                NpgsqlDataReader dr = cmd.ExecuteReader();
+                                dr.Close();
+                                cn.Close();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+                                  
+                            }
+                        }
 
-                this.panelcontenedor.Controls.RemoveAt(0);
+                    }
+
+                }
+                panelcontenedor.Controls.Clear();
             }
             Form form = formHijo as Form;
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            this.panelcontenedor.Controls.Add(form);
-            this.panelcontenedor.Tag = form;
-            form.Show();
+                form.TopLevel = false;
+                form.Dock = DockStyle.Fill;
+                this.panelcontenedor.Controls.Add(form);
+                this.panelcontenedor.Tag = form;
+                form.Show();
+                
         }
 
         private void btnmaximizar_Click(object sender, EventArgs e)
@@ -249,6 +286,11 @@ namespace My_farmacy_
         private void btnrespaldo_Click(object sender, EventArgs e)
         {
             AbrirForm(new Respaldo());
+        }
+
+        private void panelcontenedor_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

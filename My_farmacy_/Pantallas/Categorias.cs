@@ -21,24 +21,14 @@ namespace My_farmacy_
         }
         public void llenar()
         {
-            string estado;
-            bool eso;
             NpgsqlConnection cn = pg.conexion();
-            NpgsqlCommand cmd = new NpgsqlCommand("Select idcategoria, nombre, descripcion, estado from categorias", cn);
+            NpgsqlCommand cmd = new NpgsqlCommand("Select idcategoria, nombre, descripcion from categorias", cn);
             NpgsqlDataReader nn = cmd.ExecuteReader();
             dtcategorias.Rows.Clear();
             while (nn.Read())
             {
-                eso = Convert.ToBoolean(nn[3]);
-                if(eso == true)
-                {
-                    estado = "Activo";
-                }
-                else
-                {
-                    estado = "Inactivo";
-                }
-                    dtcategorias.Rows.Add(nn[0], nn[1], nn[2], estado);
+                
+                    dtcategorias.Rows.Add(nn[0], nn[1], nn[2]);
             }
             nn.Close();
             cn.Close();
@@ -51,17 +41,8 @@ namespace My_farmacy_
 
         private void btnagregar_Click(object sender, EventArgs e)
         {
-            bool estado;
-            if (cbestadoR.Text == "Activo")
-            {
-                estado = true;
-            }
-            else
-            {
-                estado= false;
-            }
             NpgsqlConnection ag = pg.conexion();
-            NpgsqlCommand cmd = new NpgsqlCommand("Insert into categorias (nombre, descripcion, estado) values ('" + txtnombre.Text + "', '" + txtdescripcion.Text + "', '" + estado + "')", ag);
+            NpgsqlCommand cmd = new NpgsqlCommand("Insert into categorias (nombre, descripcion) values ('" + txtnombre.Text + "', '" + txtdescripcion.Text + "')", ag);
             cmd.ExecuteNonQuery();
             ag.Close();
             llenar();
