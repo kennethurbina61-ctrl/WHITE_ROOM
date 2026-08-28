@@ -42,17 +42,18 @@
             this.txtfecha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnguardar = new System.Windows.Forms.Button();
+            this.nudDolar = new System.Windows.Forms.NumericUpDown();
+            this.nudInicial = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.nudInicial = new System.Windows.Forms.NumericUpDown();
-            this.nudDolar = new System.Windows.Forms.NumericUpDown();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInicial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDolar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInicial)).BeginInit();
             this.SuspendLayout();
             // 
             // panelinformacion
@@ -196,6 +197,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.btnguardar);
             this.panel2.Controls.Add(this.nudDolar);
             this.panel2.Controls.Add(this.nudInicial);
             this.panel2.Controls.Add(this.label5);
@@ -206,6 +208,36 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1138, 180);
             this.panel2.TabIndex = 7;
+            // 
+            // btnguardar
+            // 
+            this.btnguardar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnguardar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnguardar;
+            this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnguardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnguardar.ForeColor = System.Drawing.Color.White;
+            this.btnguardar.Location = new System.Drawing.Point(903, 83);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.Size = new System.Drawing.Size(192, 50);
+            this.btnguardar.TabIndex = 36;
+            this.btnguardar.UseVisualStyleBackColor = false;
+            // 
+            // nudDolar
+            // 
+            this.nudDolar.Location = new System.Drawing.Point(492, 118);
+            this.nudDolar.Name = "nudDolar";
+            this.nudDolar.Size = new System.Drawing.Size(120, 24);
+            this.nudDolar.TabIndex = 30;
+            this.nudDolar.ValueChanged += new System.EventHandler(this.nudDolar_ValueChanged);
+            // 
+            // nudInicial
+            // 
+            this.nudInicial.Location = new System.Drawing.Point(61, 118);
+            this.nudInicial.Name = "nudInicial";
+            this.nudInicial.Size = new System.Drawing.Size(120, 24);
+            this.nudInicial.TabIndex = 29;
+            this.nudInicial.ValueChanged += new System.EventHandler(this.nudInicial_ValueChanged);
             // 
             // label5
             // 
@@ -236,20 +268,6 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Ingrese efectivo inicial";
             // 
-            // nudInicial
-            // 
-            this.nudInicial.Location = new System.Drawing.Point(61, 118);
-            this.nudInicial.Name = "nudInicial";
-            this.nudInicial.Size = new System.Drawing.Size(120, 24);
-            this.nudInicial.TabIndex = 29;
-            // 
-            // nudDolar
-            // 
-            this.nudDolar.Location = new System.Drawing.Point(492, 118);
-            this.nudDolar.Name = "nudDolar";
-            this.nudDolar.Size = new System.Drawing.Size(120, 24);
-            this.nudDolar.TabIndex = 30;
-            // 
             // AperturaC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,8 +286,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInicial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDolar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInicial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -295,5 +313,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnguardar;
     }
 }

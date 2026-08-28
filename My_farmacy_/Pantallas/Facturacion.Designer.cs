@@ -618,6 +618,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Facturacion";
             this.Text = "Facturacion";
+            this.Load += new System.EventHandler(this.Facturacion_Load);
             this.GBdatosFactura.ResumeLayout(false);
             this.GBdatosFactura.PerformLayout();
             this.GBtarjeta.ResumeLayout(false);

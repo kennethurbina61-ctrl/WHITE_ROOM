@@ -12,6 +12,7 @@ namespace My_farmacy_.Pantallas
 {
     public partial class Facturacion : Form
     {
+        public bool facturacionE = true;
         public Facturacion()
         {
             InitializeComponent();
@@ -19,7 +20,13 @@ namespace My_farmacy_.Pantallas
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            facturacionE = false;
             this.Close();
+        }
+
+        private void Facturacion_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

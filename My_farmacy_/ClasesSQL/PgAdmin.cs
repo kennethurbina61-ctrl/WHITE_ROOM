@@ -32,13 +32,10 @@ namespace My_farmacy_.ClasesSQL
             }
             catch(NpgsqlException e)
             {
-                MessageBox.Show("No se pudo conectar a la base de datos.");
+                MessageBox.Show("No se pudo conectar a la base de datos.", e.Message);
             }
             return cnx;
         }
-
-        Obteersql ob = new Obteersql();
-       
 
     }
 }

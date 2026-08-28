@@ -16,7 +16,7 @@ namespace My_farmacy_
     {
         int subtotalP = 0, iva = 0, total = 0, subt = 0, idcompra = 0, lote = 0, userid = 0, proveid = 0;
         int numeroF;
-        string pro, fechaVen, metodo, fecha, user, fechaR;
+        string pro, metodo, fecha, user, fechaR;
         public string codigoCompra { get; set; }  
         public bool cerrar { get; set; }
         public Compras(string user)
@@ -129,7 +129,7 @@ namespace My_farmacy_
             }
             NpgsqlCommand cmd = new NpgsqlCommand("insert into detalle_compra (idcompra, idproductos, cantidad, precio_c, precio_v, subtotal, nlote, fecha_vencimiento) values ('" + idcompra + "', '" + idproducto + "' , '" + cantidad + "','" + precio_c + "', '" + precio_v + "', '" + subtotalP + "', '"+ lote +"', '"+ fechaVen +"') ", cn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
-            MessageBox.Show("Producto agregado");
+            MessageBox.Show("" + CBproducto.Text +" agregado correctamente", "Producto Agregado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             dr.Close();
             cn.Close();
         }
@@ -139,7 +139,7 @@ namespace My_farmacy_
             NpgsqlConnection cn = pg.conexion();
             NpgsqlCommand cmd = new NpgsqlCommand("update compras set subtotal = '" + subt + "', iva = '" + iva + "', total= '" + total + "' where idcompra = '" + idcompra + "'", cn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
-            MessageBox.Show("El registro se guardo correctamente.");
+            MessageBox.Show("La compra se guardo correctamente.", "EXITO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dr.Close();
             cn.Close();
         }

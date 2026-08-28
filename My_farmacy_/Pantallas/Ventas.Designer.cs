@@ -28,20 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelinformacion = new System.Windows.Forms.Panel();
-            this.pcicon = new System.Windows.Forms.PictureBox();
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lkagregar = new System.Windows.Forms.LinkLabel();
-            this.btnbuscar = new System.Windows.Forms.PictureBox();
             this.txttelefono = new System.Windows.Forms.TextBox();
-            this.btniniciar = new System.Windows.Forms.Button();
             this.lbldatos = new System.Windows.Forms.Label();
             this.lblusuarui = new System.Windows.Forms.Label();
-            this.txtnumerofactura = new System.Windows.Forms.TextBox();
+            this.txtcliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblstock = new System.Windows.Forms.Label();
@@ -64,7 +61,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnfacturar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -81,13 +77,17 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnagregar = new System.Windows.Forms.Button();
+            this.btnfacturar = new System.Windows.Forms.Button();
+            this.btnrecargar = new System.Windows.Forms.PictureBox();
+            this.btniniciar = new System.Windows.Forms.Button();
+            this.pcicon = new System.Windows.Forms.PictureBox();
             this.panelinformacion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnbuscar)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtcategorias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnrecargar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelinformacion
@@ -101,16 +101,6 @@
             this.panelinformacion.Name = "panelinformacion";
             this.panelinformacion.Size = new System.Drawing.Size(1162, 61);
             this.panelinformacion.TabIndex = 4;
-            // 
-            // pcicon
-            // 
-            this.pcicon.BackgroundImage = global::My_farmacy_.Properties.Resources.iconocompra;
-            this.pcicon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcicon.Location = new System.Drawing.Point(12, 6);
-            this.pcicon.Name = "pcicon";
-            this.pcicon.Size = new System.Drawing.Size(76, 46);
-            this.pcicon.TabIndex = 4;
-            this.pcicon.TabStop = false;
             // 
             // lblnombrepantalla
             // 
@@ -126,13 +116,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnrecargar);
             this.panel1.Controls.Add(this.lkagregar);
-            this.panel1.Controls.Add(this.btnbuscar);
             this.panel1.Controls.Add(this.txttelefono);
             this.panel1.Controls.Add(this.btniniciar);
             this.panel1.Controls.Add(this.lbldatos);
             this.panel1.Controls.Add(this.lblusuarui);
-            this.panel1.Controls.Add(this.txtnumerofactura);
+            this.panel1.Controls.Add(this.txtcliente);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.panel1.Location = new System.Drawing.Point(12, 80);
@@ -154,16 +144,6 @@
             this.lkagregar.Text = "Agregar";
             this.lkagregar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkagregar_LinkClicked);
             // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackgroundImage = global::My_farmacy_.Properties.Resources.busqueda;
-            this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnbuscar.Location = new System.Drawing.Point(674, 41);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(40, 33);
-            this.btnbuscar.TabIndex = 27;
-            this.btnbuscar.TabStop = false;
-            // 
             // txttelefono
             // 
             this.txttelefono.BackColor = System.Drawing.Color.Silver;
@@ -172,20 +152,6 @@
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(174, 24);
             this.txttelefono.TabIndex = 26;
-            // 
-            // btniniciar
-            // 
-            this.btniniciar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btniniciar.BackgroundImage = global::My_farmacy_.Properties.Resources.confirmarbtn;
-            this.btniniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btniniciar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btniniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btniniciar.ForeColor = System.Drawing.Color.White;
-            this.btniniciar.Location = new System.Drawing.Point(979, 37);
-            this.btniniciar.Name = "btniniciar";
-            this.btniniciar.Size = new System.Drawing.Size(128, 33);
-            this.btniniciar.TabIndex = 25;
-            this.btniniciar.UseVisualStyleBackColor = false;
             // 
             // lbldatos
             // 
@@ -207,14 +173,17 @@
             this.lblusuarui.TabIndex = 9;
             this.lblusuarui.Text = "Nombre:";
             // 
-            // txtnumerofactura
+            // txtcliente
             // 
-            this.txtnumerofactura.BackColor = System.Drawing.Color.Silver;
-            this.txtnumerofactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnumerofactura.Location = new System.Drawing.Point(101, 50);
-            this.txtnumerofactura.Name = "txtnumerofactura";
-            this.txtnumerofactura.Size = new System.Drawing.Size(174, 24);
-            this.txtnumerofactura.TabIndex = 8;
+            this.txtcliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtcliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtcliente.BackColor = System.Drawing.Color.Silver;
+            this.txtcliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcliente.Location = new System.Drawing.Point(101, 50);
+            this.txtcliente.Name = "txtcliente";
+            this.txtcliente.Size = new System.Drawing.Size(174, 24);
+            this.txtcliente.TabIndex = 8;
+            this.txtcliente.Enter += new System.EventHandler(this.txtcliente_Enter);
             // 
             // label1
             // 
@@ -397,9 +366,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(1, 128);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(404, 18);
+            this.label18.Size = new System.Drawing.Size(458, 18);
             this.label18.TabIndex = 42;
-            this.label18.Text = "____________________________________________";
+            this.label18.Text = "__________________________________________________";
             // 
             // label14
             // 
@@ -449,21 +418,6 @@
             this.label8.Size = new System.Drawing.Size(51, 18);
             this.label8.TabIndex = 37;
             this.label8.Text = "Total:";
-            // 
-            // btnfacturar
-            // 
-            this.btnfacturar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnfacturar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnfacturar;
-            this.btnfacturar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnfacturar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnfacturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btnfacturar.ForeColor = System.Drawing.Color.White;
-            this.btnfacturar.Location = new System.Drawing.Point(139, 157);
-            this.btnfacturar.Name = "btnfacturar";
-            this.btnfacturar.Size = new System.Drawing.Size(135, 33);
-            this.btnfacturar.TabIndex = 23;
-            this.btnfacturar.UseVisualStyleBackColor = false;
-            this.btnfacturar.Click += new System.EventHandler(this.btnfacturar_Click);
             // 
             // label10
             // 
@@ -543,14 +497,14 @@
             this.dtcategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtcategorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dtcategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(156)))), ((int)(((byte)(174)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtcategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(156)))), ((int)(((byte)(174)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtcategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtcategorias.ColumnHeadersHeight = 30;
             this.dtcategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtcategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -567,20 +521,20 @@
             this.dtcategorias.Name = "dtcategorias";
             this.dtcategorias.ReadOnly = true;
             this.dtcategorias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtcategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtcategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtcategorias.RowHeadersVisible = false;
             this.dtcategorias.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtcategorias.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtcategorias.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtcategorias.RowTemplate.Height = 24;
             this.dtcategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtcategorias.Size = new System.Drawing.Size(1127, 147);
@@ -656,6 +610,57 @@
             this.btnagregar.TabIndex = 22;
             this.btnagregar.UseVisualStyleBackColor = false;
             // 
+            // btnfacturar
+            // 
+            this.btnfacturar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnfacturar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnfacturar;
+            this.btnfacturar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnfacturar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnfacturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnfacturar.ForeColor = System.Drawing.Color.White;
+            this.btnfacturar.Location = new System.Drawing.Point(139, 157);
+            this.btnfacturar.Name = "btnfacturar";
+            this.btnfacturar.Size = new System.Drawing.Size(135, 33);
+            this.btnfacturar.TabIndex = 23;
+            this.btnfacturar.UseVisualStyleBackColor = false;
+            this.btnfacturar.Click += new System.EventHandler(this.btnfacturar_Click);
+            // 
+            // btnrecargar
+            // 
+            this.btnrecargar.BackgroundImage = global::My_farmacy_.Properties.Resources.Copilot_20260828_154804;
+            this.btnrecargar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnrecargar.Location = new System.Drawing.Point(303, 50);
+            this.btnrecargar.Name = "btnrecargar";
+            this.btnrecargar.Size = new System.Drawing.Size(39, 24);
+            this.btnrecargar.TabIndex = 29;
+            this.btnrecargar.TabStop = false;
+            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
+            // 
+            // btniniciar
+            // 
+            this.btniniciar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btniniciar.BackgroundImage = global::My_farmacy_.Properties.Resources.confirmarbtn;
+            this.btniniciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btniniciar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btniniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btniniciar.ForeColor = System.Drawing.Color.White;
+            this.btniniciar.Location = new System.Drawing.Point(979, 37);
+            this.btniniciar.Name = "btniniciar";
+            this.btniniciar.Size = new System.Drawing.Size(128, 33);
+            this.btniniciar.TabIndex = 25;
+            this.btniniciar.UseVisualStyleBackColor = false;
+            this.btniniciar.Click += new System.EventHandler(this.btniniciar_Click);
+            // 
+            // pcicon
+            // 
+            this.pcicon.BackgroundImage = global::My_farmacy_.Properties.Resources.iconocompra;
+            this.pcicon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcicon.Location = new System.Drawing.Point(12, 6);
+            this.pcicon.Name = "pcicon";
+            this.pcicon.Size = new System.Drawing.Size(76, 46);
+            this.pcicon.TabIndex = 4;
+            this.pcicon.TabStop = false;
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -676,17 +681,18 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Ventas";
             this.Text = "Ventas";
+            this.Load += new System.EventHandler(this.Ventas_Load);
             this.panelinformacion.ResumeLayout(false);
             this.panelinformacion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcicon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnbuscar)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtcategorias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnrecargar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcicon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,9 +707,8 @@
         private System.Windows.Forms.Button btniniciar;
         private System.Windows.Forms.Label lbldatos;
         private System.Windows.Forms.Label lblusuarui;
-        private System.Windows.Forms.TextBox txtnumerofactura;
+        private System.Windows.Forms.TextBox txtcliente;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox btnbuscar;
         private System.Windows.Forms.TextBox txttelefono;
         private System.Windows.Forms.LinkLabel lkagregar;
         private System.Windows.Forms.Panel panel4;
@@ -744,5 +749,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.PictureBox btnrecargar;
     }
 }
