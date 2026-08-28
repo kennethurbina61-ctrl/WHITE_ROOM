@@ -43,13 +43,13 @@
             this.txtArqueo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbMoneda = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbMoneda = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnguardar = new System.Windows.Forms.Button();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -200,6 +200,39 @@
             this.panel2.Size = new System.Drawing.Size(951, 180);
             this.panel2.TabIndex = 10;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(636, 105);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(162, 24);
+            this.numericUpDown1.TabIndex = 31;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.Silver;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.comboBox1.Location = new System.Drawing.Point(331, 105);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(172, 26);
+            this.comboBox1.TabIndex = 30;
+            // 
+            // cbMoneda
+            // 
+            this.cbMoneda.BackColor = System.Drawing.Color.Silver;
+            this.cbMoneda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbMoneda.FormattingEnabled = true;
+            this.cbMoneda.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbMoneda.Location = new System.Drawing.Point(13, 105);
+            this.cbMoneda.Name = "cbMoneda";
+            this.cbMoneda.Size = new System.Drawing.Size(172, 26);
+            this.cbMoneda.TabIndex = 29;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -237,39 +270,6 @@
             this.label6.Size = new System.Drawing.Size(79, 18);
             this.label6.TabIndex = 12;
             this.label6.Text = "Cantidad:";
-            // 
-            // cbMoneda
-            // 
-            this.cbMoneda.BackColor = System.Drawing.Color.Silver;
-            this.cbMoneda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbMoneda.FormattingEnabled = true;
-            this.cbMoneda.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbMoneda.Location = new System.Drawing.Point(13, 105);
-            this.cbMoneda.Name = "cbMoneda";
-            this.cbMoneda.Size = new System.Drawing.Size(172, 26);
-            this.cbMoneda.TabIndex = 29;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.Silver;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.comboBox1.Location = new System.Drawing.Point(331, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(172, 26);
-            this.comboBox1.TabIndex = 30;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(636, 105);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(162, 24);
-            this.numericUpDown1.TabIndex = 31;
             // 
             // panel3
             // 
@@ -389,26 +389,26 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
-            // button1
+            // btnguardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1034, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 33);
-            this.button1.TabIndex = 35;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnguardar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnguardar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnguardar;
+            this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnguardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnguardar.ForeColor = System.Drawing.Color.White;
+            this.btnguardar.Location = new System.Drawing.Point(992, 386);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.Size = new System.Drawing.Size(192, 50);
+            this.btnguardar.TabIndex = 37;
+            this.btnguardar.UseVisualStyleBackColor = false;
             // 
             // ArqueoC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 802);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnguardar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -462,6 +462,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnguardar;
     }
 }

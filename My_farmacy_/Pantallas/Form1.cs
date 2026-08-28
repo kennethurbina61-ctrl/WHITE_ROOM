@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using Npgsql;
 using My_farmacy_.ClasesSQL;
 //using Npgsql;
@@ -98,51 +97,91 @@ namespace My_farmacy_
 
         private void login()
         {
-            bool estado;
             ClasesSQL.PgAdmin kk = new ClasesSQL.PgAdmin();
             NpgsqlConnection cnx = kk.conexion();
-            //Lo que hace esto es juntar y comparar el id rol y con la misma tabla para asi poder extraer el nombre del rol
-            NpgsqlCommand cm = new NpgsqlCommand(
-             "SELECT u.username, u.passwords, u.estado, r.nombre AS rol " +
-             "FROM usuario u " +
-             "JOIN rol r ON u.idrol = r.idrol " +
-             "WHERE u.username= '" + txtusuario.Text + "' AND u.passwords= '" + txtcontrasena.Text + "'", cnx);
-            NpgsqlDataReader dr = cm.ExecuteReader();
-           
-            if (dr.Read())
+            try
             {
-                string es = dr["estado"].ToString();
-                if (es == "True")
+                //Se hace la consulta para revisasr si elusuario y la contra coinciden en la base de datos
+                NpgsqlCommand cm = new NpgsqlCommand(
+                    "SELECT u.username, u.passwords, u.estado, r.nombre AS rol " +
+                    "FROM usuario u " +
+                    "JOIN rol r ON u.idrol = r.idrol " +
+                    "WHERE u.username = @usuario AND u.passwords = @contrasena",
+                    cnx);
+
+                cm.Parameters.AddWithValue("@usuario", txtusuario.Text);
+                cm.Parameters.AddWithValue("@contrasena", txtcontrasena.Text);
+
+                NpgsqlDataReader dr = cm.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    string usuario = txtusuario.Text;
-                    MessageBox.Show("Bienvenido al sistema " + usuario + ".", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    string rol = dr["rol"].ToString();
-                    Principal pp = new Principal(rol, usuario);
-                    pp.Show();
-                    this.Hide();
+                    string es = dr["estado"].ToString();
+
+                    if (es == "True")
+                    {
+                        string usuario = txtusuario.Text;
+
+                        MessageBox.Show(
+                            "Bienvenido al sistema " + usuario + ".",
+                            "Información",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        string rol = dr["rol"].ToString();
+
+                        Principal pp = new Principal(rol, usuario);
+                        pp.Show();
+
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "El usuario esta inactivo.",
+                            "Advertencia",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+
+                        txtusuario.Text = "Ingrese su usuario";
+                        txtcontrasena.Text = "Ingrese su contraseña";
+                        txtcontrasena.UseSystemPasswordChar = false;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("El usuario esta inactivo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "El usuario y/o la contraseña es incorrecta.",
+                        "Advertencia",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
                     txtusuario.Text = "Ingrese su usuario";
                     txtcontrasena.Text = "Ingrese su contraseña";
                     txtcontrasena.UseSystemPasswordChar = false;
                 }
-                
+
+                dr.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("El usuario y/o la contraseña es incorrecta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtusuario.Text = "Ingrese su usuario";
-                txtcontrasena.Text = "Ingrese su contraseña";
-                txtcontrasena.UseSystemPasswordChar = false;
+                MessageBox.Show(
+                    "Ocurrió un error al iniciar sesión:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (cnx.State == ConnectionState.Open)
+                {
+                    cnx.Close();
+                }
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
                     login();
-         
-          
         }
 
         private void linkrecuperar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

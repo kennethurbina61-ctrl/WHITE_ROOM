@@ -61,7 +61,7 @@ namespace My_farmacy_.ClasesSQL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo hacer el respaldo.");
+                MessageBox.Show("No se pudo hacer el respaldo.", ex.Message);
                 return false;
             }
 
@@ -102,7 +102,7 @@ namespace My_farmacy_.ClasesSQL
             }
             catch(Exception ex)
             {
-                MessageBox.Show("No se encontro nada");
+                MessageBox.Show("No se encontro nada", ex.Message);
                 return false;
             }
         }

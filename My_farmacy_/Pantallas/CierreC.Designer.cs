@@ -53,7 +53,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnguardar = new System.Windows.Forms.Button();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,9 +93,9 @@
             this.lblnombrepantalla.Location = new System.Drawing.Point(98, 12);
             this.lblnombrepantalla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblnombrepantalla.Name = "lblnombrepantalla";
-            this.lblnombrepantalla.Size = new System.Drawing.Size(275, 32);
+            this.lblnombrepantalla.Size = new System.Drawing.Size(125, 32);
             this.lblnombrepantalla.TabIndex = 1;
-            this.lblnombrepantalla.Text = "ARQUEO DE CAJA";
+            this.lblnombrepantalla.Text = "CIERRE";
             // 
             // panel1
             // 
@@ -324,26 +324,26 @@
             this.textBox3.Size = new System.Drawing.Size(88, 41);
             this.textBox3.TabIndex = 8;
             // 
-            // button1
+            // btnguardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.BackgroundImage = global::My_farmacy_.Properties.Resources.agregarbtn;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(369, 600);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 33);
-            this.button1.TabIndex = 36;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnguardar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnguardar.BackgroundImage = global::My_farmacy_.Properties.Resources.btnguardar;
+            this.btnguardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnguardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnguardar.ForeColor = System.Drawing.Color.White;
+            this.btnguardar.Location = new System.Drawing.Point(405, 596);
+            this.btnguardar.Name = "btnguardar";
+            this.btnguardar.Size = new System.Drawing.Size(192, 50);
+            this.btnguardar.TabIndex = 37;
+            this.btnguardar.UseVisualStyleBackColor = false;
             // 
             // CierreC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 670);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnguardar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelinformacion);
@@ -392,6 +392,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnguardar;
     }
 }

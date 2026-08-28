@@ -17,8 +17,7 @@ namespace My_farmacy_
 {
     public partial class UsuariosRol : Form
     {
-        ClasesSQL.PgAdmin ll = new ClasesSQL.PgAdmin();
-        int usario_id;
+        PgAdmin ll = new PgAdmin();
         public UsuariosRol()
         {
             InitializeComponent();

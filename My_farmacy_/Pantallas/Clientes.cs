@@ -64,7 +64,7 @@ namespace My_farmacy_
                     estado = "Inactivo";
                 }
 
-                dtcategorias.Rows.Add(rd[0], rd[1], rd[2], rd[3], rd[4], estado);
+                dtcategorias.Rows.Add(rd[0], rd[1], rd[4], rd[3], rd[2], estado);
             }
             rd.Close();
             cn.Close();

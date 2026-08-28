@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace My_farmacy_
 {
@@ -43,7 +44,7 @@ namespace My_farmacy_
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("No se pudo envair el email.", ex.Message);
             }
             finally { mailmessege.Dispose();
                 smtpClient.Dispose();

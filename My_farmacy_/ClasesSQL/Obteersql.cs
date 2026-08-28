@@ -10,8 +10,8 @@ namespace My_farmacy_.ClasesSQL
 {
     public class Obteersql
     {
-        string codigor;
-      Random r = new Random();
+      
+        Random r = new Random();
         public void codigo(string codigo)
         {
             codigo = r.Next(300000, 999999).ToString();

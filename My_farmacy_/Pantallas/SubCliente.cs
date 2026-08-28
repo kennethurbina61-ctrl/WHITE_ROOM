@@ -16,6 +16,7 @@ namespace My_farmacy_.Pantallas
     {
         PgAdmin sql = new PgAdmin();
         bool estado;
+        public bool clienteR;
         public SubCliente()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace My_farmacy_.Pantallas
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            clienteR = false;
             this.Close();
         }
 
@@ -47,6 +49,7 @@ namespace My_farmacy_.Pantallas
             MessageBox.Show("Cliente agregado correctamente.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             rd.Close();
             cn.Close();
+           
         }
     }
 }

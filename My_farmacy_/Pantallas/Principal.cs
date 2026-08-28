@@ -36,10 +36,11 @@ namespace My_farmacy_
         private void AbrirForm(object formHijo)
         {
 
-              
+             //dentro del if verificamos si ya hay un formulario cargado 
             if (panelcontenedor.Controls.Count > 0)
             {
                 Form formActual = panelcontenedor.Controls[0] as Form;
+                //si el form es diferente a null se pregunta en los formularios mencionados si quiere cambiar sin guardar
                 if (formActual != null)
                 {
                     if (formActual is Compras compras)
@@ -50,7 +51,7 @@ namespace My_farmacy_
                             NpgsqlConnection cn = pg.conexion();
                             string codigo = compras.codigoCompra;
                             DialogResult resultado = MessageBox.Show(
-                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados.",
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
                             "Confirmar acción",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question
@@ -68,6 +69,37 @@ namespace My_farmacy_
                                 cn.Close();
                                 return;
                                   
+                            }
+
+                        }
+
+                    }
+                    else if (formActual is Ventas venta)
+                    {
+                        bool cerrarV = venta.cerrarV;
+                        if (cerrarV == true)
+                        {
+                            NpgsqlConnection cn = pg.conexion();
+                            int codigoV = venta.codigoVenta;
+                            DialogResult resultado = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM venta WHERE idventa = '" + codigoV + "'", cn);
+                                NpgsqlDataReader dr = cmd.ExecuteReader();
+                                dr.Close();
+                                cn.Close();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+
                             }
                         }
 
