@@ -16,6 +16,7 @@ namespace My_farmacy_.Pantallas
     {
         public bool cerrarV {  get; set; }
         public int codigoVenta { get; set; }
+        public bool ProduV {  get; set; }
         public bool facturar = false;
         public bool cliente = false;
         bool agregadoR;
@@ -88,6 +89,9 @@ namespace My_farmacy_.Pantallas
                     codigoVenta = rd.GetInt32(0);
                     MessageBox.Show("Agregue productos a la venta.", "SISTEMA DE VENTAS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                btnagregar.Enabled = true;
+                btneliminar.Enabled = true;
+                panel4.Enabled = true; 
             }
             else
             {
@@ -97,7 +101,10 @@ namespace My_farmacy_.Pantallas
         }
         private void Ventas_Load(object sender, EventArgs e)
         {
-
+            panel4.Enabled= false;
+            panel2.Enabled= false;
+            btnagregar.Enabled= false;
+            btneliminar.Enabled= false;
         }
 
         void autocompletar()
@@ -123,6 +130,12 @@ namespace My_farmacy_.Pantallas
         private void btnrecargar_Click(object sender, EventArgs e)
         {
             autocompletar();
+        }
+
+        private void btnagregar_Click(object sender, EventArgs e)
+        {
+            ProduV = true;
+            panel2.Enabled = true;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace My_farmacy_
     {
         bool flowoanelex;
         PgAdmin pg = new PgAdmin();
+        string rolP, usuarioP;
         public Principal(string rol, string usuario)
         {
             InitializeComponent();
@@ -30,49 +31,54 @@ namespace My_farmacy_
             DialogResult r = MessageBox.Show("¿Desea salir de la aplicación?", "AVISO DE CIERRE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (r == DialogResult.Yes)
             {
-                Application.Exit();
-            }
-        }
-        private void AbrirForm(object formHijo)
-        {
-
-             //dentro del if verificamos si ya hay un formulario cargado 
-            if (panelcontenedor.Controls.Count > 0)
-            {
                 Form formActual = panelcontenedor.Controls[0] as Form;
-                //si el form es diferente a null se pregunta en los formularios mencionados si quiere cambiar sin guardar
                 if (formActual != null)
                 {
                     if (formActual is Compras compras)
                     {
                         bool cerrar = compras.cerrar;
-                        if (cerrar == true)
+                        NpgsqlConnection cn = pg.conexion();
+                        string codigo = compras.codigoCompra;
+                        //si no se agrego ningun producto y solo se registro la factura
+
+                        if (cerrar == true)//si ya se agrego un producto
                         {
-                            NpgsqlConnection cn = pg.conexion();
-                            string codigo = compras.codigoCompra;
-                            DialogResult resultado = MessageBox.Show(
+                            DialogResult resultado2 = MessageBox.Show(
                             "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
                             "Confirmar acción",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question
                             );
-                            if (resultado == DialogResult.Yes)
+                            if (resultado2 == DialogResult.Yes)
                             {
                                 formActual.Close();
-                                NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM compras WHERE idcompra = '" + codigo + "'", cn);
-                                NpgsqlDataReader dr = cmd.ExecuteReader();
-                                dr.Close();
+                                //Primero borramos todos los registros que tengan como referencia el id de compra
+                                using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    prod.ExecuteNonQuery();
+                                }
+                                //luego eliminamos el id antes de reinciarlo
+                                using (var cmd = new NpgsqlCommand("DELETE FROM compras WHERE idcompra = @codigo", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    cmd.ExecuteNonQuery();
+                                }
+                                //este using ejecuta un comando que reinicia el idprimario para volverlo a utilizar
+                                using (var alt = new NpgsqlCommand($"ALTER SEQUENCE compras_idcompra_seq RESTART WITH {codigo}", cn))
+                                {
+                                    alt.ExecuteNonQuery();
+                                }
                                 cn.Close();
+                                Application.Exit();
                             }
                             else
                             {
                                 cn.Close();
                                 return;
-                                  
                             }
 
                         }
-
                     }
                     else if (formActual is Ventas venta)
                     {
@@ -90,9 +96,131 @@ namespace My_farmacy_
                             if (resultado == DialogResult.Yes)
                             {
                                 formActual.Close();
-                                NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM venta WHERE idventa = '" + codigoV + "'", cn);
-                                NpgsqlDataReader dr = cmd.ExecuteReader();
-                                dr.Close();
+                                using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
+                                {
+                                    vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
+                                    vnt.ExecuteNonQuery();
+                                }
+                                using (var rei = new NpgsqlCommand($"ALTER SEQUENCE venta_idventa_seq RESTART WITH {codigoV}", cn))
+                                {
+                                    rei.ExecuteNonQuery();
+                                }
+                                bool proV = venta.ProduV;
+                                if (proV == true)
+                                {
+                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                    {
+                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
+                                        cmV.ExecuteNonQuery();
+                                    }
+                                }
+                                cn.Close();
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+
+                            }
+                        }
+
+                    }
+                }
+                panelcontenedor.Controls.Clear();
+            }
+            Application.Exit();
+        }
+        private void AbrirForm(object formHijo)
+        {
+
+            //dentro del if verificamos si ya hay un formulario cargado 
+            if (panelcontenedor.Controls.Count > 0)
+            {
+                Form formActual = panelcontenedor.Controls[0] as Form;
+                //si el form es diferente a null se pregunta en los formularios mencionados si quiere cambiar sin guardar
+                if (formActual != null)
+                {
+                    
+                    if (formActual is Compras compras)
+                    {
+                        bool cerrar = compras.cerrar;
+                        NpgsqlConnection cn = pg.conexion();
+                        string codigo = compras.codigoCompra;
+                        //si no se agrego ningun producto y solo se registro la factura
+                       
+                        if (cerrar == true)//si ya se agrego un producto
+                        {
+                            DialogResult resultado2 = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado2 == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                //Primero borramos todos los registros que tengan como referencia el id de compra
+                                using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    prod.ExecuteNonQuery();
+                                }
+                                //luego eliminamos el id antes de reinciarlo
+                                using (var cmd = new NpgsqlCommand("DELETE FROM compras WHERE idcompra = @codigo", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    cmd.ExecuteNonQuery();
+                                }
+                                //este using ejecuta un comando que reinicia el idprimario para volverlo a utilizar
+                                using (var alt = new NpgsqlCommand($"ALTER SEQUENCE compras_idcompra_seq RESTART WITH {codigo}", cn))
+                                {
+                                    alt.ExecuteNonQuery();
+                                }
+                                cn.Close();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+                            }
+
+                        }
+                    }
+                    else if (formActual is Ventas venta)
+                    {
+                        bool cerrarV = venta.cerrarV;
+                        if (cerrarV == true)
+                        {
+                            NpgsqlConnection cn = pg.conexion();
+                            int codigoV = venta.codigoVenta;
+                            DialogResult resultado = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
+                                {
+                                    vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
+                                    vnt.ExecuteNonQuery();
+                                }
+                                using (var rei = new NpgsqlCommand($"ALTER SEQUENCE venta_idventa_seq RESTART WITH {codigoV}", cn))
+                                {
+                                    rei.ExecuteNonQuery();
+                                }
+                                bool proV = venta.ProduV;
+                                if (proV == true)
+                                {
+                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                    {
+                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
+                                        cmV.ExecuteNonQuery();
+                                    }
+                                }
                                 cn.Close();
                             }
                             else
@@ -104,18 +232,17 @@ namespace My_farmacy_
                         }
 
                     }
-
                 }
                 panelcontenedor.Controls.Clear();
             }
             Form form = formHijo as Form;
-                form.TopLevel = false;
-                form.Dock = DockStyle.Fill;
-                this.panelcontenedor.Controls.Add(form);
-                this.panelcontenedor.Tag = form;
-                form.Show();
-                
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            this.panelcontenedor.Controls.Add(form);
+            this.panelcontenedor.Tag = form;
+            form.Show();
         }
+            
 
         private void btnmaximizar_Click(object sender, EventArgs e)
         {
@@ -132,24 +259,123 @@ namespace My_farmacy_
 
         private void linkcerrarsesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            loging ll = new loging();
             DialogResult resultado = MessageBox.Show(
          "¿Desea cerrar sesión?",
          "Confirmar cierre de sesión",
          MessageBoxButtons.YesNo,
          MessageBoxIcon.Question
-     );
+            );
 
             if (resultado == DialogResult.Yes)
             {
-  
-                MessageBox.Show("Sesión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                loging ll = new loging();
+                Form formActual = panelcontenedor.Controls[0] as Form;
+                if (formActual != null)
+                {
+                    if (formActual is Compras compras)
+                    {
+                        bool cerrar = compras.cerrar;
+                        NpgsqlConnection cn = pg.conexion();
+                        string codigo = compras.codigoCompra;
+                        //si no se agrego ningun producto y solo se registro la factura
+
+                        if (cerrar == true)//si ya se agrego un producto
+                        {
+                            DialogResult resultado2 = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado2 == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                //Primero borramos todos los registros que tengan como referencia el id de compra
+                                using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    prod.ExecuteNonQuery();
+                                }
+                                //luego eliminamos el id antes de reinciarlo
+                                using (var cmd = new NpgsqlCommand("DELETE FROM compras WHERE idcompra = @codigo", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("@codigo", Convert.ToInt32(codigo));
+                                    cmd.ExecuteNonQuery();
+                                }
+                                //este using ejecuta un comando que reinicia el idprimario para volverlo a utilizar
+                                using (var alt = new NpgsqlCommand($"ALTER SEQUENCE compras_idcompra_seq RESTART WITH {codigo}", cn))
+                                {
+                                    alt.ExecuteNonQuery();
+                                }
+                                cn.Close();
+                                MessageBox.Show("Sesión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ll.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+                            }
+
+                        }
+                    }
+                    else if (formActual is Ventas venta)//falta terminar ventas
+                    {
+                        bool cerrarV = venta.cerrarV;
+                        if (cerrarV == true)
+                        {
+                            NpgsqlConnection cn = pg.conexion();
+                            int codigoV = venta.codigoVenta;
+                            DialogResult resultado3 = MessageBox.Show(
+                            "Nota: Si no se finaliza el proceso, los datos seran reiniciados. ¿Estas seguro que quieres continuar?",
+                            "Confirmar acción",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                            );
+                            if (resultado3 == DialogResult.Yes)
+                            {
+                                formActual.Close();
+                                using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
+                                {
+                                    vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
+                                    vnt.ExecuteNonQuery();
+                                }
+                                using (var rei = new NpgsqlCommand($"ALTER SEQUENCE venta_idventa_seq RESTART WITH {codigoV}", cn))
+                                {
+                                    rei.ExecuteNonQuery();
+                                }
+                                bool proV = venta.ProduV;
+                                if (proV == true)
+                                {
+                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                    {
+                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
+                                        cmV.ExecuteNonQuery();
+                                    }
+                                }
+                                cn.Close();
+                                MessageBox.Show("Sesión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ll.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                cn.Close();
+                                return;
+                            }
+                        }
+
+                    }
+                    panelcontenedor.Controls.Clear();
+                }
                 ll.Show();
                 this.Close();
+               
             }
             else
-                {
-               
+            {
+                return;
             }
             
         }
@@ -167,7 +393,7 @@ namespace My_farmacy_
 
         private void btncontrolcaja_Click(object sender, EventArgs e)
         {
-
+            AbrirForm(new ControlCaja());
         }
 
         private void timerdash_Tick(object sender, EventArgs e)
@@ -323,6 +549,16 @@ namespace My_farmacy_
         private void panelcontenedor_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnapertura_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new AperturaC());
+        }
+
+        private void btnarqueocaja_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new ArqueoC());
         }
     }
 }
