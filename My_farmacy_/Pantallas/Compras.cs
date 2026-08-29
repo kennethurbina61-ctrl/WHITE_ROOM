@@ -116,7 +116,7 @@ namespace My_farmacy_
             lbliva.Text = iva.ToString("N2");
             lbltotal.Text = total.ToString("N2");
             lblsubtotal.Text = subt.ToString("N2");
-           
+
 
             //Agregar_detalle
             NpgsqlConnection cn = pg.conexion();

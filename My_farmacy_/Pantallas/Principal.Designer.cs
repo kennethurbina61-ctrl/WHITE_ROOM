@@ -83,6 +83,7 @@
             this.tmcaja = new System.Windows.Forms.Timer(this.components);
             this.tminv = new System.Windows.Forms.Timer(this.components);
             this.tmreprtes = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelbotones.SuspendLayout();
             this.panelactivar.SuspendLayout();
             this.pnlcaja.SuspendLayout();
@@ -103,6 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnminimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnexit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pclogo)).BeginInit();
+            this.panelcontenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelbotones
@@ -174,6 +177,7 @@
             this.btnarqueocaja.Size = new System.Drawing.Size(136, 28);
             this.btnarqueocaja.TabIndex = 3;
             this.btnarqueocaja.UseVisualStyleBackColor = true;
+            this.btnarqueocaja.Click += new System.EventHandler(this.btnarqueocaja_Click);
             // 
             // btncontrolcaja
             // 
@@ -197,6 +201,7 @@
             this.btnapertura.Size = new System.Drawing.Size(136, 28);
             this.btnapertura.TabIndex = 1;
             this.btnapertura.UseVisualStyleBackColor = true;
+            this.btnapertura.Click += new System.EventHandler(this.btnapertura_Click);
             // 
             // btncaja
             // 
@@ -659,6 +664,7 @@
             // 
             this.panelcontenedor.AutoScroll = true;
             this.panelcontenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.panelcontenedor.Controls.Add(this.pictureBox1);
             this.panelcontenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelcontenedor.Location = new System.Drawing.Point(162, 68);
             this.panelcontenedor.Name = "panelcontenedor";
@@ -685,6 +691,16 @@
             // 
             this.tmreprtes.Interval = 10;
             this.tmreprtes.Tick += new System.EventHandler(this.tmreprtes_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1147, 626);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Principal
             // 
@@ -722,6 +738,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnminimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnexit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pclogo)).EndInit();
+            this.panelcontenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -782,5 +800,6 @@
         private System.Windows.Forms.Timer tmcaja;
         private System.Windows.Forms.Timer tminv;
         private System.Windows.Forms.Timer tmreprtes;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
