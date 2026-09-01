@@ -241,13 +241,14 @@
             this.CBmetodopago.FormattingEnabled = true;
             this.CBmetodopago.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.CBmetodopago.Items.AddRange(new object[] {
-            "Efectivo",
+            "Eféctivo",
             "Tarjeta"});
             this.CBmetodopago.Location = new System.Drawing.Point(553, 21);
             this.CBmetodopago.Name = "CBmetodopago";
             this.CBmetodopago.Size = new System.Drawing.Size(175, 28);
             this.CBmetodopago.TabIndex = 41;
-            this.CBmetodopago.Text = "Efectivo";
+            this.CBmetodopago.Text = "Eféctivo";
+            this.CBmetodopago.TextChanged += new System.EventHandler(this.CBmetodopago_TextChanged);
             // 
             // label1
             // 
@@ -572,6 +573,7 @@
             this.btnpagar.Size = new System.Drawing.Size(135, 40);
             this.btnpagar.TabIndex = 103;
             this.btnpagar.UseVisualStyleBackColor = false;
+            this.btnpagar.Click += new System.EventHandler(this.btnpagar_Click);
             // 
             // btncancelar
             // 

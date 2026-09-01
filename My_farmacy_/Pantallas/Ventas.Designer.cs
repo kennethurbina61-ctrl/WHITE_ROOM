@@ -59,26 +59,26 @@
             this.txtcantidad = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lbliva = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnfacturar = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblfinalsubtotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.dtcategorias = new System.Windows.Forms.DataGridView();
+            this.dtventas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnagregar = new System.Windows.Forms.Button();
             this.panelinformacion.SuspendLayout();
@@ -87,7 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnrecargar)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtcategorias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtventas)).BeginInit();
             this.SuspendLayout();
             // 
             // panelinformacion
@@ -357,6 +357,7 @@
             this.CBproducto.Name = "CBproducto";
             this.CBproducto.Size = new System.Drawing.Size(199, 26);
             this.CBproducto.TabIndex = 25;
+            this.CBproducto.SelectedIndexChanged += new System.EventHandler(this.CBproducto_SelectedIndexChanged);
             // 
             // lbestado
             // 
@@ -375,18 +376,23 @@
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.Size = new System.Drawing.Size(53, 24);
             this.txtcantidad.TabIndex = 11;
+            this.txtcantidad.Text = "0";
+            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
+            this.txtcantidad.Enter += new System.EventHandler(this.txtcantidad_Enter);
+            this.txtcantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcantidad_KeyPress);
+            this.txtcantidad.Leave += new System.EventHandler(this.txtcantidad_Leave);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.lbltotal);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.lbliva);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.btnfacturar);
-            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.lblfinalsubtotal);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label15);
@@ -406,15 +412,15 @@
             this.label18.TabIndex = 42;
             this.label18.Text = "__________________________________________________";
             // 
-            // label14
+            // lbltotal
             // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Green;
-            this.label14.Location = new System.Drawing.Point(350, 100);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(40, 18);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "0.00";
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.ForeColor = System.Drawing.Color.Green;
+            this.lbltotal.Location = new System.Drawing.Point(350, 100);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(40, 18);
+            this.lbltotal.TabIndex = 41;
+            this.lbltotal.Text = "0.00";
             // 
             // label17
             // 
@@ -426,15 +432,15 @@
             this.label17.TabIndex = 40;
             this.label17.Text = "C$";
             // 
-            // label9
+            // lbliva
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Green;
-            this.label9.Location = new System.Drawing.Point(217, 100);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 18);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "0.00";
+            this.lbliva.AutoSize = true;
+            this.lbliva.ForeColor = System.Drawing.Color.Green;
+            this.lbliva.Location = new System.Drawing.Point(217, 100);
+            this.lbliva.Name = "lbliva";
+            this.lbliva.Size = new System.Drawing.Size(40, 18);
+            this.lbliva.TabIndex = 39;
+            this.lbliva.Text = "0.00";
             // 
             // label12
             // 
@@ -470,15 +476,15 @@
             this.btnfacturar.UseVisualStyleBackColor = false;
             this.btnfacturar.Click += new System.EventHandler(this.btnfacturar_Click);
             // 
-            // label10
+            // lblfinalsubtotal
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Green;
-            this.label10.Location = new System.Drawing.Point(75, 100);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 18);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "0.00";
+            this.lblfinalsubtotal.AutoSize = true;
+            this.lblfinalsubtotal.ForeColor = System.Drawing.Color.Green;
+            this.lblfinalsubtotal.Location = new System.Drawing.Point(75, 100);
+            this.lblfinalsubtotal.Name = "lblfinalsubtotal";
+            this.lblfinalsubtotal.Size = new System.Drawing.Size(40, 18);
+            this.lblfinalsubtotal.TabIndex = 36;
+            this.lblfinalsubtotal.Text = "0.00";
             // 
             // label11
             // 
@@ -536,18 +542,18 @@
             this.label20.ForeColor = System.Drawing.Color.Blue;
             this.label20.Location = new System.Drawing.Point(28, 440);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(188, 25);
+            this.label20.Size = new System.Drawing.Size(211, 25);
             this.label20.TabIndex = 44;
-            this.label20.Text = "Resumen de Pago";
+            this.label20.Text = "Resumen de Factura";
             // 
-            // dtcategorias
+            // dtventas
             // 
-            this.dtcategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtcategorias.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtcategorias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
-            this.dtcategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtcategorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dtcategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtventas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtventas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtventas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
+            this.dtventas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtventas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dtventas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(156)))), ((int)(((byte)(174)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -555,23 +561,23 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtcategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtcategorias.ColumnHeadersHeight = 30;
-            this.dtcategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtcategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtventas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtventas.ColumnHeadersHeight = 30;
+            this.dtventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtventas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.Column3,
             this.Column1,
             this.Column2,
-            this.Column5,
-            this.Column4});
-            this.dtcategorias.EnableHeadersVisualStyles = false;
-            this.dtcategorias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            this.dtcategorias.Location = new System.Drawing.Point(23, 480);
-            this.dtcategorias.Margin = new System.Windows.Forms.Padding(30);
-            this.dtcategorias.Name = "dtcategorias";
-            this.dtcategorias.ReadOnly = true;
-            this.dtcategorias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.Column4,
+            this.Column5});
+            this.dtventas.EnableHeadersVisualStyles = false;
+            this.dtventas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.dtventas.Location = new System.Drawing.Point(23, 480);
+            this.dtventas.Margin = new System.Windows.Forms.Padding(30);
+            this.dtventas.Name = "dtventas";
+            this.dtventas.ReadOnly = true;
+            this.dtventas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -579,17 +585,17 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtcategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtcategorias.RowHeadersVisible = false;
-            this.dtcategorias.RowHeadersWidth = 51;
+            this.dtventas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtventas.RowHeadersVisible = false;
+            this.dtventas.RowHeadersWidth = 51;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtcategorias.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtcategorias.RowTemplate.Height = 24;
-            this.dtcategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtcategorias.Size = new System.Drawing.Size(1127, 147);
-            this.dtcategorias.TabIndex = 46;
+            this.dtventas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtventas.RowTemplate.Height = 24;
+            this.dtventas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtventas.Size = new System.Drawing.Size(1127, 147);
+            this.dtventas.TabIndex = 46;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -607,17 +613,24 @@
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Precio Compra";
+            this.Column1.HeaderText = "Categoría";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Precio Venta";
+            this.Column2.HeaderText = "Precio";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "IVA";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
@@ -625,13 +638,6 @@
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Pago";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             // 
             // btneliminar
             // 
@@ -668,7 +674,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1162, 644);
-            this.Controls.Add(this.dtcategorias);
+            this.Controls.Add(this.dtventas);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btnagregar);
@@ -693,7 +699,7 @@
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtcategorias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtventas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,27 +735,27 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblfinalsubtotal;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbltotal;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbliva;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btneliminar;
-        private System.Windows.Forms.DataGridView dtcategorias;
+        private System.Windows.Forms.DataGridView dtventas;
+        private System.Windows.Forms.PictureBox btnrecargar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.PictureBox btnrecargar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
