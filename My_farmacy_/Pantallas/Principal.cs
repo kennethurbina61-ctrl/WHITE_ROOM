@@ -19,6 +19,8 @@ namespace My_farmacy_
         bool flowoanelex;
         PgAdmin pg = new PgAdmin();
         string rolP, usuarioP;
+        Facturacion ff = new Facturacion();
+        SubCliente ss = new SubCliente();
         public Principal(string rol, string usuario)
         {
             InitializeComponent();
@@ -96,6 +98,13 @@ namespace My_farmacy_
                             if (resultado == DialogResult.Yes)
                             {
                                 formActual.Close();
+
+                                using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                {
+                                    cmV.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
+                                    cmV.ExecuteNonQuery();
+                                }
+
                                 using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
                                 {
                                     vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
@@ -104,16 +113,7 @@ namespace My_farmacy_
                                 using (var rei = new NpgsqlCommand($"ALTER SEQUENCE venta_idventa_seq RESTART WITH {codigoV}", cn))
                                 {
                                     rei.ExecuteNonQuery();
-                                }
-                                bool proV = venta.ProduV;
-                                if (proV == true)
-                                {
-                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
-                                    {
-                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
-                                        cmV.ExecuteNonQuery();
-                                    }
-                                }
+                                } 
                                 cn.Close();
                                 Application.Exit();
                             }
@@ -126,14 +126,15 @@ namespace My_farmacy_
                         }
 
                     }
+                    panelcontenedor.Controls.Clear();
                 }
-                panelcontenedor.Controls.Clear();
+                Application.Exit();
             }
-            Application.Exit();
         }
         private void AbrirForm(object formHijo)
         {
-
+            ss.Close();
+            ff.Close();
             //dentro del if verificamos si ya hay un formulario cargado 
             if (panelcontenedor.Controls.Count > 0)
             {
@@ -186,6 +187,7 @@ namespace My_farmacy_
                             }
 
                         }
+                        cn.Close();
                     }
                     else if (formActual is Ventas venta)
                     {
@@ -203,6 +205,11 @@ namespace My_farmacy_
                             if (resultado == DialogResult.Yes)
                             {
                                 formActual.Close();
+                                using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                {
+                                    cmV.Parameters.AddWithValue("@codigoV", codigoV);
+                                    cmV.ExecuteNonQuery();
+                                }
                                 using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
                                 {
                                     vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
@@ -212,15 +219,6 @@ namespace My_farmacy_
                                 {
                                     rei.ExecuteNonQuery();
                                 }
-                                bool proV = venta.ProduV;
-                                if (proV == true)
-                                {
-                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
-                                    {
-                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
-                                        cmV.ExecuteNonQuery();
-                                    }
-                                }
                                 cn.Close();
                             }
                             else
@@ -229,8 +227,9 @@ namespace My_farmacy_
                                 return;
 
                             }
+                            cn.Close();
                         }
-
+                       
                     }
                 }
                 panelcontenedor.Controls.Clear();
@@ -336,6 +335,11 @@ namespace My_farmacy_
                             if (resultado3 == DialogResult.Yes)
                             {
                                 formActual.Close();
+                                using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
+                                {
+                                    cmV.Parameters.AddWithValue("@codigoV", codigoV);
+                                    cmV.ExecuteNonQuery();
+                                }
                                 using (var vnt = new NpgsqlCommand("DELETE FROM venta WHERE idventa = @codigoV", cn))
                                 {
                                     vnt.Parameters.AddWithValue("@codigoV", Convert.ToInt32(codigoV));
@@ -344,15 +348,6 @@ namespace My_farmacy_
                                 using (var rei = new NpgsqlCommand($"ALTER SEQUENCE venta_idventa_seq RESTART WITH {codigoV}", cn))
                                 {
                                     rei.ExecuteNonQuery();
-                                }
-                                bool proV = venta.ProduV;
-                                if (proV == true)
-                                {
-                                    using (var cmV = new NpgsqlCommand("DELETE FROM detalle_venta WHERE idventa = @codigoV", cn))
-                                    {
-                                        cmV.Parameters.AddWithValue("@codigoV", codigoV);
-                                        cmV.ExecuteNonQuery();
-                                    }
                                 }
                                 cn.Close();
                                 MessageBox.Show("Sesión cerrada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -371,7 +366,8 @@ namespace My_farmacy_
                 }
                 ll.Show();
                 this.Close();
-               
+                ss.Close();
+                ff.Close();
             }
             else
             {

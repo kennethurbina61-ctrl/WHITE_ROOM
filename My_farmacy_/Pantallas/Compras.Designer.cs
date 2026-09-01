@@ -35,6 +35,7 @@
             this.pcicon = new System.Windows.Forms.PictureBox();
             this.lblnombrepantalla = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblidcompra = new System.Windows.Forms.Label();
             this.dtpfechaR = new System.Windows.Forms.DateTimePicker();
             this.CBmetodo = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -90,7 +91,6 @@
             this.txtusuario = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.lblidcompra = new System.Windows.Forms.Label();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -154,6 +154,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1138, 87);
             this.panel1.TabIndex = 4;
+            // 
+            // lblidcompra
+            // 
+            this.lblidcompra.AutoSize = true;
+            this.lblidcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidcompra.ForeColor = System.Drawing.Color.Blue;
+            this.lblidcompra.Location = new System.Drawing.Point(1080, 10);
+            this.lblidcompra.Name = "lblidcompra";
+            this.lblidcompra.Size = new System.Drawing.Size(19, 20);
+            this.lblidcompra.TabIndex = 36;
+            this.lblidcompra.Text = "0";
             // 
             // dtpfechaR
             // 
@@ -274,6 +285,10 @@
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.Size = new System.Drawing.Size(77, 24);
             this.txtcantidad.TabIndex = 11;
+            this.txtcantidad.Text = "0";
+            this.txtcantidad.Enter += new System.EventHandler(this.txtcantidad_Enter);
+            this.txtcantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcantidad_KeyPress);
+            this.txtcantidad.Leave += new System.EventHandler(this.txtcantidad_Leave);
             // 
             // btnagregar
             // 
@@ -473,6 +488,10 @@
             this.txtventa.Name = "txtventa";
             this.txtventa.Size = new System.Drawing.Size(73, 24);
             this.txtventa.TabIndex = 30;
+            this.txtventa.Text = "0.00";
+            this.txtventa.Enter += new System.EventHandler(this.txtventa_Enter);
+            this.txtventa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtventa_KeyPress);
+            this.txtventa.Leave += new System.EventHandler(this.txtventa_Leave);
             // 
             // label5
             // 
@@ -491,6 +510,10 @@
             this.txtcompra.Name = "txtcompra";
             this.txtcompra.Size = new System.Drawing.Size(73, 24);
             this.txtcompra.TabIndex = 28;
+            this.txtcompra.Text = "0.00";
+            this.txtcompra.Enter += new System.EventHandler(this.txtcompra_Enter);
+            this.txtcompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcompra_KeyPress);
+            this.txtcompra.Leave += new System.EventHandler(this.txtcompra_Leave);
             // 
             // label4
             // 
@@ -762,17 +785,6 @@
             this.label18.Size = new System.Drawing.Size(226, 25);
             this.label18.TabIndex = 10;
             this.label18.Text = "Información Adicional:";
-            // 
-            // lblidcompra
-            // 
-            this.lblidcompra.AutoSize = true;
-            this.lblidcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblidcompra.ForeColor = System.Drawing.Color.Blue;
-            this.lblidcompra.Location = new System.Drawing.Point(1080, 10);
-            this.lblidcompra.Name = "lblidcompra";
-            this.lblidcompra.Size = new System.Drawing.Size(19, 20);
-            this.lblidcompra.TabIndex = 36;
-            this.lblidcompra.Text = "0";
             // 
             // Compras
             // 
