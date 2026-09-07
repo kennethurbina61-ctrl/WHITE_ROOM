@@ -14,17 +14,23 @@ namespace My_farmacy_.Pantallas
 {
     public partial class crearRes : Form
     {
+        int totalrecibido = 0, total, iva, subtotal, dolares = 0, cambio = 0, coordobas = 0, cambioDolar = 0;string cliente;
+      //  Ventas vv = new Ventas();
         private RespaldoBD resp = new RespaldoBD();
         string user;
         
-        public crearRes(string usuario)
+        public crearRes()
         {
             InitializeComponent();
-            user = usuario;
+           //user = usuario;
         }
 
         private void crearRes_Load(object sender, EventArgs e)
         {
+           
+
+            txtnombreresapaldo.Text = cliente;
+            txtreceptor.Text = total.ToString();
             cargarR();
         }
 

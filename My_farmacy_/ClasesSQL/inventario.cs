@@ -11,5 +11,6 @@ namespace My_farmacy_.ClasesSQL
         public string producto {  get; set; }
         public int stock_actual { get; set; }
         public decimal precio_venta {  get; set; }
+        public string categoria {  get; set; }
     }
 }

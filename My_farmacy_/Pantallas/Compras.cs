@@ -15,7 +15,7 @@ namespace My_farmacy_
     public partial class Compras : Form
     {
         int subtotalP = 0, iva = 0, total = 0, subt = 0, idcompra = 0, lote = 0, userid = 0, proveid = 0;
-        int iddeatalle;
+        public int iddeatalle { get; set; }
         string numeroF;
         string pro, metodo, fecha, user, fechaR;
 
@@ -306,6 +306,7 @@ namespace My_farmacy_
             panel4.Enabled = false; panel1.Enabled = true; txtnumerofactura.Text = ""; cbprov.Text = ""; CBproducto.Text = ""; txtfechaVen.Text = ""; txtventa.Text = "0.00";
             txtcantidad.Text = "0"; txtcompra.Text = "0.00"; lblote.Text = "0"; lblidcompra.Text = "0"; lblsubtotal.Text = "0.00"; lbliva.Text = "0.00"; lbltotal.Text = "0.00";
             panel6.Enabled = false; dtcategorias.Rows.Clear();
+
         }
         private void btnguardar_Click(object sender, EventArgs e)
         {

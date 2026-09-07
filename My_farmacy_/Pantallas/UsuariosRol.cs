@@ -30,6 +30,9 @@ namespace My_farmacy_
             llenar();
             llenarroles();
             txtusersid.Visible = false;
+            cbestado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbestadoR.DropDownStyle = ComboBoxStyle.DropDownList; 
+            cbrol.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void llenarroles()
         {
@@ -110,13 +113,13 @@ namespace My_farmacy_
                 NpgsqlConnection cxn = ll.conexion();
                 NpgsqlCommand ins = new NpgsqlCommand("Insert into rol (nombre, descripcion, estado) values ('" + nombre + "' ,'" + descriocion + "', '" + estado + "' )", cxn);
                 ins.ExecuteNonQuery();
-                MessageBox.Show("Se guardo correctamente.");
+                MessageBox.Show("Se guardo correctamente.", "EXITO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cxn.Close();
                 llenarroles();
             }
             else
             {
-                MessageBox.Show("No puede dejar campos vacios.");
+                MessageBox.Show("No puede dejar campos vacios.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -202,7 +205,7 @@ namespace My_farmacy_
                     
                     NpgsqlCommand vd = new NpgsqlCommand("Insert into usuario (idrol, username, nombrecompleto, telefeno, correo, passwords, cedula, estado) values ('" + idrol+ "' , '" + usuario + "' , '" + nombrecompleto+ "' , '" + telefono + "' , '" + correo + "' , '" + password + "' , '" + cedula + "' , '" + estado + "') ", cn);
                     vd.ExecuteNonQuery();
-                    MessageBox.Show("Se guardo correctamente");
+                    MessageBox.Show("Se guardo correctamente", "EXITO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     cn.Close();
 
                     llenar();
@@ -216,15 +219,15 @@ namespace My_farmacy_
                     }
                     else if(txttelefono.TextLength > 8 || txttelefono.TextLength < 8)
                     {
-                        MessageBox.Show("Numero invalido");
+                        MessageBox.Show("Numero invalido", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if(txtconfirmarcontra.Text != txtcontraseña.Text)
                     {
-                        MessageBox.Show("La contraseña no coincide.");
+                        MessageBox.Show("La contraseña no coincide.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("El gmail no coincide.");
+                        MessageBox.Show("El gmail no coincide.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                   
                 }
@@ -301,13 +304,13 @@ namespace My_farmacy_
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             NpgsqlConnection cn = ll.conexion();
-            NpgsqlCommand bs = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.username, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol where u.usuario = '" + txtbuscar.Text + "' ",cn);
-            NpgsqlDataReader nc = bs.ExecuteReader();
+            NpgsqlCommand bs = new NpgsqlCommand("Select u.idusuario, r.nombre as rol, u.username, u.nombrecompleto, u.telefeno, u.correo, u.cedula, u.estado from usuario u join rol r on u.idrol = r.idrol where u.username = '" + txtbuscar.Text + "' ",cn);
+            NpgsqlDataReader dtru = bs.ExecuteReader();
             dtusers.Rows.Clear();
-            while (nc.Read())
+            if (dtru.Read())
             {
                 string estado;
-                bool es = Convert.ToBoolean(nc[6]);
+                bool es = Convert.ToBoolean(dtru[7]);
                 if (es == true)
                 {
                     estado = "Activo";
@@ -318,10 +321,14 @@ namespace My_farmacy_
                 }
 
                
-                    dtusers.Rows.Add(nc[0], nc[1], nc[2], nc[3], nc[7], nc[3], nc[5], estado);
+                    dtusers.Rows.Add(dtru[0], dtru[2], dtru[3], dtru[1], dtru[4], dtru[6], dtru[5], estado);
             }
-            nc.Close();
-
+            else
+            {
+                MessageBox.Show("El usuario "+txtbuscar.Text+" no esta registrado en nuestro sistema.", "AVISO",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                dtru.Close();
+            cn.Close();
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
@@ -338,30 +345,42 @@ namespace My_farmacy_
 
         private void btneditar_Click(object sender, EventArgs e)
         {
-            txtusersid.Text = dtusers.SelectedCells[0].Value.ToString();
-            txtnombreU.Text = dtusers.SelectedCells[2].Value.ToString();
-            txtusuarioagg.Text = dtusers.SelectedCells[1].Value.ToString();
-            cbrol.Text = dtusers.SelectedCells[3].Value.ToString();
-            txttelefono.Text = dtusers.SelectedCells[4].Value.ToString();
-            txtcedula.Text= dtusers.SelectedCells[5].Value.ToString();
-            txtcorreo.Text= dtusers.SelectedCells[6].Value.ToString();
-            cbestado.Text= dtusers.SelectedCells[7].Value.ToString();
-            btncancelar.Visible = true;
-            btnmodificar.Visible = true;
-            btnguardar.Visible = false;
+            if (dtusers.SelectedCells == null)
+            {
+                MessageBox.Show("Seleccione un usuario en el data, para editar.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtusersid.Text = dtusers.SelectedCells[0].Value.ToString();
+                txtnombreU.Text = dtusers.SelectedCells[2].Value.ToString();
+                txtusuarioagg.Text = dtusers.SelectedCells[1].Value.ToString();
+                cbrol.Text = dtusers.SelectedCells[3].Value.ToString();
+                txttelefono.Text = dtusers.SelectedCells[4].Value.ToString();
+                txtcedula.Text = dtusers.SelectedCells[5].Value.ToString();
+                txtcorreo.Text = dtusers.SelectedCells[6].Value.ToString();
+                cbestado.Text = dtusers.SelectedCells[7].Value.ToString();
+                btncancelar.Visible = true;
+                btnmodificar.Visible = true;
+                btnguardar.Visible = false;
+                txtconfirmarcontra.Text = "123";
+                txtcontraseña.Visible = false;
+                txtconfirmarcontra.Visible = false;
+                label2.Visible = false;
+                label5.Visible = false;
+                tabusuariosroles.SelectedTab = tbusuarios;
+            }
 
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            if (camposvacios() && txtconfirmarcontra.Text == txtcontraseña.Text)
+            if (camposvacios())
             {
                 NpgsqlConnection cn = ll.conexion();    
                 string nombrecompleto = txtnombreU.Text;
                 string cedula = txtcedula.Text;
                 string usuario = txtusuarioagg.Text;
                 string telefono = txttelefono.Text;
-                string password = txtconfirmarcontra.Text;
                 string correo = txtcorreo.Text;
                 bool estado;
                 if (cbestado.Text == "Activo")
@@ -382,9 +401,9 @@ namespace My_farmacy_
                     idrol = Convert.ToInt32(dt.Rows[0]["idrol"]);
                 }
                 //, passwords, telefono, correo, cedula, estado, idrol, nombree
-                NpgsqlCommand cmd = new NpgsqlCommand("update usuario set idrol= '" + idrol + "', username = '" + usuario + "', nombrecompleto= '" + nombrecompleto + "', telefeno= '" + telefono + "' , correo= '" + correo + "' , passwords= '" + password + "', cedula= '" + cedula + "' ,estado= '" + estado + "' where idusuario= '" + txtusersid.Text + "'", cn);
+                NpgsqlCommand cmd = new NpgsqlCommand("update usuario set idrol= '" + idrol + "', username = '" + usuario + "', nombrecompleto= '" + nombrecompleto + "', telefeno= '" + telefono + "' , correo= '" + correo + "' , cedula= '" + cedula + "' ,estado= '" + estado + "' where idusuario= '" + txtusersid.Text + "'", cn);
                 NpgsqlDataReader vb = cmd.ExecuteReader();
-                MessageBox.Show("Registro modificado.");
+                MessageBox.Show("Registro modificado.", "EXITO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cn.Close();
                 vb.Close();
                 llenar();
@@ -392,21 +411,29 @@ namespace My_farmacy_
                 btnmodificar.Visible = false;
                 btncancelar.Visible = false;
                 btnguardar.Visible = true;
-               
+                txtcontraseña.Visible =true;
+                txtconfirmarcontra.Visible = true;
+                label2.Visible = true;
+                label5.Visible = true;
+
 
             }
             else
             {
-                MessageBox.Show("Agregue una contraseña.");
+                MessageBox.Show("No deje campos vacios.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         { 
-            MessageBox.Show("Se cancelo la modificacion.");
+            MessageBox.Show("Se cancelo la modificacion.", "CANCELADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnmodificar.Visible = false;
             btncancelar.Visible = false;
             btnguardar.Visible = true;
+            txtcontraseña.Visible = true;
+            txtconfirmarcontra.Visible =true;
+            label2.Visible = true;
+            label5.Visible = true;
             limpiar();
         }
     }

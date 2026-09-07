@@ -10,50 +10,45 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using MailKit.Search;
+using System.Security.Cryptography.X509Certificates;
+
 
 namespace My_farmacy_.Pantallas
 {
     public partial class Ventas : Form
     {
+        
         //solo hace falta categoria y agregar
         string nombres;
+        string Nclientes;
+        string usuario;
         int subtotalPP;
-        public bool cerrarV {  get; set; }
+        //Estas variables son para evtar abrir una subpantalla teniendo esta abierta y tambien para preguntar si no has completado la venta.
+        public bool cerrarV { get; set; }
         public int codigoVenta { get; set; }
-        public bool ProduV {  get; set; }
+        public bool ProduV { get; set; }
         public bool facturar = false;
         public bool cliente = false;
         bool agregadoR;
+        //Para las ecuaciones
+        int TotalF, IVAF , SubtotalF;
+        int iva = 0, SubtotalP = 0;
         PgAdmin pg = new PgAdmin();
-        int idcliente, idproducto, stock;
+        int idcliente, idproducto, stock; bool clienteBD = false;
         int telefono;
-        public Ventas()
+        //creamos el objeto para ingresar los datos
+      //  RecibirDF f = new RecibirDF();
+        public Ventas(string usuarioP)
         {
             InitializeComponent();
             autocompletar();
             txttelefono.Enabled = false;
-         
-            
+            lblusuario.Text = usuarioP;
         }
-        Dictionary<string, decimal> precios = new Dictionary<string, decimal>();
-        private void combobox()
-        {    //necesito hacer  la tabla inventario para ajustar el lote, precios y stock    
-            //cambiar aqui, ocupare la tabla detalle_compra, selecionare el nombre as producto para unirlo con el id y tambien seleccionar el precio_v
-            NpgsqlConnection cn = pg.conexion();
-            NpgsqlCommand cmd = new NpgsqlCommand("select p.nombre as productos, c.precio_v from detalle_compra c JOIN productos p on c.idproductos = p.idproductos", cn);
-            NpgsqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                CBproducto.Items.Clear();
-                nombres = dr.GetString(0);
-                CBproducto.Items.Add(nombres);
-                decimal precio = dr.GetDecimal(1);
-                precios[nombres] = precio;
-            }
-            cn.Close();
+        public void llamarU(string usuarioP)
+        {
+            lblusuario.Text = usuarioP.ToString();
         }
-        
-
         private void btnfacturar_Click(object sender, EventArgs e)
         {
             Facturacion rr = new Facturacion();
@@ -75,10 +70,11 @@ namespace My_farmacy_.Pantallas
                     Recargar();
 
                 };
+                usuario = lblusuario.Text;
+                rr.SetDato(TotalF, SubtotalF, IVAF, Nclientes, usuario);
                 rr.Show();
             }
         }
-
         private void lkagregar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SubCliente ss = new SubCliente();
@@ -101,8 +97,13 @@ namespace My_farmacy_.Pantallas
         List<inventario> inventario = new List<inventario>(); 
         private void calcularStiock()
         {
+            inventario.Clear();
+            CBproducto.DataSource = null;
+            CBproducto.DisplayMember = null;
+            CBproducto.ValueMember = null;
+            CBproducto.Items.Clear();
             NpgsqlConnection cn = pg.conexion();
-            using (NpgsqlCommand cmd = new NpgsqlCommand("Select p.nombre as productos, i.stock_actual, i.precio_compra from inventario i join productos p on i.idproducto = p.idproductos", cn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand("Select p.nombre as productos, c.nombre as categoria, i.stock_actual, i.precio_compra from inventario i join productos p on i.idproducto = p.idproductos join categorias c on p.idcategoria = c.idcategoria", cn))
             using (NpgsqlDataReader rd = cmd.ExecuteReader())
             {
                 while (rd.Read())
@@ -110,8 +111,9 @@ namespace My_farmacy_.Pantallas
                     inventario.Add(new inventario 
                     {
                         producto = rd.GetString(0),
-                        stock_actual = rd.GetInt32(1),
-                        precio_venta = rd.GetInt32(2)
+                        categoria = rd.GetString(1),
+                        stock_actual = rd.GetInt32(2),
+                        precio_venta = rd.GetInt32(3)
                     });
 
                 }
@@ -128,17 +130,24 @@ namespace My_farmacy_.Pantallas
             {
                 cerrarV = true;
                 NpgsqlConnection cn = pg.conexion();
-                NpgsqlDataAdapter id = new NpgsqlDataAdapter("select idcliente, telefono from clientes where nombre= '" + txtcliente.Text + "'", cn);
-                DataTable dt = new DataTable();
-                id.Fill(dt);
-                if (dt.Rows.Count > 0)
+                NpgsqlCommand comandocliente = new NpgsqlCommand("select idcliente, telefono from clientes where nombre= '" + txtcliente.Text + "'", cn);
+                NpgsqlDataReader rdid = comandocliente.ExecuteReader();
+                if (rdid.Read())
                 {
-                    idcliente = Convert.ToInt32(dt.Rows[0]["idcliente"]);
-                    telefono = Convert.ToInt32(dt.Rows[1]["telefono"]);
-                    txttelefono.Text = telefono.ToString();
+                    idcliente = rdid.GetInt32(0);
+                    MessageBox.Show( ""+idcliente+ "");
+                    txttelefono.Text = rdid["telefono"].ToString();
+                    clienteBD = true;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontro ningun cliente.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                rdid.Close();
+                if (clienteBD == true)
+                {
                     txtcliente.Enabled = false;
                     txttelefono.Enabled = false;
-
                     NpgsqlCommand cmd = new NpgsqlCommand("insert into venta (idcliente) values ('" + idcliente + "') returning idventa;", cn);
                     NpgsqlDataReader rd = cmd.ExecuteReader();
                     while (rd.Read())
@@ -148,12 +157,10 @@ namespace My_farmacy_.Pantallas
                     }
                     btnagregar.Enabled = true;
                     btneliminar.Enabled = true;
+                    btniniciar.Enabled = false;
                     panel4.Enabled = true;
+                    Nclientes = txtcliente.Text;
                     cn.Close();
-                }
-                else
-                {
-                    MessageBox.Show("No se encontro ningun cliente.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 cn.Close();
             }
@@ -165,8 +172,6 @@ namespace My_farmacy_.Pantallas
         }
         private void Ventas_Load(object sender, EventArgs e)
         {
-            
-            //combobox();
             panel4.Enabled = false;
             panel2.Enabled = false;
             btnagregar.Enabled = false;
@@ -202,52 +207,87 @@ namespace My_farmacy_.Pantallas
         {
             txtcantidad.Text = "0"; CBproducto.Text = ""; lblcategiria.Text = "Categoria"; lblprecio.Text = "0.00"; lblstock.Text = "0"; lblsubtotal.Text = "0.00";
             lblfinalsubtotal.Text = "0.00"; lbliva.Text = "0.00"; lbltotal.Text = "0.00"; txtcliente.Text = ""; txttelefono.Text = "";
+            dtventas.Rows.Clear(); clienteBD = false;
             panel1.Enabled = true; txttelefono.Enabled = false; panel4.Enabled = false;  panel2.Enabled = false; btnagregar.Enabled = false; btneliminar.Enabled = false; txtcliente.Enabled = true;
         }
         private void limpiar()
         {
             txtcantidad.Text = "0"; CBproducto.Text = ""; lblcategiria.Text = "Categoria"; lblprecio.Text = "0.00"; lblstock.Text = "0"; lblsubtotal.Text = "0.00";
+         
         }
 
+        List<RecibirDF> productosLista = new List<RecibirDF>();
         private void btnagregar_Click(object sender, EventArgs e)
         {
+            //variables con F son datos de la factura final
+            Facturacion ff = new Facturacion();
+            NpgsqlConnection cn = pg.conexion();
             string producto = CBproducto.Text, categoria = lblcategiria.Text;
-            int cantidad = Convert.ToInt32(txtcantidad.Text), stock = 0, precio = 0, SubtotalP = 0;
-        //  decimal precio = Convert.ToDecimal(lblprecio);
+            int cantidad = Convert.ToInt32(txtcantidad.Text); decimal precio = 0; 
            if (!string.IsNullOrEmpty(CBproducto.Text))
             {
                 if(Convert.ToInt32(txtcantidad.Text) > 0)
                 {
-                    ProduV = true;
-                    DataTable dt = new DataTable();
-                    NpgsqlConnection cn = pg.conexion();
-                    //aqui tengo que cambiarlo para que soo
-                    NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select idproductos from productos where nombre = '" + CBproducto.Text + "'", cn);
-                    cmd.Fill(dt);
-                    if (dt.Rows.Count > 0)
+                    if(lblstock.Text == "No disponible" || cantidad > stock)
                     {
-                        panel2.Enabled = true;
-                        limpiar();
-                        idproducto = Convert.ToInt32(dt.Rows[0]["idproductos"]);
-                      //Aun ocupo sacar el precio y stock desde la base de datos con un trigger o desde las programaxion en c# precio = Convert.ToInt32(dt.Rows[1]["precio_v"]);
-                        lblprecio.Text = precio.ToString("N2");
-                        dtventas.Rows.Add();
+                        MessageBox.Show("El producto "+producto+" no esta en stock", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        MessageBox.Show("No existe " + CBproducto.Text + " en nuestro inventario.", "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ProduV = true;
+                        DataTable dt = new DataTable();
+                        NpgsqlDataAdapter dtP = new NpgsqlDataAdapter("select idproductos from productos where nombre = '" + CBproducto.Text + "'", cn);
+                        dtP.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+
+                            idproducto = Convert.ToInt32(dt.Rows[0]["idproductos"]);
+                            precio = Convert.ToInt32(lblprecio.Text);
+                            NpgsqlCommand cmd = new NpgsqlCommand("Insert into detalle_venta (idventa, cantidad, precio_venta, idproductos) values ("+codigoVenta+", "+cantidad+", "+precio+", "+idproducto+")", cn);
+                            NpgsqlDataReader rd = cmd.ExecuteReader();
+                            SubtotalP = Convert.ToInt32((cantidad * Convert.ToInt32(precio)) * 1.15);
+                            iva = Convert.ToInt32((cantidad * Convert.ToInt32(precio)) * 0.15);
+                            dtventas.Rows.Add(producto, cantidad, categoria, precio, iva, SubtotalP);
+                            panel2.Enabled = true;
+                            SubtotalF += Convert.ToInt32(cantidad) * Convert.ToInt32(precio);
+                            IVAF += iva;
+                            lbliva.Text=IVAF.ToString("N2");
+                            lblfinalsubtotal.Text = SubtotalF.ToString("N2");
+                            TotalF += SubtotalP;
+                            lbltotal.Text = TotalF.ToString("N2");
+                            RecibirDF dd = new RecibirDF();
+                            dd.productos = CBproducto.Text;
+                            dd.usuario = lblusuario.Text;
+                            dd.cliente = txtcliente.Text;
+                            dd.subtotal = Convert.ToDouble(lblfinalsubtotal.Text); dd.iva = Convert.ToDouble(lbliva.Text); dd.cantidad = Convert.ToDouble(txtcantidad.Text);
+                            dd.total = Convert.ToDouble(lbltotal.Text); dd.precio = Convert.ToDouble(lblprecio.Text);
+                            productosLista.Add(dd);
+                            ff.llenarList(productosLista);
+                            cn.Close();
+                            calcularStiock();
+                            limpiar();
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No existe " + CBproducto.Text + " en nuestro inventario.", "Producto no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                   
                     cn.Close();
                 }
                 else
                 {
                     MessageBox.Show("La catidad tiene que ser mayor a 0.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    cn.Close();
                 }
-                
+                cn.Close();
             }
             else
             {
                 MessageBox.Show("Introduzca un producto valido.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                cn.Close();
             }
         }
 
@@ -272,10 +312,17 @@ namespace My_farmacy_.Pantallas
         {
             if (!string.IsNullOrEmpty(txtcantidad.Text))
             {
-                int precio = Convert.ToInt32(lblprecio.Text);
-                int cantidad = Convert.ToInt32(txtcantidad.Text);
-                subtotalPP = (cantidad * precio);
-                lblsubtotal.Text = subtotalPP.ToString("N2");
+                if (lblprecio.Text != "0.00")
+                {
+                    int precio = Convert.ToInt32(lblprecio.Text);
+                    int cantidad = Convert.ToInt32(txtcantidad.Text);
+                    subtotalPP = (cantidad * precio);
+                    lblsubtotal.Text = subtotalPP.ToString("N2");
+                }
+                else
+                {
+
+                }
             }
             else
             {
@@ -283,21 +330,50 @@ namespace My_farmacy_.Pantallas
             }
         }
 
+        private void txtcliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool vl = Validaciones.sololetras(e);
+            if (!vl)
+            {
+                er.SetError(txtcliente, "Solo se permiten letras.");
+            }
+            else
+            {
+                er.Clear();
+            }
+        }
+
         private void CBproducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string productos = CBproducto.SelectedItem.ToString();
-            if (precios.ContainsKey(productos))
+            if (CBproducto.Text == "")
             {
-                lblprecio.Text = precios[productos].ToString("N2");
-            }
 
-            inventario selec = (inventario)CBproducto.SelectedItem;
-            lblstock.Text = $"{selec.stock_actual}";
-            lblprecio.Text = $"{selec.precio_venta}";
-            int precio = Convert.ToInt32(lblprecio.Text);
-            int cantidad = Convert.ToInt32(txtcantidad.Text);
-            subtotalPP = (cantidad * precio);
-            lblsubtotal.Text = subtotalPP.ToString("N2");
+            }
+            else
+            {
+                inventario selec = (inventario)CBproducto.SelectedItem;
+                string categoria = Convert.ToString($"{selec.categoria}");
+                stock = Convert.ToInt32($"{selec.stock_actual}");
+                string productos = CBproducto.SelectedItem.ToString();
+                lblcategiria.Text = categoria;
+                lblstock.ForeColor = Color.Gray;
+                lblprecio.Text = $"{selec.precio_venta}";
+                int precio = Convert.ToInt32(lblprecio.Text);
+                int cantidad = Convert.ToInt32(txtcantidad.Text);
+                subtotalPP = (cantidad * precio);
+                lblsubtotal.Text = subtotalPP.ToString("N2");
+                if (stock <= 0)
+                {
+                    lblstock.Text = "No disponible";
+                    lblstock.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblstock.Text = stock.ToString();
+                }
+            }
+          
+           
         }
 
         private void txtcantidad_KeyPress(object sender, KeyPressEventArgs e)
