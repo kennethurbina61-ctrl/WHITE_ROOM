@@ -11,12 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace My_farmacy_
 {
     public partial class Principal : Form
     {
         bool flowoanelex;
+        string user;
         PgAdmin pg = new PgAdmin();
         string rolP, usuarioP;
         Facturacion ff = new Facturacion();
@@ -38,6 +40,7 @@ namespace My_farmacy_
                 {
                     if (formActual is Compras compras)
                     {
+                        int detalle = compras.iddeatalle;
                         bool cerrar = compras.cerrar;
                         NpgsqlConnection cn = pg.conexion();
                         string codigo = compras.codigoCompra;
@@ -54,6 +57,11 @@ namespace My_farmacy_
                             if (resultado2 == DialogResult.Yes)
                             {
                                 formActual.Close();
+                                using (var prod = new NpgsqlCommand("DELETE FROM lote WHERE iddetalle = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", detalle);
+                                    prod.ExecuteNonQuery();
+                                }
                                 //Primero borramos todos los registros que tengan como referencia el id de compra
                                 using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
                                 {
@@ -133,6 +141,8 @@ namespace My_farmacy_
         }
         private void AbrirForm(object formHijo)
         {
+            //Necesito agregarle a lote id de compra como llave foreana para asi eliminar todos los detalles de esa compra, tambien el detalle de ccompra se eliminara uno por uno en el boton borrar
+            //Ocupo hacer lo mismo con compras, pero usare un trigger que al comprar automaticamente se mettan en un segundo lote(no he pensado eso muy bien)
             ss.Close();
             ff.Close();
             //dentro del if verificamos si ya hay un formulario cargado 
@@ -145,6 +155,7 @@ namespace My_farmacy_
                     
                     if (formActual is Compras compras)
                     {
+                        int detalle = compras.iddeatalle;
                         bool cerrar = compras.cerrar;
                         NpgsqlConnection cn = pg.conexion();
                         string codigo = compras.codigoCompra;
@@ -161,6 +172,11 @@ namespace My_farmacy_
                             if (resultado2 == DialogResult.Yes)
                             {
                                 formActual.Close();
+                                using (var prod = new NpgsqlCommand("DELETE FROM lote WHERE iddetalle = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", detalle);
+                                    prod.ExecuteNonQuery();
+                                }
                                 //Primero borramos todos los registros que tengan como referencia el id de compra
                                 using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
                                 {
@@ -229,7 +245,7 @@ namespace My_farmacy_
                             }
                             cn.Close();
                         }
-                       
+                       ff.Close();
                     }
                 }
                 panelcontenedor.Controls.Clear();
@@ -273,6 +289,7 @@ namespace My_farmacy_
                 {
                     if (formActual is Compras compras)
                     {
+                        int detalle = compras.iddeatalle;
                         bool cerrar = compras.cerrar;
                         NpgsqlConnection cn = pg.conexion();
                         string codigo = compras.codigoCompra;
@@ -289,6 +306,11 @@ namespace My_farmacy_
                             if (resultado2 == DialogResult.Yes)
                             {
                                 formActual.Close();
+                                using (var prod = new NpgsqlCommand("DELETE FROM lote WHERE iddetalle = @codigo", cn))
+                                {
+                                    prod.Parameters.AddWithValue("@codigo", detalle);
+                                    prod.ExecuteNonQuery();
+                                }
                                 //Primero borramos todos los registros que tengan como referencia el id de compra
                                 using (var prod = new NpgsqlCommand("DELETE FROM detalle_compra WHERE idcompra = @codigo", cn))
                                 {
@@ -534,7 +556,8 @@ namespace My_farmacy_
 
         private void btnventas_Click(object sender, EventArgs e)
         {
-            AbrirForm(new Ventas());
+            user = lblusuario.Text;
+            AbrirForm(new Ventas(user));
         }
 
         private void btnrespaldo_Click(object sender, EventArgs e)
@@ -550,6 +573,11 @@ namespace My_farmacy_
         private void btnapertura_Click(object sender, EventArgs e)
         {
             AbrirForm(new AperturaC());
+        }
+
+        private void panellogo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void btnarqueocaja_Click(object sender, EventArgs e)

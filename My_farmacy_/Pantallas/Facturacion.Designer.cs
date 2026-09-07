@@ -46,8 +46,8 @@
             this.lblcliente = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.GBtarjeta = new System.Windows.Forms.GroupBox();
+            this.txtfecha = new System.Windows.Forms.MaskedTextBox();
             this.txtccv = new System.Windows.Forms.TextBox();
-            this.txtfechavencimiento = new System.Windows.Forms.TextBox();
             this.txtnombretarjet = new System.Windows.Forms.TextBox();
             this.txtnumerotarjeta = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -151,9 +151,9 @@
             this.LBiva.ForeColor = System.Drawing.Color.Green;
             this.LBiva.Location = new System.Drawing.Point(648, 228);
             this.LBiva.Name = "LBiva";
-            this.LBiva.Size = new System.Drawing.Size(71, 68);
+            this.LBiva.Size = new System.Drawing.Size(83, 68);
             this.LBiva.TabIndex = 92;
-            this.LBiva.Text = "0.00";
+            this.LBiva.Text = "45.00";
             // 
             // label20
             // 
@@ -175,9 +175,9 @@
             this.LBsubtotal.ForeColor = System.Drawing.Color.Green;
             this.LBsubtotal.Location = new System.Drawing.Point(648, 156);
             this.LBsubtotal.Name = "LBsubtotal";
-            this.LBsubtotal.Size = new System.Drawing.Size(71, 68);
+            this.LBsubtotal.Size = new System.Drawing.Size(83, 68);
             this.LBsubtotal.TabIndex = 91;
-            this.LBsubtotal.Text = "0.00";
+            this.LBsubtotal.Text = "56.00";
             // 
             // label5
             // 
@@ -189,6 +189,7 @@
             this.label5.TabIndex = 88;
             this.label5.Text = "_________________________________________________________________________________" +
     "_________________________________________________";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label12
             // 
@@ -286,8 +287,8 @@
             // GBtarjeta
             // 
             this.GBtarjeta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
+            this.GBtarjeta.Controls.Add(this.txtfecha);
             this.GBtarjeta.Controls.Add(this.txtccv);
-            this.GBtarjeta.Controls.Add(this.txtfechavencimiento);
             this.GBtarjeta.Controls.Add(this.txtnombretarjet);
             this.GBtarjeta.Controls.Add(this.txtnumerotarjeta);
             this.GBtarjeta.Controls.Add(this.label11);
@@ -302,6 +303,16 @@
             this.GBtarjeta.TabStop = false;
             this.GBtarjeta.Text = "Datos de Tarjeta";
             // 
+            // txtfecha
+            // 
+            this.txtfecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.txtfecha.Location = new System.Drawing.Point(43, 239);
+            this.txtfecha.Mask = "00/00";
+            this.txtfecha.Name = "txtfecha";
+            this.txtfecha.Size = new System.Drawing.Size(70, 26);
+            this.txtfecha.TabIndex = 48;
+            this.txtfecha.ValidatingType = typeof(System.DateTime);
+            // 
             // txtccv
             // 
             this.txtccv.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -310,19 +321,9 @@
             this.txtccv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtccv.Location = new System.Drawing.Point(236, 238);
             this.txtccv.Name = "txtccv";
-            this.txtccv.Size = new System.Drawing.Size(147, 27);
+            this.txtccv.Size = new System.Drawing.Size(90, 27);
             this.txtccv.TabIndex = 47;
-            // 
-            // txtfechavencimiento
-            // 
-            this.txtfechavencimiento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtfechavencimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.txtfechavencimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtfechavencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfechavencimiento.Location = new System.Drawing.Point(43, 238);
-            this.txtfechavencimiento.Name = "txtfechavencimiento";
-            this.txtfechavencimiento.Size = new System.Drawing.Size(147, 27);
-            this.txtfechavencimiento.TabIndex = 46;
+            this.txtccv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtccv_KeyPress);
             // 
             // txtnombretarjet
             // 
@@ -334,6 +335,7 @@
             this.txtnombretarjet.Name = "txtnombretarjet";
             this.txtnombretarjet.Size = new System.Drawing.Size(340, 27);
             this.txtnombretarjet.TabIndex = 45;
+            this.txtnombretarjet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombretarjet_KeyPress);
             // 
             // txtnumerotarjeta
             // 
@@ -345,6 +347,7 @@
             this.txtnumerotarjeta.Name = "txtnumerotarjeta";
             this.txtnumerotarjeta.Size = new System.Drawing.Size(340, 27);
             this.txtnumerotarjeta.TabIndex = 44;
+            this.txtnumerotarjeta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnumerotarjeta_KeyPress);
             // 
             // label11
             // 
@@ -505,7 +508,7 @@
             // txtdolares
             // 
             this.txtdolares.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdolares.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.txtdolares.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
             this.txtdolares.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtdolares.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdolares.ForeColor = System.Drawing.Color.Green;
@@ -514,11 +517,15 @@
             this.txtdolares.Size = new System.Drawing.Size(102, 20);
             this.txtdolares.TabIndex = 49;
             this.txtdolares.Text = "0.00";
+            this.txtdolares.TextChanged += new System.EventHandler(this.txtdolares_TextChanged);
+            this.txtdolares.Enter += new System.EventHandler(this.txtdolares_Enter);
+            this.txtdolares.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdolares_KeyPress);
+            this.txtdolares.Leave += new System.EventHandler(this.txtdolares_Leave);
             // 
             // txtcoordobas
             // 
             this.txtcoordobas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcoordobas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.txtcoordobas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
             this.txtcoordobas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtcoordobas.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcoordobas.ForeColor = System.Drawing.Color.Green;
@@ -527,6 +534,10 @@
             this.txtcoordobas.Size = new System.Drawing.Size(102, 20);
             this.txtcoordobas.TabIndex = 48;
             this.txtcoordobas.Text = "0.00";
+            this.txtcoordobas.TextChanged += new System.EventHandler(this.txtcoordobas_TextChanged);
+            this.txtcoordobas.Enter += new System.EventHandler(this.txtcoordobas_Enter);
+            this.txtcoordobas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcoordobas_KeyPress);
+            this.txtcoordobas.Leave += new System.EventHandler(this.txtcoordobas_Leave);
             // 
             // label8
             // 
@@ -543,7 +554,7 @@
             this.lblcajero.AutoSize = true;
             this.lblcajero.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcajero.ForeColor = System.Drawing.Color.Blue;
-            this.lblcajero.Location = new System.Drawing.Point(136, 446);
+            this.lblcajero.Location = new System.Drawing.Point(157, 446);
             this.lblcajero.Name = "lblcajero";
             this.lblcajero.Size = new System.Drawing.Size(65, 19);
             this.lblcajero.TabIndex = 102;
@@ -613,8 +624,8 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GBdatosFactura);
-            this.Controls.Add(this.GBtarjeta);
             this.Controls.Add(this.GBefectivo);
+            this.Controls.Add(this.GBtarjeta);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -653,7 +664,6 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.GroupBox GBtarjeta;
         private System.Windows.Forms.TextBox txtccv;
-        private System.Windows.Forms.TextBox txtfechavencimiento;
         private System.Windows.Forms.TextBox txtnombretarjet;
         private System.Windows.Forms.TextBox txtnumerotarjeta;
         private System.Windows.Forms.Label label11;
@@ -676,5 +686,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnpagar;
         private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.MaskedTextBox txtfecha;
     }
 }

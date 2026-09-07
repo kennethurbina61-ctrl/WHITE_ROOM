@@ -79,11 +79,11 @@
             this.lblnombrecompania = new System.Windows.Forms.Label();
             this.pclogo = new System.Windows.Forms.PictureBox();
             this.panelcontenedor = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timerdash = new System.Windows.Forms.Timer(this.components);
             this.tmcaja = new System.Windows.Forms.Timer(this.components);
             this.tminv = new System.Windows.Forms.Timer(this.components);
             this.tmreprtes = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelbotones.SuspendLayout();
             this.panelactivar.SuspendLayout();
             this.pnlcaja.SuspendLayout();
@@ -550,6 +550,7 @@
             this.panellogo.Name = "panellogo";
             this.panellogo.Size = new System.Drawing.Size(1324, 68);
             this.panellogo.TabIndex = 2;
+            this.panellogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panellogo_Paint);
             // 
             // linkcerrarsesion
             // 
@@ -672,6 +673,16 @@
             this.panelcontenedor.TabIndex = 3;
             this.panelcontenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelcontenedor_Paint);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1147, 626);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // timerdash
             // 
             this.timerdash.Interval = 10;
@@ -691,16 +702,6 @@
             // 
             this.tmreprtes.Interval = 10;
             this.tmreprtes.Tick += new System.EventHandler(this.tmreprtes_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::My_farmacy_.Properties.Resources.ChatGPT_Image_3_ago_2026__16_06_46;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1147, 626);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // Principal
             // 

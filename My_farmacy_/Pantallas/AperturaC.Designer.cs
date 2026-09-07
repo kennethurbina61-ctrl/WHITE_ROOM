@@ -279,6 +279,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AperturaC";
             this.Text = "AperturaC";
+            this.Load += new System.EventHandler(this.AperturaC_Load);
             this.panelinformacion.ResumeLayout(false);
             this.panelinformacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).EndInit();

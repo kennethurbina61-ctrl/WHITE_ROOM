@@ -81,6 +81,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnagregar = new System.Windows.Forms.Button();
+            this.lblusuario = new System.Windows.Forms.Label();
             this.panelinformacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcicon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,6 +94,7 @@
             // panelinformacion
             // 
             this.panelinformacion.BackColor = System.Drawing.SystemColors.Control;
+            this.panelinformacion.Controls.Add(this.lblusuario);
             this.panelinformacion.Controls.Add(this.pcicon);
             this.panelinformacion.Controls.Add(this.lblnombrepantalla);
             this.panelinformacion.Dock = System.Windows.Forms.DockStyle.Top;
@@ -220,6 +222,7 @@
             this.txtcliente.Size = new System.Drawing.Size(174, 24);
             this.txtcliente.TabIndex = 8;
             this.txtcliente.Enter += new System.EventHandler(this.txtcliente_Enter);
+            this.txtcliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcliente_KeyPress);
             // 
             // label1
             // 
@@ -256,7 +259,7 @@
             // 
             this.lblstock.AutoSize = true;
             this.lblstock.ForeColor = System.Drawing.Color.Gray;
-            this.lblstock.Location = new System.Drawing.Point(348, 139);
+            this.lblstock.Location = new System.Drawing.Point(340, 139);
             this.lblstock.Name = "lblstock";
             this.lblstock.Size = new System.Drawing.Size(17, 18);
             this.lblstock.TabIndex = 38;
@@ -276,7 +279,7 @@
             // 
             this.lblprecio.AutoSize = true;
             this.lblprecio.ForeColor = System.Drawing.Color.Gray;
-            this.lblprecio.Location = new System.Drawing.Point(205, 139);
+            this.lblprecio.Location = new System.Drawing.Point(201, 139);
             this.lblprecio.Name = "lblprecio";
             this.lblprecio.Size = new System.Drawing.Size(40, 18);
             this.lblprecio.TabIndex = 36;
@@ -668,6 +671,15 @@
             this.btnagregar.UseVisualStyleBackColor = false;
             this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Location = new System.Drawing.Point(1024, 23);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(79, 18);
+            this.lblusuario.TabIndex = 30;
+            this.lblusuario.Text = "Cantidad:";
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -757,5 +769,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label lblusuario;
     }
 }

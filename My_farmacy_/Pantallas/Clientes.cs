@@ -1,4 +1,5 @@
 ﻿using My_farmacy_.ClasesSQL;
+using My_farmacy_.Pantallas;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ namespace My_farmacy_
     public partial class Clientes : Form
     {
         PgAdmin pg = new PgAdmin();
-        
-        
+
+        public event Action<bool> cliente;
+        public event Action<int> total;
         public Clientes()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace My_farmacy_
         private void Clientes_Load(object sender, EventArgs e)
         {
             Llenar();
+            cbestado.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private bool vacios()
         {
@@ -74,7 +77,7 @@ namespace My_farmacy_
         {
             if (vacios())
             {
-                NpgsqlConnection cn = pg.conexion();            
+                NpgsqlConnection cn = pg.conexion();
                 bool estado;
                 if (cbestado.Text == "Activo")
                 {
@@ -94,8 +97,34 @@ namespace My_farmacy_
             {
                 MessageBox.Show("No puede dejar campos vacios.");
             }
-           
 
+
+        }
+        ErrorProvider  er = new ErrorProvider();
+        private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool vl = Validaciones.sololetras(e);
+            if (!vl)
+            {
+                er.SetError(txtnombre, "Solo se permiten letras.");
+            }
+            else
+            {
+                er.Clear();
+            }
+        }
+
+        private void txttelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool vl = Validaciones.solonumeros(e);
+            if (!vl)
+            {
+                er.SetError(txttelefono, "Solo se permiten numeros.");
+            }
+            else
+            {
+                er.Clear();
+            }
         }
     }
 }

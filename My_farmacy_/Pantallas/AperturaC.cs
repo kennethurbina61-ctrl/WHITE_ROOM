@@ -12,6 +12,11 @@ namespace My_farmacy_.Pantallas
 {
     public partial class AperturaC : Form
     {
+
+       
+        bool clienteBB;
+        int TotalP;
+
         public AperturaC()
         {
             InitializeComponent();
@@ -54,6 +59,11 @@ namespace My_farmacy_.Pantallas
         private void nudDolar_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void AperturaC_Load(object sender, EventArgs e)
+        {
+          
         }
     }
 }
